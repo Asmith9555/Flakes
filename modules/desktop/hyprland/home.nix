@@ -149,7 +149,7 @@
 
       bind = $mainMod, Return, exec, kitty fish
       bind = $mainMod SHIFT, Return, exec, kitty --class="termfloat" fish
-      bind = $mainMod SHIFT, P, killactive,
+      bind = $mainMod SHIFT, W, killactive,
       bind = $mainMod SHIFT, Space, togglefloating,
       bind = $mainMod, F,fullscreen
       bind = $mainMod, S,pin
@@ -189,8 +189,8 @@
       bind = $mainMod, 8, workspace, 8
       bind = $mainMod, 9, workspace, 9
       bind = $mainMod, 0, workspace, 10
-      bind = $mainMod, L, workspace, +1
-      bind = $mainMod, H, workspace, -1
+      bind = $mainMod, right, workspace, +1
+      bind = $mainMod, left, workspace, -1
       bind = $mainMod, period, workspace, e+1
       bind = $mainMod, comma, workspace,e-1
       #bind = $mainMod, Q, workspace,QQ
@@ -224,8 +224,8 @@
       bind = $mainMod CTRL, 8, movetoworkspace, 8
       bind = $mainMod CTRL, 9, movetoworkspace, 9
       bind = $mainMod CTRL, 0, movetoworkspace, 10
-      bind = $mainMod CTRL, H, movetoworkspace, -1
-      bind = $mainMod CTRL, L, movetoworkspace, +1
+      bind = $mainMod CTRL, left, movetoworkspace, -1
+      bind = $mainMod CTRL, right, movetoworkspace, +1
       # same as above, but doesnt switch to the workspace
       bind = $mainMod SHIFT, 1, movetoworkspacesilent, 1
       bind = $mainMod SHIFT, 2, movetoworkspacesilent, 2
@@ -256,12 +256,12 @@
       bind=$mainMod,B,exec,nvidia-offload firefox
       bind=$mainMod,M,exec,kitty --class = "musicfox" --hold sh -c "ncmpcpp" 
       bind=$mainMod SHIFT,M,exec,kitty --class="musicfox" --hold sh -c "musicfox" 
-      bind=$mainMod SHIFT,D,exec,kitty  --class="danmufloat" --hold sh -c "export TERM=xterm-256color && bili"
+      bind=$mainMod SHIFT,P,exec,kitty  --class="danmufloat" --hold sh -c "export TERM=xterm-256color && bili"
       bind=$mainMod SHIFT,X,exec,myswaylock
       bind=$mainMod,Q,exec,nvidia-offload icalingua-plus-plus --enable-features=UseOzonePlatform --ozone-platform=wayland
       bind=$mainMod,bracketright,exec, grimblast --notify --cursor  copy area
       bind=$mainMod,D,exec, pkill rofi || ~/.config/rofi/launcher.sh
-      bind=$mainMod,SHIFT,D,exec, bash ~/.config/rofi/powermenu.sh
+      bind=$mainMod SHIFT,D,exec, bash ~/.config/rofi/powermenu.sh
 
       #-----------------------------------------#
       # control volume,brightness,media players-#
