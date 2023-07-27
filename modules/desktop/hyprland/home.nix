@@ -19,7 +19,7 @@
     systemdIntegration = true;
     nvidiaPatches = true;
     extraConfig = ''
-      $mainMod = ALT
+      $mainMod = SUPER
       # $scripts=$HOME/.config/hypr/scripts
 
       #monitor=,preferred,auto,1 
@@ -150,17 +150,16 @@
       bind = $mainMod, Return, exec, kitty fish
       bind = $mainMod SHIFT, Return, exec, kitty --class="termfloat" fish
       bind = $mainMod SHIFT, P, killactive,
-      bind = $mainMod SHIFT, Q, exit,
       bind = $mainMod SHIFT, Space, togglefloating,
-      bind = $mainMod,F,fullscreen
-      bind = $mainMod,Y,pin
+      bind = $mainMod, F,fullscreen
+      bind = $mainMod, S,pin
       bind = $mainMod, P, pseudo, # dwindle
-      bind = $mainMod, J, togglesplit, # dwindle
+      bind = $mainMod, Y, togglesplit, # dwindle
 
       #-----------------------#
       # Toggle grouped layout #
       #-----------------------#
-      bind = $mainMod, K, togglegroup,
+      bind = $mainMod, I, togglegroup,
       bind = $mainMod, Tab, changegroupactive, f
 
       #------------#
@@ -172,10 +171,10 @@
       #--------------------------------------#
       # Move focus with mainMod + arrow keys #
       #--------------------------------------#
-      bind = $mainMod, left, movefocus, l
-      bind = $mainMod, right, movefocus, r
-      bind = $mainMod, up, movefocus, u
-      bind = $mainMod, down, movefocus, d
+      bind = $mainMod, H, movefocus, l
+      bind = $mainMod, L, movefocus, r
+      bind = $mainMod, K, movefocus, u
+      bind = $mainMod, J, movefocus, d
 
       #----------------------------------------#
       # Switch workspaces with mainMod + [0-9] #
@@ -194,9 +193,9 @@
       bind = $mainMod, H, workspace, -1
       bind = $mainMod, period, workspace, e+1
       bind = $mainMod, comma, workspace,e-1
-      bind = $mainMod, Q, workspace,QQ
-      bind = $mainMod, T, workspace,TG
-      bind = $mainMod, M, workspace,Music
+      #bind = $mainMod, Q, workspace,QQ
+      #bind = $mainMod, T, workspace,TG
+      #bind = $mainMod, M, workspace,Music
 
       #-------------------------------#
       # special workspace(scratchpad) #
@@ -207,10 +206,10 @@
       #----------------------------------#
       # move window in current workspace #
       #----------------------------------#
-      bind = $mainMod SHIFT,left ,movewindow, l
-      bind = $mainMod SHIFT,right ,movewindow, r
-      bind = $mainMod SHIFT,up ,movewindow, u
-      bind = $mainMod SHIFT,down ,movewindow, d
+      bind = $mainMod SHIFT,H ,movewindow, l
+      bind = $mainMod SHIFT,L ,movewindow, r
+      bind = $mainMod SHIFT,K ,movewindow, u
+      bind = $mainMod SHIFT,J ,movewindow, d
 
       #---------------------------------------------------------------#
       # Move active window to a workspace with mainMod + ctrl + [0-9] #
@@ -225,8 +224,8 @@
       bind = $mainMod CTRL, 8, movetoworkspace, 8
       bind = $mainMod CTRL, 9, movetoworkspace, 9
       bind = $mainMod CTRL, 0, movetoworkspace, 10
-      bind = $mainMod CTRL, left, movetoworkspace, -1
-      bind = $mainMod CTRL, right, movetoworkspace, +1
+      bind = $mainMod CTRL, H, movetoworkspace, -1
+      bind = $mainMod CTRL, L, movetoworkspace, +1
       # same as above, but doesnt switch to the workspace
       bind = $mainMod SHIFT, 1, movetoworkspacesilent, 1
       bind = $mainMod SHIFT, 2, movetoworkspacesilent, 2
@@ -255,17 +254,14 @@
       # quickly launch program #
       #------------------------# 
       bind=$mainMod,B,exec,nvidia-offload firefox
-      bind=$mainMod,M,exec,netease-cloud-music-gtk4 
+      bind=$mainMod,M,exec,kitty --class = "musicfox" --hold sh -c "ncmpcpp" 
       bind=$mainMod SHIFT,M,exec,kitty --class="musicfox" --hold sh -c "musicfox" 
       bind=$mainMod SHIFT,D,exec,kitty  --class="danmufloat" --hold sh -c "export TERM=xterm-256color && bili"
       bind=$mainMod SHIFT,X,exec,myswaylock
-      bind=$mainMod,T,exec,telegram-desktop
       bind=$mainMod,Q,exec,nvidia-offload icalingua-plus-plus --enable-features=UseOzonePlatform --ozone-platform=wayland
-      bind=$mainMod,bracketleft,exec,grimblast --notify --cursor  copysave area ~/Pictures/$(date "+%Y-%m-%d"T"%H:%M:%S_no_watermark").png
       bind=$mainMod,bracketright,exec, grimblast --notify --cursor  copy area
-      bind=$mainMod,A,exec, grimblast_watermark
-      bind=,Super_L,exec, pkill rofi || ~/.config/rofi/launcher.sh
-      bind=$mainMod,Super_L,exec, bash ~/.config/rofi/powermenu.sh
+      bind=$mainMod,D,exec, pkill rofi || ~/.config/rofi/launcher.sh
+      bind=$mainMod,SHIFT,D,exec, bash ~/.config/rofi/powermenu.sh
 
       #-----------------------------------------#
       # control volume,brightness,media players-#
@@ -288,7 +284,7 @@
       #---------------#
       # resize window #
       #---------------#
-      bind=ALT,R,submap,resize
+      bind=$mainMod,R,submap,resize
       submap=resize
       binde=,right,resizeactive,15 0
       binde=,left,resizeactive,-15 0
