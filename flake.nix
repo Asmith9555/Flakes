@@ -24,6 +24,7 @@
     let
       user = "wuger";
       selfPkgs = import ./pkgs;
+      theme = "rose-pine";
     in
     flake-utils.lib.eachSystem [ "x86_64-linux" ]
       (
@@ -50,7 +51,7 @@
         import ./hosts {
           # Imports ./hosts/default.nix
           system = "x86_64-linux";
-          inherit nixpkgs self inputs user;
+          inherit nixpkgs self inputs user theme;
         }
       );
     };

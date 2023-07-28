@@ -1,6 +1,9 @@
-{ config, pkgs, ... }:
+{ config, pkgs, theme, ... }:
 
 {
+  home.file = {
+    ".config/kitty/themes".source = ./themes;
+  };
   programs = {
     kitty = {
       enable = true;
@@ -16,6 +19,7 @@
         #Close the terminal =  without confirmation;
         confirm_os_window_close = 0;
         background_opacity = "0.95";
+        include = "${theme}.conf";
       };
       environment = { };
       keybindings = { };

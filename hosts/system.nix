@@ -1,4 +1,4 @@
-{ config, pkgs, lib, inputs, user, ... }:
+{ config, pkgs, lib, inputs, ... }:
 
 {
   nixpkgs.system = "x86_64-linux";
