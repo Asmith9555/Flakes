@@ -11,5 +11,7 @@
   ./yt-dlp
   ./zathura
   ./kitty
+  ./rofi
   ./joshuto
+  ./gtk
 ]

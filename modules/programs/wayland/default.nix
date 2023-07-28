@@ -7,4 +7,5 @@ in
   ./notice
   ./mpv
   ./kooha
+  ./swww
 ] ++ common

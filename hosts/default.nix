@@ -20,6 +20,7 @@ in
       ./system.nix
     ] ++ [
       inputs.hyprland.nixosModules.default
+      inputs.stylix.nixosModules.stylix
       inputs.home-manager.nixosModules.home-manager
       {
         home-manager = {
@@ -32,6 +33,7 @@ in
               #(import ./laptop/x11/home.nix)
             ] ++ [
               inputs.hyprland.homeManagerModules.default
+              inputs.stylix.homeManagerModules.stylix
             ];
           };
         };

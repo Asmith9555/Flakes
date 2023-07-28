@@ -2,8 +2,8 @@
   ./gtk
   ./btop
   ./cava
-  ./rofi
+  #./rofi
   ./fcitx5
-  ./kitty
-  ./fish
+  #./kitty
+  #./fish
 ]
