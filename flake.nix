@@ -10,7 +10,6 @@
       picom.url = "github:yaocccc/picom";
       joshuto.url = "github:kamiyaa/joshuto";
       go-musicfox.url = "github:go-musicfox/go-musicfox";
-      stylix.url = "github:danth/stylix";
       hyprland = {
         url = "github:hyprwm/Hyprland";
         inputs.nixpkgs.follows = "nixpkgs";
