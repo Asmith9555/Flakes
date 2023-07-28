@@ -3,7 +3,7 @@
 {
   home = {
     sessionVariables = {
-      EDITOR = "nvim";
+      EDITOR = "hx";
       BROWSER = "firefox";
       TERMINAL = "kitty";
       QT_QPA_PLATFORMTHEME = "gtk3";

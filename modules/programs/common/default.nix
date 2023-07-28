@@ -14,4 +14,5 @@
   ./rofi
   ./joshuto
   ./gtk
+  ./cava
 ]
