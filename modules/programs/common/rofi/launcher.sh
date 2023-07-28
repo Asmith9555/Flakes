@@ -2,38 +2,38 @@
 theme="launcher_theme"
 dir="$HOME/.config/rofi"
 
-# catppuccin
-# ALPHA="#00000000"
-# BG="#24273A"
-# FG="#BF616A"
-# SELECT="#1E1E2E"
-# ACCENT="#24273A"
-# 
-# ALPHA="#00000000"
-# BG="#eff1f5"
-# FG="#4c4f69"
-# SELECT="#C0CAF5"
-# ACCENT="#1A1B26"
-
-# nord
+# rose-pine
 #ALPHA="#00000000"
-#BG="#3B4253"
-#FG="#BF616A"
-#SELECT="#343a46"
-#ACCENT="#3B4252"
+#BG="#191724"
+#FG="#e0def4"
+#SELECT="#26233a"
+#ACCENT="#24273A"
+
+# rose-pine-moon
+# ALPHA="#00000000"
+# BG="#232136"
+# FG="#e0def4"
+# SELECT="#393552"
+# ACCENT="#c4a7e7"
+#
+# rose-pine-dawn
+ALPHA="#00000000"
+BG="#faf4ed"
+FG="#575279"
+SELECT="#f2e9e1"
+ACCENT="#907aa9"
 
 # overwrite colors file
-#cat > $dir/colors.rasi <<- EOF
-#	/* colors */
-#
-#	* {
-#	  al:  $ALPHA;
-#	  bg:  $BG;
-#	  se:  $SELECT;
-#	  fg:  $FG;
-#	  ac:  $ACCENT;
-#	}
-#EOF
+cat > $dir/colors.rasi <<- EOF
+  /* colors */
+
+	* {
+	  al:  $ALPHA;
+	  bg:  $BG;
+	  se:  $SELECT;
+	  fg:  $FG;
+	  ac:  $ACCENT;
+	}
+EOF
 
 rofi -no-lazy-grab -show drun -modi drun -theme $dir/"$theme"
-

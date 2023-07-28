@@ -70,22 +70,24 @@
                 padding-bottom: 5px;
                 padding-left: 6px;
                 padding-right: 6px;
+                color: rgb(86,148,159);
               }
         #workspaces button.active {
-                background-color: rgb(40,105,131);
-                color: rgb(250,244,237);
+                background-color: rgb(86,148,159);
+                color: rgb(250, 244, 237);
               }
         #workspaces button.urgent {
-                color: rgb(26, 24, 38);
+                color: rgb(250, 244, 237);
               }
         #workspaces button:hover {
-                background-color: rgb(86,148,159);
+                background-color: rgb(40,105,131);
                 color: rgb(250,244,237);
               }
         #custom-launcher {
                 font-size: 20px;
                 padding-left: 8px;
                 padding-right: 6px;
+                color: rgb(86,148,159);
               }
         #mode, #clock, #memory, #temperature,#cpu,#mpd, #custom-wall, #temperature, #backlight, #pulseaudio, #network, #battery, #custom-powermenu, #custom-cava-internal {
                 padding-left: 10px;
@@ -94,7 +96,7 @@
               /* #mode { */
               /* 	margin-left: 10px; */
               /* 	background-color: rgb(248, 189, 150); */
-              /*     color: rgb(26, 24, 38); */
+              /*     color: rgb(87,82,121); */
               /* } */
         #memory {
                 color: rgb(144,122,169);
@@ -221,8 +223,8 @@
             "critical" = 10;
           };
           "format" = "{icon} {capacity}%";
-          "format-icons" = [ "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" ];
-          "format-full" = "{icon} {capacity}%";
+          "format-icons" = [ "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹" ];
+          "format-full" = "{icon}%";
           "format-charging" = "󰂄 {capacity}%";
           "tooltip" = false;
         };

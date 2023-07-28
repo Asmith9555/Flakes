@@ -5,6 +5,6 @@
       file
       joshuto
     ];
+    file.".config/joshuto".source = ./config;
   };
-  home.file.".config/joshuto".source = ./config;
 }
