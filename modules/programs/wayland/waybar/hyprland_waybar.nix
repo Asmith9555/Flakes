@@ -131,7 +131,7 @@
         #network.disconnected {
                 color: rgb(180,99,122);
               }
-        #battery.charging, {
+        #battery.charging {
                 color: rgb(86,148,159);
               }
         #battery.full {
@@ -273,11 +273,11 @@
           "format-ethernet" = "󰈀 ";
           "format-linked" = "󰚥 ";
           "format-disconnected" = "󰌙 ";
-          "tooltip-format": "{ifname}",
-          "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
-          "tooltip-format-ethernet": "{ifname} ",
-          "tooltip-format-disconnected": "Disconnected",
-          "max-length": 50
+          "tooltip-format" = "{ifname}";
+          "tooltip-format-wifi" = "{essid} ({signalStrength}%) 󰖩";
+          "tooltip-format-ethernet" = "{ifname} 󰈀";
+          "tooltip-format-disconnected" = "Disconnected";
+          "max-length" = 50;
         };
         "temperature" = {
           "tooltip" = false;

@@ -2,7 +2,7 @@
 
 {
   home.sessionVariables = {
-    GTK_THEME = "Catppuccin-Latte-Rosewater";
+    GTK_THEME = "Catppuccin-Latte-Green";
   };
   home.pointerCursor = {
     package = pkgs.catppuccin-cursors;
@@ -13,7 +13,7 @@
   gtk = {
     enable = true;
     theme = {
-      name = "Catppuccin-Latte-Rosewater";
+      name = "Catppuccin-Latte-Green";
       package = pkgs.catppuccin-latte-gtk;
     };
     cursorTheme = {
