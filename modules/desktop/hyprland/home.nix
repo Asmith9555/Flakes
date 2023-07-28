@@ -254,8 +254,7 @@
       # quickly launch program #
       #------------------------# 
       bind=$mainMod,B,exec,nvidia-offload firefox
-      bind=$mainMod,M,exec,kitty --class = "musicfox" --hold sh -c "ncmpcpp" 
-      bind=$mainMod SHIFT,M,exec,kitty --class="musicfox" --hold sh -c "musicfox" 
+      bind=$mainMod,M,exec,kitty --class="danmufloat" --hold sh -c "ncmpcpp" 
       bind=$mainMod SHIFT,P,exec,kitty  --class="danmufloat" --hold sh -c "export TERM=xterm-256color && bili"
       bind=$mainMod SHIFT,X,exec,myswaylock
       bind=$mainMod,Q,exec,nvidia-offload icalingua-plus-plus --enable-features=UseOzonePlatform --ozone-platform=wayland
@@ -317,7 +316,7 @@
       #------------#
       # auto start #
       #------------#
-      exec-once = launch_waybar &
+      exec-once = waybar &
       exec-once = mako &
       exec-once = border_color &
       exec-once = nm-applet --indicator &

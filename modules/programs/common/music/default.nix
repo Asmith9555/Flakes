@@ -11,13 +11,7 @@
   programs = {
     ncmpcpp = {
       enable = true;
-      mpdMusicDir = null;
     };
-  };
-  home.file = {
-    ".config/ncmpcpp/config".text = ''
-      mpd_music_dir = ~/Music
-    '';
   };
 
   services = {

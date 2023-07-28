@@ -14,77 +14,6 @@ let
         swaybg -i $(find ~/Pictures/wallpaper/. -name "*.png" | shuf -n1) -m fill &
     fi
   '';
-  grimblast_watermark = pkgs.writeShellScriptBin "grimblast_watermark" ''
-        FILE=$(date "+%Y-%m-%d"T"%H:%M:%S").png
-    # Get the picture from maim
-        grimblast --notify --cursor save area $HOME/Pictures/src.png >> /dev/null 2>&1
-    # add shadow, round corner, border and watermark
-        convert $HOME/Pictures/src.png \
-          \( +clone -alpha extract \
-          -draw 'fill black polygon 0,0 0,8 8,0 fill white circle 8,8 8,0' \
-          \( +clone -flip \) -compose Multiply -composite \
-          \( +clone -flop \) -compose Multiply -composite \
-          \) -alpha off -compose CopyOpacity -composite $HOME/Pictures/output.png
-    #
-        convert $HOME/Pictures/output.png -bordercolor none -border 20 \( +clone -background black -shadow 80x8+15+15 \) \
-          +swap -background transparent -layers merge +repage $HOME/Pictures/$FILE
-    #
-        composite -gravity Southeast "${./watermark.png}" $HOME/Pictures/$FILE $HOME/Pictures/$FILE 
-    #
-        wl-copy < $HOME/Pictures/$FILE
-    #   remove the other pictures
-        rm $HOME/Pictures/src.png $HOME/Pictures/output.png
-  '';
-  grimshot_watermark = pkgs.writeShellScriptBin "grimshot_watermark" ''
-        FILE=$(date "+%Y-%m-%d"T"%H:%M:%S").png
-    # Get the picture from maim
-        grimshot --notify  save area $HOME/Pictures/src.png >> /dev/null 2>&1
-    # add shadow, round corner, border and watermark
-        convert $HOME/Pictures/src.png \
-          \( +clone -alpha extract \
-          -draw 'fill black polygon 0,0 0,8 8,0 fill white circle 8,8 8,0' \
-          \( +clone -flip \) -compose Multiply -composite \
-          \( +clone -flop \) -compose Multiply -composite \
-          \) -alpha off -compose CopyOpacity -composite $HOME/Pictures/output.png
-    #
-        convert $HOME/Pictures/output.png -bordercolor none -border 20 \( +clone -background black -shadow 80x8+15+15 \) \
-          +swap -background transparent -layers merge +repage $HOME/Pictures/$FILE
-    #
-        composite -gravity Southeast "${./watermark.png}" $HOME/Pictures/$FILE $HOME/Pictures/$FILE 
-    #
-    # # Send the Picture to clipboard
-        wl-copy < $HOME/Pictures/$FILE
-    #
-    # # remove the other pictures
-        rm $HOME/Pictures/src.png $HOME/Pictures/output.png
-  '';
-  flameshot_watermark = pkgs.writeShellScriptBin "flameshot_watermark" ''
-        FILE=$(date "+%Y-%m-%d"T"%H:%M:%S").png
-
-        flameshot gui -r > $HOME/Pictures/src.png
-    # add shadow, round corner, border and watermark
-    convert $HOME/Pictures/src.png \
-    	\( +clone -alpha extract \
-    	-draw 'fill black polygon 0,0 0,8 8,0 fill white circle 8,8 8,0' \
-    	\( +clone -flip \) -compose Multiply -composite \
-    	\( +clone -flop \) -compose Multiply -composite \
-    	\) -alpha off -compose CopyOpacity -composite $HOME/Pictures/output.png
-
-    convert $HOME/Pictures/output.png -bordercolor none -border 20 \( +clone -background black -shadow 80x8+15+15 \) \
-    	+swap -background transparent -layers merge +repage $HOME/Pictures/$FILE
-
-    composite -gravity Southeast "${./watermark.png}" $HOME/Pictures/$FILE $HOME/Pictures/$FILE
-    if [[ "$XDG_CURRENT_DESKTOP"=="Hyprland" ]] || [[ "$XDG_CURRENT_DESKTOP"=="sway" ]];then 
-      # # Send the Picture to clipboard
-        wl-copy < $HOME/Pictures/$FILE
-    else
-    # Send the Picture to clipboard
-        xclip -selection clipboard -t image/png -i $HOME/Pictures/$FILE
-    fi
-
-    # remove the other pictures
-    rm $HOME/Pictures/src.png $HOME/Pictures/output.png
-  '';
   myswaylock = pkgs.writeShellScriptBin "myswaylock" ''
     swaylock  \
            --screenshots \
@@ -204,9 +133,6 @@ in
   home.packages = with pkgs; [
     cava-internal
     wallpaper_random
-    grimshot_watermark
-    grimblast_watermark
-    flameshot_watermark
     myswaylock
     dynamic_wallpaper
     default_wall
