@@ -19,7 +19,7 @@
         #Close the terminal =  without confirmation;
         confirm_os_window_close = 0;
         background_opacity = "0.95";
-        include = "${theme}.conf";
+        include = "themes/${theme}.conf";
       };
       environment = { };
       keybindings = { };
