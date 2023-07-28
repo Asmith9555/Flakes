@@ -31,6 +31,7 @@
       socat
       keepassxc
       unzip
+      lxappearance
     ];
   };
   services.dbus.enable = true;

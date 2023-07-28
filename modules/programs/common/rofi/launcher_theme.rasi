@@ -32,7 +32,7 @@ prompt {
 
 entry {
   background-color:           @al;
-  text-color:                 #87CEFA;
+  text-color:                 #907aa9;
   placeholder-color:          @bg;
   expand:                     true;
   horizontal-align:           0;
@@ -93,7 +93,7 @@ element-icon {
 
 element-text {
   background-color:           @al;
-  text-color:                 inherit;
+  text-color:                 #797593;
   expand:                     true;
   horizontal-align:           0;
   vertical-align:             0.5;

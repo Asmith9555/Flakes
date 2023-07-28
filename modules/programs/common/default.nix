@@ -5,7 +5,6 @@
   ./music
   ./neofetch
   ./obs-studio
-  ./ranger
   ./resource_monitor
   ./search
   ./yt-dlp
