@@ -13,6 +13,9 @@
       '';
     };
   };
+  # home.file.".config/hypr/rose-pine.conf".source = ./themes/rose-pine.conf;
+  # home.file.".config/hypr/rose-pine-moon.conf".source = ./themes/rose-pine-moon.conf;
+  home.file.".config/hypr/rose-pine-dawn.conf".source = ./themes/rose-pine-dawn.conf;
   systemd.user.targets.hyprland-session.Unit.Wants = [ "xdg-desktop-autostart.target" ];
   wayland.windowManager.hyprland = {
     enable = true;
@@ -27,8 +30,9 @@
       monitor=eDP-1, 1920x1080, 0x0, 1
 
       # Source a file (multi-file configs)
-      # source = ~/.config/hypr/myColors.conf
-
+      source = ~/.config/hypr/rose-pine-dawn.conf
+      # source = ~/.config/hypr/rose-pine.conf
+      # source = ~/.config/hypr/rose-pine-moon.conf
       input {
         kb_layout = us
         kb_variant =
@@ -51,8 +55,8 @@
         gaps_in = 3
         gaps_out = 5
         border_size = 3
-        col.active_border = rgb(ffc0cb)
-        col.inactive_border = rgba(595959aa)
+        col.active_border = $rose
+        col.inactive_border = $subtle
 
         layout = dwindle # master|dwindle 
       }
@@ -217,7 +221,7 @@
       bind = $mainMod CTRL, 1, movetoworkspace, 1
       bind = $mainMod CTRL, 2, movetoworkspace, 2
       bind = $mainMod CTRL, 3, movetoworkspace, 3
-      bind = $mainMod CTRL, 4, movetoworkspace, 4
+      bind = $mainM++od CTRL, 4, movetoworkspace, 4
       bind = $mainMod CTRL, 5, movetoworkspace, 5
       bind = $mainMod CTRL, 6, movetoworkspace, 6
       bind = $mainMod CTRL, 7, movetoworkspace, 7
@@ -318,7 +322,6 @@
       #------------#
       exec-once = waybar &
       exec-once = mako &
-      exec-once = border_color &
       exec-once = nm-applet --indicator &
 
       #---------------#

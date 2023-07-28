@@ -5,7 +5,6 @@
   ./music
   ./neofetch
   ./obs-studio
-  ./resource_monitor
   ./search
   ./yt-dlp
   ./zathura

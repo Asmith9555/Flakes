@@ -2,7 +2,7 @@ configuration {
   font:                       "JetBrainsMono Nerd Font 12";
   show-icons:                 true;
   icon-theme:                 "Papirus";
-  display-drun:               "";
+  display-drun:               "󱎰";
   drun-display-format:        "{name}";
   disable-history:            false;
   sidebar-mode:               false;
@@ -26,13 +26,13 @@ prompt {
   enabled:                    true;
   padding:                    0.30% 1% 0% -0.5%;
   background-color:           @al;
-  text-color:                 #81A1C1;
+  text-color:                 @bg;
   font:                       "FantasqueSansMono Nerd Font 16";
 }
 
 entry {
   background-color:           @al;
-  text-color:                 #907aa9;
+  text-color:                 @bg;
   placeholder-color:          @bg;
   expand:                     true;
   horizontal-align:           0;
