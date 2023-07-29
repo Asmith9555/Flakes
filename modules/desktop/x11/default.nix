@@ -5,4 +5,5 @@
   ./picom
   ./sxhkd
   ./mpv
+  ./rofi
 ]

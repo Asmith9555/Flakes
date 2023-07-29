@@ -1,10 +1,8 @@
 [
   ./firefox
-  ./music
   ./obs-studio
   ./zathura
   ./kitty
-  ./rofi
   ./gtk
   ./cava
 ]

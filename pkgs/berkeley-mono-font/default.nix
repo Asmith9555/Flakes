@@ -5,7 +5,7 @@ stdenv.mkDerivation rec {
   version = "1.0.0";
 
   src = readDir {
-     path = ../modules/fonts/berkeley-mono;
+     path = ../../modules/fonts/berkeley-mono;
   };
 
   installPhase = ''

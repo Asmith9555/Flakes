@@ -4,7 +4,7 @@
   imports =
     [ (import ../../../modules/desktop/x11/bspwm/home.nix) ] ++
     [ (import ../../../modules/cli) ] ++
-    (import ../../../modules/gpu) ++
+    (import ../../../modules/gui) ++
     (import ../../../modules/desktop/x11);
 
   home = {

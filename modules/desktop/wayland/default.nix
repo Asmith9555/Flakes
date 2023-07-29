@@ -1,5 +1,4 @@
 [
-  ./hyprland
   ./imgview
   ./launcher
   ./notice
