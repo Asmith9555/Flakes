@@ -1,5 +1,3 @@
-let common = import ../common;
-in
 [
   ./imgview
   ./launcher
@@ -7,4 +5,4 @@ in
   ./picom
   ./sxhkd
   ./mpv
-] ++ common
+]

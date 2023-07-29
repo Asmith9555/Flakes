@@ -2,11 +2,10 @@
 
 {
   imports =
-    [ (import ../../../modules/desktop/hyprland/home.nix) ] ++
-    [ (import ../../../modules/scripts) ] ++
-    (import ../../../modules/shell) ++
-    (import ../../../modules/editors) ++
-    (import ../../../modules/programs/wayland);
+    [ (import ../../../modules/desktop/wayland/hyprland/home.nix) ] ++
+    (import ../../../modules/gui) ++
+    (import ../../../modules/cli) ++
+    (import ../../../modules/desktop/wayland);
 
   home = {
     username = "${user}";

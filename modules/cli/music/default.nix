@@ -5,7 +5,6 @@
     packages = with pkgs; [
       cava
       mpc-cli
-      go-musicfox
     ];
   };
   programs = {
@@ -13,7 +12,6 @@
       enable = true;
     };
   };
-
   services = {
     mpd = {
       enable = true;

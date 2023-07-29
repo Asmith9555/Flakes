@@ -2,12 +2,10 @@
 
 {
   imports =
-    [ (import ../../../modules/desktop/bspwm/home.nix) ] ++
-    [ (import ../../../modules/scripts) ] ++
-    (import ../../../modules/shell) ++
-    (import ../../../modules/editors) ++
-    (import ../../../modules/programs/x11) ++
-    (import ../../../modules/theme/nord/x11);
+    [ (import ../../../modules/desktop/x11/bspwm/home.nix) ] ++
+    [ (import ../../../modules/cli) ] ++
+    (import ../../../modules/gpu) ++
+    (import ../../../modules/desktop/x11);
 
   home = {
     username = "${user}";

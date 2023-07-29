@@ -1,11 +1,10 @@
-let
-  common = import ../common;
-in
 [
+  ./hyprland
   ./imgview
   ./launcher
   ./notice
   ./mpv
+  ./rofi
   ./kooha
   ./swww
-] ++ common
+]

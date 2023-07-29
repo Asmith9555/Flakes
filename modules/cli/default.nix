@@ -1,0 +1,14 @@
+[
+  ./fish
+  ./git
+  ./bash
+  ./gpg
+  ./helix
+  ./joshuto
+  ./lazygit
+  ./music
+  ./neofetch
+  ./nvim
+  ./search
+  ./yt-dlp
+]

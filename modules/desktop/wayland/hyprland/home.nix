@@ -2,7 +2,8 @@
 
 {
   imports = [
-    (import ../../environment/hypr-variables.nix)
+    (import ./env.nix)
+    (import ./scrpits.nix)
   ];
   programs = {
     bash = {
