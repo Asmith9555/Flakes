@@ -20,7 +20,7 @@
       name = "Catppuccin-Frappe-Dark";
     };
     iconTheme = {
-      name = "rose-pine-dawn-icons";
+      name = "rose-pine-dawn";
       package = pkgs.rose-pine-icon-theme;
     };
 
