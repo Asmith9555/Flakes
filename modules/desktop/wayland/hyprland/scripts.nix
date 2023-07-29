@@ -74,15 +74,15 @@ let
   default_wall = pkgs.writeShellScriptBin "default_wall" ''
     if command -v swww >/dev/null 2>&1; then 
           killall dynamic_wallpaper
-          swww img "${../programs/common/wall/default.png}" --transition-type random
+          swww img "${../../wallpaper/default.png}" --transition-type random
     elif command -v swaybg >/dev/null 2>&1; then 
         killall swaybg
         killall dynamic_wallpaper
-        swaybg -i "${../programs/common/wall/default.png}" -m fill &
+        swaybg -i "${../../wallpaper/default.png}" -m fill &
     else 
         killall feh
         killall dynamic_wallpaper
-        feh --randomize --bg-fill "${../programs/common/wall/default.png}" &
+        feh --randomize --bg-fill "${../../wallpaper/default.png}" &
     fi
   '';
 in

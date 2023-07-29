@@ -3,7 +3,7 @@
 {
   imports = [
     (import ./env.nix)
-    (import ./scrpits.nix)
+    (import ./scripts.nix)
   ];
   programs = {
     bash = {
