@@ -13,7 +13,7 @@
     users.${user} = {
       extraGroups = [ "lxd" ];
     };
-    groups.docker.members = [ "${user}" ]  
+    groups.docker.members = [ "${user}" ];
     groups.libvirtd.members = [ "${user}" ];
   };
   networking.firewall.trustedInterfaces = [ "virbr0" ];
