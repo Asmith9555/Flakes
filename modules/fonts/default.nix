@@ -11,6 +11,7 @@
       noto-fonts-emoji
       nerdfonts
       twemoji-color-font
+      berkeley-mono-font
     ];
     fontconfig = {
       localConf = ''
@@ -57,7 +58,7 @@
               <string>monospace</string>
             </test>
             <edit name="family" mode="prepend" binding="strong">
-              <string>Noto Sans Mono CJK SC</string>
+              <string>Berkeley Mono</string>
               <string>Symbols Nerd Font</string>
               <string>Twemoji</string>
             </edit>

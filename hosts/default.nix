@@ -1,4 +1,4 @@
-{ system, self, nixpkgs, inputs, user, ... }:
+{ system, self, nixpkgs, inputs, user, theme, ... }:
 
 let
   pkgs = import nixpkgs {
@@ -12,10 +12,10 @@ in
   laptop = lib.nixosSystem {
     # Laptop profile
     inherit system;
-    specialArgs = { inherit inputs user; };
+    specialArgs = { inherit inputs user theme; };
     modules = [
-      #./laptop/wayland
-      ./laptop/x11
+      ./laptop/wayland
+      #./laptop/x11
     ] ++ [
       ./system.nix
     ] ++ [
@@ -25,11 +25,11 @@ in
         home-manager = {
           useGlobalPkgs = true;
           useUserPackages = true;
-          extraSpecialArgs = { inherit user; };
+          extraSpecialArgs = { inherit user theme; };
           users.${user} = {
             imports = [
-              #(import ./laptop/wayland/home.nix)
-              (import ./laptop/x11/home.nix)
+              (import ./laptop/wayland/home.nix)
+              #(import ./laptop/x11/home.nix)
             ] ++ [
               inputs.hyprland.homeManagerModules.default
             ];
