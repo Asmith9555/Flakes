@@ -57,6 +57,7 @@
     digga.lib.mkFlake {
       inherit self inputs;
 
+      supportedSystems = [ "x86_64-linux" ];
       channelsConfig.allowUnfree = true;
 
       channels.nixos = {
@@ -95,7 +96,7 @@
         };
         imports = [(digga.lib.importHosts ./hosts/nixos)];
         hosts = {
-          thinkpad = [ nixos-hardware.nixosModules.lenovo-thinkpad-p51 ];
+          thinkpad = { modules = [ nixos-hardware.nixosModules.lenovo-thinkpad-p51 ]; };
         };
         importables = rec {
           profiles =
@@ -109,7 +110,7 @@
             base = (explodeAttrs core) ++ [ users.root ];
             thinkpad = base ++ [ hardware.laptop hardware.nvidia ];
             ## Full Suites
-            chaos =  thinkpad ++ (explodeAttrs services) ++ (explodeAttrs cli) 
+            chaos =  thinkpad ++ cachix ++ (explodeAttrs services) ++ (explodeAttrs cli) 
                     ++ (explodeAttrs desktop.wayland) ++ [ users.wuger ];
           };
         };

@@ -2,6 +2,6 @@
 {
   modules = with inputs; [];
   exportedModules = [
-    ./devos.nix
+    ./dev.nix
   ];
 }
