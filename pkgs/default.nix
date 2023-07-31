@@ -1,6 +1,8 @@
-rec{
-  overlay = final: prev:
-    let
+final: prev: {
+  # keep sources this first
+  sources = prev.callPackage (import ./_sources/generated.nix) {};
+  # then, call packages with `final.callPackage`
+  let
       dirContents = builtins.readDir ../pkgs;
       genPackage = name: {
         inherit name;
@@ -10,4 +12,3 @@ rec{
     in
     builtins.listToAttrs (map genPackage names);
 }
-  

@@ -1,6 +1,18 @@
 {
   description = "The most basic configuration";
 
+  nixConfig = {
+    extra-experimental-features = "nix-command flakes";
+    extra-substituters = [
+      "https://nrdxp.cachix.org"
+      "https://nix-community.cachix.org"
+    ];
+    extra-trusted-public-keys = [
+      "nrdxp.cachix.org-1:Fc5PSqY2Jm1TrWfm88l6cvGWwz3s93c6IOifQWnhNW4="
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+    ];
+  };
+
   inputs = {
     # Nixos
     nixos.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -15,10 +27,19 @@
         deploy.follows = "deploy";
       };
     };
-    nixos-generators = {
-      url = "github:nix-community/nixos-generators";
+    deploy = {
+      url = "github:serokell/deploy-rs";
       inputs.nixpkgs.follows = "nixos";
     };
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixos";
+    };
+    nvfetcher = {
+      url = "github:berberman/nvfetcher";
+      inputs.nixpkgs.follows = "nixos";
+    };
+    # Home-Manager
     home = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -32,21 +53,33 @@
     hypr-contrib.url = "github:hyprwm/contrib";
   };
 
-  outputs = { self, nixpkgs, home, nixos-hardware, digga,  ... } @ inputs:
+  outputs = { self, digga, nixos, nixpkgs, home, nixos-hardware, nur, agenix, nvfetcher, deploy, ... } @ inputs:
     digga.lib.mkFlake {
       inherit self inputs;
 
-      supportedSystems = [ "x86_64-linux" ];
       channelsConfig.allowUnfree = true;
+
       channels.nixos = {
         imports = [ (digga.lib.importOverlays ./overlays) ];
-        overlays = [
-          ./pkgs/default.nix
-          # agenix.overlays.default
-          # deploy.overlay
-          # (self: super: { deploy = { inherit (nixos) deploy-rs; lib = super.deploy-rs.lib; }; })
-        ];
+        overlays = [];
       };
+
+      lib = import ./lib {lib = digga.lib // nixos.lib;};
+
+      sharedOverlays = [
+        (final: prev: {
+          __dontExport = true;
+          lib = prev.lib.extend (lfinal: lprev: {
+            our = self.lib;
+          });
+        })
+
+        nur.overlay
+        agenix.overlay
+        nvfetcher.overlay
+
+        (import ./pkgs)
+      ];
 
       nixos = {
         hostDefaults = {
@@ -54,53 +87,56 @@
           channelName = "nixos";
           imports = [ (digga.lib.importExportableModules ./modules) ];
           modules = [
-            # agenix.nixosModules.age
+            agenix.nixosModules.age
+            digga.nixosModules.bootstrapIso
+            digga.nixosModules.nixConfig
             home.nixosModules.home-manager
           ];
         };
-      };
-      imports = [ (digga.lib.importHosts ./hosts) ];
-
-      importables = rec {
-        profiles = digga.lib.rakeLeaves ./profiles;
-        suites = with builtins; let explodeAttrs = set: map (a: getAttr a set) (attrNames set); in
-        with profiles; rec {
-          base = (explodeAttrs core) ++ [ vars ];
-          thinkpad = [ hardware.thinkpad hardware.nvidia ] ++ (explodeAttrs services);
-          full-cli = 
-            (explodeAttrs cli.archive) ++ (explodeAttrs cli.download) ++ 
-            (explodeAttr cli.search) ++ (explodeAttr cli.editor) ++ 
-            (explodeAttr cli.music) ++ (explodeAttr cli.style) ++ 
-            (explodeAttr cli.dev) ++ (explodeAttr cli.sys-monitor) ++ (explodeAttr cli.shell);
-          chaos =  base ++ thinkpad ++ full-cli ++ (explodeAttrs gui) ++ (explodeAttr desktop.wayland);
+        imports = [(digga.lib.importHosts ./hosts/nixos)];
+        hosts = {
+          thinkpad = [ nixos-hardware.nixosModules.lenovo-thinkpad-p51 ];
+        };
+        importables = rec {
+          profiles =
+            digga.lib.rakeLeaves ./profiles
+            // {
+              users = digga.lib.rakeLeaves ./users;
+            };
+          suites = with builtins; let explodeAttrs = set: map (a: getAttr a set) (attrNames set); in
+          with profiles; rec {
+            ## System Suites
+            base = (explodeAttrs core) ++ [ users.root ];
+            thinkpad = base ++ [ hardware.laptop hardware.nvidia ];
+            ## Full Suites
+            chaos =  thinkpad ++ (explodeAttrs services) ++ (explodeAttrs cli) 
+                    ++ (explodeAttrs desktop.wayland) ++ [ users.wuger ];
+          };
         };
       };
 
-      hosts = {
-        chaos = [ nixos-hardware.nixosModules.lenovo-thinkpad-p51 ];
+      home = {
+        imports = [(digga.lib.importExportableModules ./users/modules)];
+        modules = [];
+        importables = rec {
+          profiles = digga.lib.rakeLeaves ./users/profiles;
+          suites = with builtins; let explodeAttrs = set: map (a: getAttr a set) (attrNames set); in
+          with profiles; rec {
+            chaosHome = (explodeAttr desktop.wayland) ++ (explodeAttr gui) ++ (explodeAttr services) ++ (explodeAttr cli);
+          };
+        };
+        users = {
+          wuger = {suites, ...}: {
+            imports = suites.chaosHome;
+            home.stateVersion = "23.05";
+          };
+        };
       };
 
       devshell = ./shell;
 
       homeConfigurations = digga.lib.mkHomeConfigurations self.nixosConfigurations;
 
-      # deploy.nodes = digga.lib.mkDeployNodes self.nixosConfigurations {
-        # najdorf = {
-        #   profilesOrder = [ "system" "sweenu" ];
-        #   profiles.system.sshUser = "root";
-        #   profiles.sweenu = {
-        #     user = "sweenu";
-        #     sshUser = "root";
-        #     path = deploy.lib.x86_64-linux.activate.home-manager self.homeConfigurations."sweenu@najdorf";
-        #   };
-        # };
-        # grunfeld = {
-        #   profiles.system.sshUser = "root";
-        # };
-      # };
-
-      # herculesCI = {
-      #   ciSystems = [ "x86_64-linux" ];
-      # };
+      deploy.nodes = digga.lib.mkDeployNodes self.nixosConfigurations {};
     };
 }

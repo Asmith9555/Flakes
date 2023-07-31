@@ -6,8 +6,6 @@
     less
     uutils-coreutils
   ];
-  
-  hardware.enableAllFirmware = true;
 
   nix = {
     package = pkgs.nixUnstable;
@@ -22,6 +20,11 @@
       fallback = true;
       warn-dirty = false;
     };
+  };
+
+  services.openssh = {
+    enable = true;
+    openFirewall = lib.mkDefault false;
   };
 
   security = {
@@ -40,6 +43,4 @@
       '';
     };
   };
-
-  system.stateVersion = lib.mkDefault "23.05";
 }

@@ -1,2 +1,4 @@
 result
 nixos.*
+pkgs/_sources/.shake*
+.direnv

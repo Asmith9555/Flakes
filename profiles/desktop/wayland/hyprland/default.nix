@@ -14,7 +14,4 @@
     enable = true;
     wlr.enable = true;
   };
-  home-manager.users."${config.vars.username}" = {
-    import = ./home.nix;
-  };
 }
