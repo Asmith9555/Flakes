@@ -35,10 +35,6 @@
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixos";
     };
-    nvfetcher = {
-      url = "github:berberman/nvfetcher";
-      inputs.nixpkgs.follows = "nixos";
-    };
     # Home-Manager
     home = {
       url = "github:nix-community/home-manager";
@@ -62,25 +58,13 @@
 
       channels.nixos = {
         imports = [ (digga.lib.importOverlays ./overlays) ];
-        overlays = [];
+        overlays = [
+          ./pkgs/default.nix
+          agenix.overlays.default
+          deploy.overlay
+          (self: super: { deploy = { inherit (nixos) deploy-rs; lib = super.deploy-rs.lib; }; })
+        ];
       };
-
-      lib = import ./lib {lib = digga.lib // nixos.lib;};
-
-      sharedOverlays = [
-        (final: prev: {
-          __dontExport = true;
-          lib = prev.lib.extend (lfinal: lprev: {
-            our = self.lib;
-          });
-        })
-
-        nur.overlay
-        agenix.overlay
-        nvfetcher.overlay
-
-        (import ./pkgs)
-      ];
 
       nixos = {
         hostDefaults = {
@@ -89,12 +73,10 @@
           imports = [ (digga.lib.importExportableModules ./modules) ];
           modules = [
             agenix.nixosModules.age
-            digga.nixosModules.bootstrapIso
-            digga.nixosModules.nixConfig
             home.nixosModules.home-manager
           ];
         };
-        imports = [(digga.lib.importHosts ./hosts/nixos)];
+        imports = [(digga.lib.importHosts ./hosts)];
         hosts = {
           thinkpad = { modules = [ nixos-hardware.nixosModules.lenovo-thinkpad-p51 ]; };
         };
@@ -139,5 +121,9 @@
       homeConfigurations = digga.lib.mkHomeConfigurations self.nixosConfigurations;
 
       deploy.nodes = digga.lib.mkDeployNodes self.nixosConfigurations {};
+
+      herculesCI = {
+        ciSystems = [ "x86_64-linux" ];
+      };
     };
 }

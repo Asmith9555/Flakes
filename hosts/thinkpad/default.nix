@@ -44,5 +44,6 @@
       size = 1024 * 64;
     }
   ];
- 
+
+  time.timeZone = "America/Chicago";
 }
