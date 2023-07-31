@@ -1,9 +1,0 @@
-[
-  ./imgview
-  ./launcher
-  ./notice
-  ./mpv
-  ./rofi
-  ./kooha
-  ./swww
-]
