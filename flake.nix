@@ -49,7 +49,7 @@
     hypr-contrib.url = "github:hyprwm/contrib";
   };
 
-  outputs = { self, digga, nixos, nixpkgs, home, nixos-hardware, nur, agenix, nvfetcher, deploy, ... } @ inputs:
+  outputs = { self, digga, nixos, nixpkgs, home, nixos-hardware, nur, agenix, deploy, ... } @ inputs:
     digga.lib.mkFlake {
       inherit self inputs;
 

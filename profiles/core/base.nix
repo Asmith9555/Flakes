@@ -7,6 +7,8 @@
     uutils-coreutils
   ];
 
+  hardware.enableAllFirmware = true;
+
   nix = {
     package = pkgs.nixUnstable;
     gc.automatic = true;
