@@ -1,6 +1,8 @@
 [
-  ./firefox
+  ./web
+  ./editors
   ./obs-studio
+  ./discocss
   ./zathura
   ./kitty
   ./gtk

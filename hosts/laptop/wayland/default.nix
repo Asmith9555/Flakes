@@ -18,6 +18,7 @@
     extraGroups = [ "wheel" "video" "audio" ];
     packages = (with pkgs; [
       # chatgpt-cli
+      mako
     ]) ++ (with config.nur.repos;[
       # linyinfeng.icalingua-plus-plus
     ]);
