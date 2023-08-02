@@ -1,6 +1,9 @@
-{ config, lib, pkgs, ... }:
-
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   imports = [
     (import ./env.nix)
   ];
@@ -64,7 +67,7 @@
       extraConfig = ''
       '';
       extraConfigEarly = ''
-        systemctl --user start bspwm-session.target 
+        systemctl --user start bspwm-session.target
         systemctl --user start tray.target
       '';
     };
@@ -72,9 +75,9 @@
   systemd.user.targets.bspwm-session = {
     Unit = {
       Description = "bspwm session";
-      BindsTo = [ "graphical-session.target" ];
-      Wants = [ "graphical-session-pre.target" "xdg-desktop-autostart.target" ];
-      After = [ "graphical-session-pre.target" ];
+      BindsTo = ["graphical-session.target"];
+      Wants = ["graphical-session-pre.target" "xdg-desktop-autostart.target"];
+      After = ["graphical-session-pre.target"];
     };
   };
   programs = {
@@ -99,9 +102,9 @@
         xrandr --output DP-1-3 --auto --primary --right-of eDP-1
       fi
        ${pkgs.xorg.xrdb}/bin/xrdb -merge <${pkgs.writeText "Xresources" ''
-         Xcursor.theme: Catppuccin-Frappe-Dark
-        ''}
-      exec bspwm 
+        Xcursor.theme: Catppuccin-Frappe-Dark
+      ''}
+      exec bspwm
     '';
   };
 }

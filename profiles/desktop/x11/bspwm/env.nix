@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   home-manager.users."${config.vars.username}" = {
     home = {
       sessionVariables = {

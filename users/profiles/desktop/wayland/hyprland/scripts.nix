@@ -1,6 +1,10 @@
-{ config, lib, pkgs, ... }:
-
-let
+{
+  config,
+  lib,
+  pkgs,
+  self,
+  ...
+}: let
   cava-internal = pkgs.writeShellScriptBin "cava-internal" ''
     cava -p ~/.config/cava/config1 | sed -u 's/;//g;s/0/▁/g;s/1/▂/g;s/2/▃/g;s/3/▄/g;s/4/▅/g;s/5/▆/g;s/6/▇/g;s/7/█/g;'
   '';
@@ -36,13 +40,12 @@ let
         kill $OLD_PID
         OLD_PID=$NEXT_PID
     done
-   '';
+  '';
   default_wall = pkgs.writeShellScriptBin "default_wall" ''
     killall dynamic_wallpaper
     swww img "${self}/assets/default.jpg}" --transition-type random
   '';
-in
-{
+in {
   home.packages = with pkgs; [
     cava-internal
     wallpaper_random

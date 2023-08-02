@@ -139,130 +139,134 @@
               color: rgb(215,130,126)
             }
     '';
-    settings = [{
-      "layer" = "top";
-      "position" = "top";
-      modules-left = [
-        "custom/launcher"
-        "wlr/workspaces"
-        "temperature"
-        "custom/wall"
-        "mpd"
-        "custom/cava-internal"
-      ];
-      modules-center = [
-        "clock"
-      ];
-      modules-right = [
-        "pulseaudio"
-        "backlight"
-        "memory"
-        "cpu"
-        "network"
-        "battery"
-        "custom/powermenu"
-      ];
-      "custom/launcher" = {
-        "format" = " ";
-        "on-click" = "pkill rofi || ~/.config/rofi/launcher.sh";
-        "tooltip" = false;
-      };
-      "custom/wall" = {
-        "on-click" = "wallpaper_random";
-        "on-click-middle" = "default_wall";
-        "on-click-right" = "killall dynamic_wallpaper || dynamic_wallpaper &";
-        "format" = " ﴔ ";
-        "tooltip" = false;
-      };
-      "custom/cava-internal" = {
-        "exec" = "sleep 1s && cava-internal";
-        "tooltip" = false;
-      };
-      "wlr/workspaces" = {
-        "format" = "{icon}";
-        "on-click" = "activate";
-        # "on-scroll-up" = "hyprctl dispatch workspace e+1";
-        # "on-scroll-down" = "hyprctl dispatch workspace e-1";
-      };
-      "backlight" = {
-        "device" = "intel_backlight";
-        "on-scroll-up" = "light -A 5";
-        "on-scroll-down" = "light -U 5";
-        "format" = "{icon} {percent}%";
-        "format-icons" = [ "󰃞" "󰃝" "󰃟" "󰃠" ];
-      };
-      "pulseaudio" = {
-        "scroll-step" = 1;
-        "format" = "{icon} {volume}%";
-        "format-muted" = "󰝟 Muted";
-        "format-icons" = {
-          "default" = [ "󰕿" "" "󰕾" ];
+    settings = [
+      {
+        "layer" = "top";
+        "position" = "top";
+        modules-left = [
+          "custom/launcher"
+          "wlr/workspaces"
+          "temperature"
+          "custom/wall"
+          "mpd"
+          "custom/cava-internal"
+        ];
+        modules-center = [
+          "clock"
+        ];
+        modules-right = [
+          "pulseaudio"
+          "backlight"
+          "memory"
+          "cpu"
+          "network"
+          "battery"
+          "custom/powermenu"
+        ];
+        "custom/launcher" = {
+          "format" = " ";
+          "on-click" = "pkill rofi || ~/.config/rofi/launcher.sh";
+          "tooltip" = false;
         };
-        "on-click" = "pamixer -t";
-        "tooltip" = false;
-      };
-      "battery" = {
-        "interval" = 10;
-        "states" = {
-          "warning" = 20;
-          "critical" = 10;
+        "custom/wall" = {
+          "on-click" = "wallpaper_random";
+          "on-click-middle" = "default_wall";
+          "on-click-right" = "killall dynamic_wallpaper || dynamic_wallpaper &";
+          "format" = " ﴔ ";
+          "tooltip" = false;
         };
-        "format" = "{icon} {capacity}%";
-        "format-icons" = [ "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" ];
-        "format-full" = "󰁹";
-        "format-charging" = "󰂄 {capacity}%";
-        "tooltip" = false;
-      };
-      "clock" = {
-        "interval" = 1;
-        "format" = "{:%I:%M %p  %A %b %d}";
-        "tooltip" = true;
-        /* "tooltip-format"= "{=%A; %d %B %Y}\n<tt>{calendar}</tt>" */
-        "tooltip-format" = "<tt>{calendar}</tt>";
-      };
-      "memory" = {
-        "interval" = 1;
-        "format" = "󰍛 {percentage}%";
-        "states" = {
-          "warning" = 85;
+        "custom/cava-internal" = {
+          "exec" = "sleep 1s && cava-internal";
+          "tooltip" = false;
         };
-      };
-      "cpu" = {
-        "interval" = 1;
-        "format" = "󰻠 {usage}%";
-      };
-      "mpd" = {
-        "max-length" = 25;
-        "format" = "󰝚 {title}";
-        "format-paused" = "<span foreground='#d7827e'>󰝛</span> {title}";
-        "format-stopped" = "󰝛";
-        "format-disconnected" = "<span foreground='#b4637a'></span>";
-        "on-click" = "mpc --quiet toggle";
-        "on-click-right" = "mpc update; mpc ls | mpc add";
-        "on-click-middle" = "kitty --class='ncmpcpp' ncmpcpp ";
-        "tooltip-format" = "{title} - {artist} ({elapsedTime:%M:%S}/{totalTime:%H:%M:%S})";
-      };
-      "network" = {
-        "interval" = 1;
-        "format-wifi" = "󰖩 ";
-        "format-ethernet" = "󰈀 ";
-        "format-linked" = "󰚥 ";
-        "format-disconnected" = "󰌙 ";
-        "tooltip-format" = "{ifname}";
-        "tooltip-format-wifi" = "{essid} ({signalStrength}%) 󰖩";
-        "tooltip-format-ethernet" = "{ifname} 󰈀";
-        "tooltip-format-disconnected" = "Disconnected";
-        "max-length" = 50;
-      };
-      "temperature" = {
-        "tooltip" = false;
-        "format" = " {temperatureF}°F";
-      };
-      "custom/powermenu" = {
-        "format" = "";
-        "on-click" = "pkill rofi || ~/.config/rofi/powermenu.sh";
-        "tooltip" = false;
-      };
-    }];
+        "wlr/workspaces" = {
+          "format" = "{icon}";
+          "on-click" = "activate";
+          # "on-scroll-up" = "hyprctl dispatch workspace e+1";
+          # "on-scroll-down" = "hyprctl dispatch workspace e-1";
+        };
+        "backlight" = {
+          "device" = "intel_backlight";
+          "on-scroll-up" = "light -A 5";
+          "on-scroll-down" = "light -U 5";
+          "format" = "{icon} {percent}%";
+          "format-icons" = ["󰃞" "󰃝" "󰃟" "󰃠"];
+        };
+        "pulseaudio" = {
+          "scroll-step" = 1;
+          "format" = "{icon} {volume}%";
+          "format-muted" = "󰝟 Muted";
+          "format-icons" = {
+            "default" = ["󰕿" "" "󰕾"];
+          };
+          "on-click" = "pamixer -t";
+          "tooltip" = false;
+        };
+        "battery" = {
+          "interval" = 10;
+          "states" = {
+            "warning" = 20;
+            "critical" = 10;
+          };
+          "format" = "{icon} {capacity}%";
+          "format-icons" = ["󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂"];
+          "format-full" = "󰁹";
+          "format-charging" = "󰂄 {capacity}%";
+          "tooltip" = false;
+        };
+        "clock" = {
+          "interval" = 1;
+          "format" = "{:%I:%M %p  %A %b %d}";
+          "tooltip" = true;
+          /*
+          "tooltip-format"= "{=%A; %d %B %Y}\n<tt>{calendar}</tt>"
+          */
+          "tooltip-format" = "<tt>{calendar}</tt>";
+        };
+        "memory" = {
+          "interval" = 1;
+          "format" = "󰍛 {percentage}%";
+          "states" = {
+            "warning" = 85;
+          };
+        };
+        "cpu" = {
+          "interval" = 1;
+          "format" = "󰻠 {usage}%";
+        };
+        "mpd" = {
+          "max-length" = 25;
+          "format" = "󰝚 {title}";
+          "format-paused" = "<span foreground='#d7827e'>󰝛</span> {title}";
+          "format-stopped" = "󰝛";
+          "format-disconnected" = "<span foreground='#b4637a'></span>";
+          "on-click" = "mpc --quiet toggle";
+          "on-click-right" = "mpc update; mpc ls | mpc add";
+          "on-click-middle" = "kitty --class='ncmpcpp' ncmpcpp ";
+          "tooltip-format" = "{title} - {artist} ({elapsedTime:%M:%S}/{totalTime:%H:%M:%S})";
+        };
+        "network" = {
+          "interval" = 1;
+          "format-wifi" = "󰖩 ";
+          "format-ethernet" = "󰈀 ";
+          "format-linked" = "󰚥 ";
+          "format-disconnected" = "󰌙 ";
+          "tooltip-format" = "{ifname}";
+          "tooltip-format-wifi" = "{essid} ({signalStrength}%) 󰖩";
+          "tooltip-format-ethernet" = "{ifname} 󰈀";
+          "tooltip-format-disconnected" = "Disconnected";
+          "max-length" = 50;
+        };
+        "temperature" = {
+          "tooltip" = false;
+          "format" = " {temperatureF}°F";
+        };
+        "custom/powermenu" = {
+          "format" = "";
+          "on-click" = "pkill rofi || ~/.config/rofi/powermenu.sh";
+          "tooltip" = false;
+        };
+      }
+    ];
   };
 }

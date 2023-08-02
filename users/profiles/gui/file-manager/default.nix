@@ -1,5 +1,5 @@
 {
   imports = [
-    ./nemo.nix  
+    ./nemo.nix
   ];
-} 
+}

@@ -1,5 +1,5 @@
 {
   imports = [
-    ./rose-pine-dawn.nix  
+    ./rose-pine-dawn.nix
   ];
-} 
+}

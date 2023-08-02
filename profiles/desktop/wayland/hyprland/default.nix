@@ -1,6 +1,14 @@
-{ config, pkgs, inputs, ... }:
 {
+  config,
+  pkgs,
+  inputs,
+  ...
+}: {
   programs = {
+    hyprland = {
+      enable = true;
+      nvidiaPatches = true;
+    };
     dconf.enable = true;
     light.enable = true;
   };
@@ -9,9 +17,9 @@
     swaylock-effects
     pamixer
   ];
-  security.pam.services.swaylock = { };
+  security.pam.services.swaylock = {};
   xdg.portal = {
     enable = true;
-    wlr.enable = true;
+    # wlr.enable = true;
   };
 }

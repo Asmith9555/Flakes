@@ -1,6 +1,9 @@
-{ lib, pkgs, user, ... }:
-
 {
+  lib,
+  pkgs,
+  user,
+  ...
+}: {
   programs.zathura = {
     enable = true;
     extraConfig = ''
@@ -33,7 +36,7 @@
       set selection-clipboard clipboard
 
       ### Themes
-      
+
       ## Rose-Pine
       # set default-bg                  "#191724"
       # set default-fg                  "#e0def4"

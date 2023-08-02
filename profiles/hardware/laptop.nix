@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   services.logind = {
     lidSwitch = "suspend-then-hibernate";
     lidSwitchExternalPower = "suspend-then-hibernate";
@@ -16,6 +18,9 @@
       USB_AUTOSUSPEND = 0;
     };
   };
+  environment.systemPackages = with pkgs; [
+    powertop
+  ];
   powerManagement.powertop.enable = true;
   systemd.sleep.extraConfig = "HibernateDelaySec=2h";
 }

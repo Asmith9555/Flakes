@@ -1,6 +1,5 @@
-{ pkgs, ... }:
-{
-  environment.defaultPacakges = with pkgs; [
+{pkgs, ...}: {
+  environment.defaultPackages = with pkgs; [
     exa
   ];
 }

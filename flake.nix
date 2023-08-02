@@ -1,68 +1,64 @@
 {
-  description = "The most basic configuration";
-
-  nixConfig = {
-    extra-experimental-features = "nix-command flakes";
-    extra-substituters = [
-      "https://nrdxp.cachix.org"
-      "https://nix-community.cachix.org"
-    ];
-    extra-trusted-public-keys = [
-      "nrdxp.cachix.org-1:Fc5PSqY2Jm1TrWfm88l6cvGWwz3s93c6IOifQWnhNW4="
-      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-    ];
-  };
+  description = "A highly structured configuration database.";
 
   inputs = {
-    # Nixos
+    # Track channels with commits tested and built by hydra
     nixos.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixos-hardware.url = "github:NixOs/nixos-hardware/master";
-    # Nixos Flakes
-    digga = {
-      url = "github:divnix/digga";
-      inputs = {
-        nixpkgs.follows = "nixos";
-        nixlib.follows = "nixos";
-        home-manager.follows = "home";
-        deploy.follows = "deploy";
-      };
-    };
-    deploy = {
-      url = "github:serokell/deploy-rs";
+    ## Nixos Flakes
+    digga.url = "github:divnix/digga";
+    digga.inputs.nixpkgs.follows = "nixos";
+    digga.inputs.nixlib.follows = "nixos";
+    digga.inputs.home-manager.follows = "home";
+    digga.inputs.deploy.follows = "deploy";
+
+    home.url = "github:nix-community/home-manager/release-23.05";
+    home.inputs.nixpkgs.follows = "nixos";
+
+    deploy.url = "github:serokell/deploy-rs";
+    deploy.inputs.nixpkgs.follows = "nixos";
+
+    agenix.url = "github:ryantm/agenix";
+    agenix.inputs.nixpkgs.follows = "nixos";
+
+    nixos-hardware.url = "github:nixos/nixos-hardware";
+
+    nixos-generators = {
+      url = "github:nix-community/nixos-generators";
       inputs.nixpkgs.follows = "nixos";
     };
-    agenix = {
-      url = "github:ryantm/agenix";
-      inputs.nixpkgs.follows = "nixos";
-    };
-    # Home-Manager
-    home = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };      
-    # Applications
+    
+    ## Applications
     hyprland = {
       url = "github:hyprwm/Hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    hyprpicker.url = "github:hyprwm/hyprpicker";
     hypr-contrib.url = "github:hyprwm/contrib";
   };
 
-  outputs = { self, digga, nixos, nixpkgs, home, nixos-hardware, nur, agenix, deploy, ... } @ inputs:
-    digga.lib.mkFlake {
+  outputs = {
+    self,
+    digga,
+    nixos,
+    home,
+    nixos-hardware,
+    nur,
+    agenix,
+    deploy,
+    nixpkgs,
+    ...
+  } @ inputs:
+    digga.lib.mkFlake
+    {
       inherit self inputs;
 
-      supportedSystems = [ "x86_64-linux" ];
-      channelsConfig.allowUnfree = true;
+      channelsConfig = {allowUnfree = true;};
 
       channels.nixos = {
-        imports = [ (digga.lib.importOverlays ./overlays) ];
+        imports = [(digga.lib.importOverlays ./overlays)];
         overlays = [
           ./pkgs/default.nix
-          agenix.overlays.default
-          deploy.overlay
-          (self: super: { deploy = { inherit (nixos) deploy-rs; lib = super.deploy-rs.lib; }; })
+          nur.overlay
+          agenix.overlay
         ];
       };
 
@@ -70,15 +66,21 @@
         hostDefaults = {
           system = "x86_64-linux";
           channelName = "nixos";
-          imports = [ (digga.lib.importExportableModules ./modules) ];
+          imports = [(digga.lib.importExportableModules ./modules)];
           modules = [
-            agenix.nixosModules.age
+            # digga.nixosModules.bootstrapIso
+            # digga.nixosModules.nixConfig
             home.nixosModules.home-manager
+            agenix.nixosModules.age
+            inputs.hyprland.nixosModules.default
           ];
         };
+
         imports = [(digga.lib.importHosts ./hosts)];
         hosts = {
-          thinkpad = { modules = [ nixos-hardware.nixosModules.lenovo-thinkpad-p51 ]; };
+          thinkpad = {
+            modules = [nixos-hardware.nixosModules.lenovo-thinkpad-p51];
+          };
         };
         importables = rec {
           profiles =
@@ -86,31 +88,51 @@
             // {
               users = digga.lib.rakeLeaves ./users;
             };
-          suites = with builtins; let explodeAttrs = set: map (a: getAttr a set) (attrNames set); in
-          with profiles; rec {
-            ## System Suites
-            base = (explodeAttrs core) ++ [ users.root ];
-            thinkpad = base ++ [ hardware.laptop hardware.nvidia ];
-            ## Full Suites
-            chaos =  thinkpad ++ cachix ++ (explodeAttrs services) ++ (explodeAttrs cli) 
-                    ++ (explodeAttrs desktop.wayland) ++ [ users.wuger ];
-          };
+          suites = with builtins; let
+            explodeAttrs = set: map (a: getAttr a set) (attrNames set);
+          in
+            with profiles; rec {
+              base = [
+                core.base
+                users.root
+              ];
+              thinkpad = [
+                hardware.nvidia
+                hardware.laptop
+              ];
+              chaos =
+                base
+                ++ thinkpad
+                ++ (explodeAttrs cli)
+                ++ (explodeAttrs desktop.wayland)
+                ++ (explodeAttrs services)
+                ++ [users.wuger];
+            };
         };
       };
 
       home = {
-        imports = [(digga.lib.importExportableModules ./users/modules)];
-        modules = [];
+        modules = [
+          inputs.hyprland.homeManagerModules.default
+        ];
         importables = rec {
           profiles = digga.lib.rakeLeaves ./users/profiles;
-          suites = with builtins; let explodeAttrs = set: map (a: getAttr a set) (attrNames set); in
-          with profiles; rec {
-            chaosHome = (explodeAttr desktop.wayland) ++ (explodeAttr gui) ++ (explodeAttr services) ++ (explodeAttr cli);
-          };
+          suites = with builtins; let
+            explodeAttrs = set: map (a: getAttr a set) (attrNames set);
+          in
+            with profiles; rec {
+              base = explodeAttrs core;
+              chaos =
+                base
+                ++ (explodeAttrs cli)
+                ++ (explodeAttrs gui)
+                ++ (explodeAttrs services)
+                ++ (explodeAttrs desktop.wayland);
+            };
         };
         users = {
           wuger = {suites, ...}: {
-            imports = suites.chaosHome;
+            imports = suites.chaos;
             home.stateVersion = "23.05";
           };
         };
@@ -118,12 +140,10 @@
 
       devshell = ./shell;
 
+      # TODO: similar to the above note: does it make sense to make all of
+      # these users available on all systems?
       homeConfigurations = digga.lib.mkHomeConfigurations self.nixosConfigurations;
 
       deploy.nodes = digga.lib.mkDeployNodes self.nixosConfigurations {};
-
-      herculesCI = {
-        ciSystems = [ "x86_64-linux" ];
-      };
     };
 }

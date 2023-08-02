@@ -1,6 +1,9 @@
-{ config, lib, pkgs, ... }:
-
-let
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: let
   nvidia-offload = pkgs.writeShellScriptBin "nvidia-offload" ''
     export __NV_PRIME_RENDER_OFFLOAD=1
     export __NV_PRIME_RENDER_OFFLOAD_PROVIDER=NVIDIA-G0
@@ -8,12 +11,11 @@ let
     export __VK_LAYER_NV_optimus=NVIDIA_only
     exec "$@"
   '';
-in
-{
+in {
   services = {
     tlp.enable = true;
     auto-cpufreq.enable = true;
-    xserver.videoDrivers = [ "nvidia" ];
+    xserver.videoDrivers = ["nvidia"];
   };
   hardware = {
     nvidia = {
@@ -25,7 +27,6 @@ in
         intelBusId = "PCI:00:02:0";
         nvidiaBusId = "PCI:01:00:0";
       };
-
     };
     opengl = {
       enable = true;

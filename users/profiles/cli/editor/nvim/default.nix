@@ -1,18 +1,20 @@
-{ config, lib, pkgs, ... }:
-
-let
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: let
   install_lsp = pkgs.writeShellScriptBin "install_lsp" ''
-      #!/bin/bash 
-    if [ ! -d ~/.npm-global ]; then  
+      #!/bin/bash
+    if [ ! -d ~/.npm-global ]; then
              mkdir ~/.npm-global
              npm set prefix ~/.npm-global
-      else 
+      else
              npm set prefix ~/.npm-global
     fi
     npm i -g npm vscode-langservers-extracted typescript typescript-language-server bash-language-server
   '';
-in
-{
+in {
   programs = {
     neovim = {
       enable = true;
@@ -21,7 +23,7 @@ in
       extraPackages = [
       ];
       #-- Plugins --#
-      plugins = with pkgs.vimPlugins;[ ];
+      plugins = with pkgs.vimPlugins; [];
       #-- --#
     };
   };

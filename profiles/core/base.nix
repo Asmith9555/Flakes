@@ -1,21 +1,26 @@
-{ pkgs, lib, ... }:
-
 {
+  pkgs,
+  lib,
+  inputs,
+  ...
+}: {
   environment.defaultPackages = with pkgs; [
     vim
     less
     uutils-coreutils
+    keepassxc
   ];
 
   hardware.enableAllFirmware = true;
 
   nix = {
-    package = pkgs.nixUnstable;
+    package = pkgs.nixVersions.unstable;
+    registry.nixpkgs.flake = inputs.nixpkgs;
     gc.automatic = true;
     optimise.automatic = true;
     settings = {
       sandbox = true;
-      trusted-users = [ "root" "@wheel" ];
+      trusted-users = ["root" "@wheel"];
       auto-optimise-store = true;
       keep-outputs = true;
       keep-derivations = true;
@@ -24,17 +29,26 @@
     };
   };
 
-  services.openssh = {
-    enable = true;
-    openFirewall = lib.mkDefault false;
+  services = {
+    dbus.enable = true;
+    gvfs.enable = true;
+    openssh = {
+      enable = true;
+      openFirewall = false;
+    };
+  };
+  
+  i18n.inputMethod = {
+    enabled = "fcitx5";
+    # fcitx5.addons = with pkgs; [ fcitx5-rime fcitx5-chinese-addons fcitx5-table-extra fcitx5-pinyin-moegirl fcitx5-pinyin-zhwiki ];
   };
 
   security = {
+    polkit.enable = true;
     rtkit.enable = true;
     sudo = {
-      enable = false;
+      enable = true;
       extraConfig = ''
-        ${user} ALL=(ALL) NOPASSWD:ALL
         Defaults timestamp_timeout=300
       '';
     };
@@ -45,4 +59,6 @@
       '';
     };
   };
+
+  system.stateVersion = "23.05";
 }

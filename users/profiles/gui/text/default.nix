@@ -1,5 +1,5 @@
 {
   imports = [
-    ./zathura.nix  
+    ./zathura.nix
   ];
-} 
+}

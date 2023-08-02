@@ -1,4 +1,9 @@
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   imports = [
     (import ./env.nix)
     (import ./scripts.nix)
@@ -15,7 +20,8 @@
   # home.file.".config/hypr/rose-pine.conf".source = ./themes/rose-pine.conf;
   # home.file.".config/hypr/rose-pine-moon.conf".source = ./themes/rose-pine-moon.conf;
   home.file.".config/hypr/rose-pine-dawn.conf".source = ./themes/rose-pine-dawn.conf;
-  systemd.user.targets.hyprland-session.Unit.Wants = [ "xdg-desktop-autostart.target" ];
+  systemd.user.targets.hyprland-session.Unit.Wants = ["xdg-desktop-autostart.target"];
+
   wayland.windowManager.hyprland = {
     enable = true;
     systemdIntegration = true;
@@ -24,7 +30,7 @@
       $mainMod = SUPER
       # $scripts=$HOME/.config/hypr/scripts
 
-      #monitor=,preferred,auto,1 
+      #monitor=,preferred,auto,1
       monitor=DP-1-3, 1920x1080, 1920x0, 1
       monitor=eDP-1, 1920x1080, 0x0, 1
 
@@ -57,17 +63,17 @@
         col.active_border = $rose
         col.inactive_border = $subtle
 
-        layout = dwindle # master|dwindle 
+        layout = dwindle # master|dwindle
       }
 
       dwindle {
         no_gaps_when_only = false
-        force_split = 0 
+        force_split = 0
         special_scale_factor = 0.8
-        split_width_multiplier = 1.0 
+        split_width_multiplier = 1.0
         use_active_for_splits = true
-        pseudotile = yes 
-        preserve_split = yes 
+        pseudotile = yes
+        preserve_split = yes
       }
 
       master {
@@ -84,7 +90,7 @@
         inactive_opacity = 1.0
         fullscreen_opacity = 1.0
         rounding = 0
-        blur = yes 
+        blur = yes
         blur_size = 3
         blur_passes = 1
         blur_new_optimizations = true
@@ -94,7 +100,7 @@
         shadow_range = 4
         shadow_render_power = 3
         shadow_ignore_window = true
-      # col.shadow = 
+      # col.shadow =
       # col.shadow_inactive
       # shadow_offset
         dim_inactive = false
@@ -202,7 +208,7 @@
 
       #-------------------------------#
       # special workspace(scratchpad) #
-      #-------------------------------# 
+      #-------------------------------#
       bind = $mainMod, minus, movetoworkspace,special
       bind = $mainMod, equal, togglespecialworkspace
 
@@ -248,16 +254,16 @@
       # switch between current and last workspace #
       #-------------------------------------------#
       binds {
-           workspace_back_and_forth = 1 
+           workspace_back_and_forth = 1
            allow_workspace_cycles = 1
       }
       bind=$mainMod,slash,workspace,previous
 
       #------------------------#
       # quickly launch program #
-      #------------------------# 
+      #------------------------#
       bind=$mainMod,B,exec,nvidia-offload firefox
-      bind=$mainMod,M,exec,kitty --class="danmufloat" --hold sh -c "ncmpcpp" 
+      bind=$mainMod,M,exec,kitty --class="danmufloat" --hold sh -c "ncmpcpp"
       bind=$mainMod SHIFT,P,exec,kitty  --class="danmufloat" --hold sh -c "export TERM=xterm-256color && bili"
       bind=$mainMod SHIFT,X,exec,myswaylock
       bind=$mainMod,Q,exec,nvidia-offload icalingua-plus-plus --enable-features=UseOzonePlatform --ozone-platform=wayland
@@ -274,8 +280,8 @@
       bind=,XF86AudioMicMute,exec, pamixer --default-source -t
       bind=,XF86MonBrightnessUp,exec, light -A 5
       bind=,XF86MonBrightnessDown, exec, light -U 5
-      bind=,XF86AudioPlay,exec, mpc -q toggle 
-      bind=,XF86AudioNext,exec, mpc -q next 
+      bind=,XF86AudioPlay,exec, mpc -q toggle
+      bind=,XF86AudioNext,exec, mpc -q next
       bind=,XF86AudioPrev,exec, mpc -q prev
 
       #---------------#
@@ -296,7 +302,7 @@
       binde=,h,resizeactive,-15 0
       binde=,k,resizeactive,0 -15
       binde=,j,resizeactive,0 15
-      bind=,escape,submap,reset 
+      bind=,escape,submap,reset
       submap=reset
 
       bind=CTRL SHIFT, left, resizeactive,-15 0
@@ -314,7 +320,7 @@
       #-----------------------#
       # wall(by swww service) #
       #-----------------------#
-      # exec-once = default_wall 
+      # exec-once = default_wall
 
       #------------#
       # auto start #

@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   programs.firefox = {
     enable = true;
     package = pkgs.wrapFirefox pkgs.firefox-unwrapped {
@@ -160,7 +162,7 @@
                 border-color: var(--base_color2) !important;
               }
 
-              /* remove top tabbar */ 
+              /* remove top tabbar */
         #titlebar { visibility: collapse !important; }
 
 
@@ -203,8 +205,8 @@
                         --in-content-page-background: #1E1E2E !important;
                     }
                 }
-        
-        
+
+
                 @-moz-document url-prefix(about:home), url-prefix(about:newtab){
 
             /* show nightly logo instead of default firefox logo in newtabpage */
@@ -256,5 +258,4 @@
       '';
     };
   };
-
 }

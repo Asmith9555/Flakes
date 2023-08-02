@@ -1,11 +1,16 @@
-{ config, pkgs, lib, inputs, user, ... }:
-
 {
+  config,
+  pkgs,
+  lib,
+  inputs,
+  user,
+  ...
+}: {
   home.sessionVariables = {
     GTK_THEME = "rose-pine-dawn";
   };
   home.pointerCursor = {
-    package = pkgs.catppuccin-cursors.rosewater;
+    package = pkgs.catppuccin-cursors;
     name = "Catppuccin-Latte-Rosewater-Cursors";
     size = 16;
   };

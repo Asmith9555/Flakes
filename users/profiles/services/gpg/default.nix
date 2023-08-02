@@ -1,5 +1,8 @@
-{ config, pkgs, ... }:
 {
+  config,
+  pkgs,
+  ...
+}: {
   programs.gpg.package = pkgs.gnupg;
   services = {
     gpg-agent = {

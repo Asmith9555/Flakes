@@ -4,4 +4,5 @@ let
   user = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDYtIdjauoovyEsz6DZMkfO5fK6EhOYHJKr4r7DXN87S wuger@thinkpad";
   allKeys = [system user];
 in {
+  "secret.age".publicKeys = allKeys;
 }

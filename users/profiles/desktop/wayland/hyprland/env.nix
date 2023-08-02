@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   home = {
     sessionVariables = {
       QT_QPA_PLATFORMTHEME = "gtk3";
