@@ -2,7 +2,7 @@
 
 {
   home.packages = [
-    discord
+    pkgs.discord
   ];
   # programs.discocss = {
   #   enable = true;

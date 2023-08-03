@@ -8,7 +8,6 @@
   ./lazygit
   ./music
   ./neofetch
-  ./nvim
   ./search
   ./yt-dlp
 ]

@@ -4,7 +4,7 @@
   ./web
   ./editors
   ./obs-studio
-  ./discocss
+  ./discord
   ./zathura
   ./kitty
   ./gtk

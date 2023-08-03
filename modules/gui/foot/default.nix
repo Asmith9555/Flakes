@@ -16,7 +16,7 @@
         hide-when-typing = "no";
       };
 
-      colors =  with colors; {
+      colors = {
         background="191724";
         foreground="e0def4"; 
         regular0="26233a";  # black (Overlay)
