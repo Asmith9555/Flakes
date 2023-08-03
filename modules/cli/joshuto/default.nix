@@ -8,8 +8,8 @@
 
       use_trash = false;
       watch_files = true;
-      xdg_open = true;
-      xdg_open_fork = true;
+      xdg_open = false;
+      xdg_open_fork = false;
       display = {
         # default, hsplit
         mode = "default";
@@ -42,8 +42,8 @@
       };
       tab.home_page = "home";
     };
-    keymap = fromTOML (readFile ./config/keymap.toml);
-    mimetype = fromTOML (readFile ./config/mimetype.toml);
+    keymap = builtins.fromTOML (builtins.readFile ./config/keymap.toml);
+    mimetype = builtins.fromTOML (builtins.readFile ./config/mimetype.toml);
   };
   home = {
     packages = with pkgs; [

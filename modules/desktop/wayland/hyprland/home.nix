@@ -31,8 +31,8 @@
       monitor=eDP-1, 1920x1080, 0x0, 1
 
       # Source a file (multi-file configs)
-      source = ~/.config/hypr/rose-pine-dawn.conf
-      # source = ~/.config/hypr/rose-pine.conf
+      # source = ~/.config/hypr/rose-pine-dawn.conf
+      source = ~/.config/hypr/rose-pine.conf
       # source = ~/.config/hypr/rose-pine-moon.conf
       input {
         kb_layout = us

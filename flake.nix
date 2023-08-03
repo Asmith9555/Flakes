@@ -25,7 +25,7 @@
     let
       user = "wuger";
       selfPkgs = import ./pkgs;
-      theme = "rose-pine-dawn";
+      theme = "rose-pine";
     in
     flake-utils.lib.eachSystem [ "x86_64-linux" ]
       (
