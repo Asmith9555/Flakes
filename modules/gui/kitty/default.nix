@@ -7,7 +7,7 @@
   programs = {
     kitty = {
       enable = true;
-      font.name = "jetbrains mono nerd font";
+      font.name = "Berkeley Mono";
       font.size = 15;
       settings = {
         italic_font = "auto";

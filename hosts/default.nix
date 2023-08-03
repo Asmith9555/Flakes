@@ -41,8 +41,8 @@ in
               ++ [
               self.overlays.default
               inputs.picom.overlays.default
+              inputs.discord-overlay.overlays.default
               inputs.joshuto.overlays.default
-              inputs.go-musicfox.overlays.default
             ];
         };
       }

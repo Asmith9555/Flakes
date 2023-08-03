@@ -1,4 +1,6 @@
 [
+  ./comms
+  ./foot
   ./web
   ./editors
   ./obs-studio

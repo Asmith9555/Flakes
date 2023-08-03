@@ -16,7 +16,7 @@
   };
   # home.file.".config/hypr/rose-pine.conf".source = ./themes/rose-pine.conf;
   # home.file.".config/hypr/rose-pine-moon.conf".source = ./themes/rose-pine-moon.conf;
-  home.file.".config/hypr/rose-pine-dawn.conf".source = ./themes/rose-pine-dawn.conf;
+  home.file.".config/hypr/rose-pine.conf".source = ./themes/rose-pine.conf;
   systemd.user.targets.hyprland-session.Unit.Wants = [ "xdg-desktop-autostart.target" ];
   wayland.windowManager.hyprland = {
     enable = true;

@@ -2,7 +2,7 @@
 
 {
   home.sessionVariables = {
-    GTK_THEME = "rose-pine-dawn";
+    GTK_THEME = "rose-pine";
   };
   home.pointerCursor = {
     package = pkgs.catppuccin-cursors;
@@ -13,19 +13,19 @@
   gtk = {
     enable = true;
     theme = {
-      name = "rose-pine-dawn";
+      name = "rose-pine";
       package = pkgs.rose-pine-gtk-theme;
     };
     cursorTheme = {
       name = "Catppuccin-Frappe-Dark";
     };
     iconTheme = {
-      name = "rose-pine-dawn";
+      name = "rose-pine";
       package = pkgs.rose-pine-icon-theme;
     };
 
     font = {
-      name = "JetBrainsMono Nerd Font";
+      name = "Berkeley Mono";
       size = 12;
     };
     gtk3.extraConfig = {

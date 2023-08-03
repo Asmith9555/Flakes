@@ -100,7 +100,7 @@
 
   home.file = {
     ".config/fish/functions/fish_ssh_agent.fish".source = ./functions/fish_ssh_agent.fish;
-    ".config/fish/conf.d/rose_pine_dawn_theme.fish".text = import ./conf.d/rose_pine_dawn_theme.nix;
+    ".config/fish/conf.d/rose_pine_theme.fish".text = import ./conf.d/rose_pine_dawn_theme.nix;
   };
 
   programs = {
