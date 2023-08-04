@@ -9,7 +9,6 @@
       pandoc
       exiftool
     ];
-  };
 
   programs.joshuto = {
     enable = true;
