@@ -14,354 +14,218 @@
       '';
     };
   };
-  # home.file.".config/hypr/rose-pine.conf".source = ./themes/rose-pine.conf;
-  # home.file.".config/hypr/rose-pine-moon.conf".source = ./themes/rose-pine-moon.conf;
-  home.file.".config/hypr/rose-pine.conf".source = ./themes/rose-pine.conf;
   systemd.user.targets.hyprland-session.Unit.Wants = [ "xdg-desktop-autostart.target" ];
   wayland.windowManager.hyprland = {
     enable = true;
     systemdIntegration = true;
     nvidiaPatches = true;
-    extraConfig = ''
-      $mainMod = SUPER
-      # $scripts=$HOME/.config/hypr/scripts
+    settings = {
+      "$MOD" = "SUPER";
+      exec-one= [
+        "mako &"
+        "nm-applet --indicator &"
+      ];
+      input = {
+        kb_layout = "us";
+        kb_options = "caps:escape";
 
-      #monitor=,preferred,auto,1 
-      monitor=DP-1-3, 1920x1080, 1920x0, 1
-      monitor=eDP-1, 1920x1080, 0x0, 1
-
-      # Source a file (multi-file configs)
-      # source = ~/.config/hypr/rose-pine-dawn.conf
-      source = ~/.config/hypr/rose-pine.conf
-      # source = ~/.config/hypr/rose-pine-moon.conf
-      input {
-        kb_layout = us
-        kb_variant =
-        kb_model =
-        kb_options = caps:escape
-        kb_rules =
-
-        follow_mouse = 2 # 0|1|2|3
-        float_switch_override_focus = 2
-        numlock_by_default = true
-
+        follow_mouse = 1; # 0|1|2|3
         touchpad {
-        natural_scroll = yes
-        }
+          natural_scroll = yes;
+        };
+        sensitivity = 0; # -1.0 - 1.0, 0 means no modification.
+        force_no_accel = 1;
+      };
+      general = {
+        gaps_in = 3;
+        gaps_out = 5;
+        border_size = 1;
+        "col.active_border" = "eb6f92";
+        "col.inactive_border" = "#6e6a86";
+        layout = dwindle; # master|dwindle 
+      };
+      animation = {
+        bezier = [
+          "wind, 0.05, 0.9, 0.1, 1.05"
+          "winIn, 0.1, 1.1, 0.1, 1.1"
+          "winOut, 0.3, -0.3, 0, 1"
+          "liner, 1, 1, 1, 1"
+        ];
+        animation = [
+          "windows, 1, 6, wind, slide"
+          "windowsIn, 1, 6, winIn, slide"
+          "windowsOut, 1, 5, winOut, slide"
+          "windowsMove, 1, 5, wind, slide"
+          "border, 1, 1, liner"
+          "borderangle, 1, 30, liner, loop"
+          "fade, 1, 10, default"
+          "workspaces, 1, 5, wind"
+        ];
+      };
+      dwindle = {
+        no_gaps_when_only = false;
+        pseudotile = true;
+        preserve_split = true;
+      };
+      master = {
+        new_is_master = true;
+      };
+      decoration = {
+        rounding = 2;
+        multisample_edges = true;
+        blur = true;
+        blur_size = 4;
+        blur_passes = 2;
+        blur_new_optimizations = true;
+        blur_ignore_opacity = true;
+        drop_shadow = false;
+        shadow_ignore_window = true;
+        shadow_offset = "0 5";
+        shadow_range = 50;
+        shadow_render_power = 3;
+        "col.shadow" = "rgba(00000099)";
+      };
+      animation = {
+        bezier = [
+          "wind, 0.05, 0.9, 0.1, 1.05"
+          "winIn, 0.1, 1.1, 0.1, 1.1"
+          "winOut, 0.3, -0.3, 0, 1"
+          "liner, 1, 1, 1, 1"
+        ];
+        animation = [
+          "windows, 1, 6, wind, slide"
+          "windowsIn, 1, 6, winIn, slide"
+          "windowsOut, 1, 5, winOut, slide"
+          "windowsMove, 1, 5, wind, slide"
+          "border, 1, 1, liner"
+          "borderangle, 1, 30, liner, loop"
+          "fade, 1, 10, default"
+          "workspaces, 1, 5, wind"
+        ];
+      }; 
+      "$VIDEODIR" = "$HOME/Videos";
+      "$NOTIFY" = "notify-send -h string:x-canonical-private-synchronouse:hypr-cfg -u low";
+      "$SCREENSHOT" = "~/.config/hypr/scripts/screensht";
+      "$COLORPICKER" = "~/.config/hypr/scripts/colorpicker";
+      bind = [
+        "$MOD, Escape, exec, wlogout -p layer-shell"
+        "$MOD, V, exec, wf-recorder -f $VIDEODIR/$(date +%Y-%m-%d_%H-%M-%S).mp4"
+        "$MOD, V, exec, $NOTIFY 'Recording started'"
+        "$MODSHIFT, V, exec, killall -s SIGINT wf-recorder"
+        "$MODSHIFT, V, exec, $NOTIFY 'Recording stopped'"
 
-        sensitivity = 0 # -1.0 - 1.0, 0 means no modification.
-      }
+        ", Print, exec, $SCREENSHOT full"
+        "$MODSHIFT, S, exec, $SCREENSHOT area"
+        "$MODSHIFT, X, exec, $COLORPICKER"
+        "$MOD, B, exec, firefox"
+        "$MOD, M, exec, kitty --class='termfloat' --hold sh -c 'ncmpcpp'"
+        "$MOD, D, exec, pkill rofi || ~/.config/rofi/launcher.sh"
+        "$MODSHIFT, D, exec, bash ~/.config/rofi/powermenu.sh"
 
-      general {
-        gaps_in = 3
-        gaps_out = 5
-        border_size = 3
-        col.active_border = $rose
-        col.inactive_border = $subtle
+        "$MOD, Return, exec, kitty fish"
+        "$MODSHIFT, Return, exec, kitty --class='termfloat' fish"
+        "$MODSHIFT, L, exec, loginctl lock-session"
 
-        layout = dwindle # master|dwindle 
-      }
+        "$MOD, Q, killactive"
+        "$MODSHIFT, Q, exit"
+        "$MOD, F, fullscreen"
+        "$MOD, Space, togglefloating"
+        "$MOD, P, pseudo"
+        "$MOD, S, togglesplit"
 
-      dwindle {
-        no_gaps_when_only = false
-        force_split = 0 
-        special_scale_factor = 0.8
-        split_width_multiplier = 1.0 
-        use_active_for_splits = true
-        pseudotile = yes 
-        preserve_split = yes 
-      }
+        "$MODSHIFT, Space, workspaceopt, allfloat"
+        "$MODSHIFT, Space, exec, $NOTIFY 'Toggled All floating'"
+        "$MODSHIFT, P, workspaceopt, allpseudotile"
+        "$MODSHIFT, P, exec, $NOTIFY ' Toggled All pseudotile'"
 
-      master {
-        new_is_master = true
-        special_scale_factor = 0.8
-        new_is_master = true
-        no_gaps_when_only = false
-      }
+        "$MOD, Tab, cyclenext"
+        "$MOD, Tab, bringactivetotop"
 
-      # cursor_inactive_timeout = 0
-      decoration {
-        multisample_edges = true
-        active_opacity = 1.0
-        inactive_opacity = 1.0
-        fullscreen_opacity = 1.0
-        rounding = 0
-        blur = yes 
-        blur_size = 3
-        blur_passes = 1
-        blur_new_optimizations = true
-        blur_xray = true
+        "$MOD, A, togglespecialworkspace"
+        "$MOD, A, exec, $NOTIFY 'Toggled special workspace'"
+        "$MODSHIFT, A, movetoworkspace, special"
+        "$MOD, C, exec, hyprctl dispatch centerwindow"
 
-        drop_shadow = false
-        shadow_range = 4
-        shadow_render_power = 3
-        shadow_ignore_window = true
-      # col.shadow = 
-      # col.shadow_inactive
-      # shadow_offset
-        dim_inactive = false
-      # dim_strength = #0.0 ~ 1.0
-        blur_ignore_opacity = false
-        col.shadow = rgba(1a1a1aee)
-      }
+        "${builtins.concatStringsSep "\n" (builtins.genList (
+          x: let
+            ws = let
+              c = (x + 1) / 10;
+            in
+              builtins.toString (x + 1 - (c * 10));
+          in ''
+            bind = $MOD, ${ws}, workspace, ${toString (x + 1)}
+            bind = $MODSHIFT, ${ws}, movetoworkspace, ${toString (x + 1)}
+          ''
+        )
+        10)}"
 
-      # animations {
-      #   enabled = yes
-      #
-      #   bezier = easeOutElastic, 0.05, 0.9, 0.1, 1.05
-      #   # bezier=overshot,0.05,0.9,0.1,1.1
-      #
-      #   animation = windows, 1, 5, easeOutElastic
-      #   animation = windowsOut, 1, 5, default, popin 80%
-      #   animation = border, 1, 8, default
-      #   animation = fade, 1, 5, default
-      #   animation = workspaces, 1, 6, default
-      # }
-      animations {
-        enabled=1
-        bezier = overshot, 0.13, 0.99, 0.29, 1.1
-        animation = windows, 1, 4, overshot, slide
-        animation = windowsOut, 1, 5, default, popin 80%
-        animation = border, 1, 5, default
-        animation = fade, 1, 8, default
-        animation = workspaces, 1, 6, overshot, slidevert
-      }
+        "$MOD, mouse_down, workspace, e-1"
+        "$MOD, mouse_up, workspace, e+1"
+      ];
+      bindm = [
+        "$MOD, mouse:272, movewindow"
+        "$MOD, mouse:273, resizewindow"
+      ];
+      windowrulev2 = [
+        "opacity 0.80 0.80,class:^(Steam)$"
+        "opacity 0.80 0.80,class:^(steam)$"
+        "opacity 0.80 0.80,class:^(steamwebhelper)$"
+        "opacity 0.80 0.80,class:^(Spotify)$"
+        "opacity 0.80 0.80,class:^(file-roller)$"
+        "opacity 0.80 0.80,class:^(qt5ct)$"
+        "opacity 0.80 0.80,class:^(discord)$"
+        "opacity 0.80 0.70,class:^(pavucontrol)$"
+        "opacity 0.80 0.70,class:^(org.kde.polkit-kde-authentication-agent-1)$"
+        "opacity 0.80 0.80,class:^(code-url-handler)$"
+        "float,class:^(nemo)$"
+        "move 25%-,class:^(nemo)$"
+        "size 960 540,class:^(nemo)$"
 
-      gestures {
-        workspace_swipe = true
-        workspace_swipe_fingers = 4
-        workspace_swipe_distance = 250
-        workspace_swipe_invert = true
-        workspace_swipe_min_speed_to_force = 15
-        workspace_swipe_cancel_ratio = 0.5
-        workspace_swipe_create_new = false
-      }
 
-      misc {
-        disable_autoreload = true
-        disable_hyprland_logo = true
-        always_follow_on_dnd = true
-        layers_hog_keyboard_focus = true
-        animate_manual_resizes = false
-        enable_swallow = true
-        swallow_regex =
-        focus_on_activate = true
-      }
+        "float,class:^(org.kde.polkit-kde-authentication-agent-1)$"
+        "float,class:^(pavucontrol)$"
+        "float,title:^(Media viewer)$"
+        "float,title:^(Volume Control)$"
+        "float,title:^(Picture-in-Picture)$"
+        "float,class:^(Viewnior)$"
+        "float,title:^(DevTools)$"
+        "float,class:^(file_progress)$"
+        "float,class:^(confirm)$"
+        "float,class:^(dialog)$"
+        "float,class:^(download)$"
+        "float,class:^(notification)$"
+        "float,class:^(error)$"
+        "float,class:^(confirmreset)$"
+        "float,title:^(Open File)$"
+        "float,title:^(branchdialog)$"
+        "float,title:^(Confirm to replace files)$"
+        "float,title:^(File Operation Progress)$"
 
-      device:epic mouse V1 {
-        sensitivity = -0.5
-      }
+        "noshadow, floating:0"
 
-      bind = $mainMod, Return, exec, kitty fish
-      bind = $mainMod SHIFT, Return, exec, kitty --class="termfloat" fish
-      bind = $mainMod SHIFT, W, killactive,
-      bind = $mainMod SHIFT, Space, togglefloating,
-      bind = $mainMod, F,fullscreen
-      bind = $mainMod, S,pin
-      bind = $mainMod, P, pseudo, # dwindle
-      bind = $mainMod, Y, togglesplit, # dwindle
+        "tile, title:^(Spotify)$"
+        "workspace 9 silent, title:^(Spotify)$"
+        "workspace 3, title:^(.*(Disc|WebC)ord.*)$"
 
-      #-----------------------#
-      # Toggle grouped layout #
-      #-----------------------#
-      bind = $mainMod, I, togglegroup,
-      bind = $mainMod, Tab, changegroupactive, f
+        "idleinhibit focus, class:^(mpv|.+exe)$"
+        "idleinhibit focus, class:^(firefox)$, title:^(.*YouTube.*)$"
+        "idleinhibit fullscreen, class:^(firefox)$"
 
-      #------------#
-      # change gap #
-      #------------#
-      bind = $mainMod SHIFT, G,exec,hyprctl --batch "keyword general:gaps_out 5;keyword general:gaps_in 3"
-      bind = $mainMod , G,exec,hyprctl --batch "keyword general:gaps_out 0;keyword general:gaps_in 0"
+        "float,class:^(termfloat)$"
+        "move 25%-,class:^(termfloat)$"
+        "size 960 540,class:^(termfloat)$"
+        "rounding 5,class:^(termfloat)$"
+      
+      
+        "rounding 0, xwayland:1, floating:1"
+        "center, class:^(.*jetbrains.*)$, title:^(Confirm Exit|Open Project|win424|win201|splash)$"
+        "size 640 400, class:^(.*jetbrains.*)$, title:^(splash)$"
 
-      #--------------------------------------#
-      # Move focus with mainMod + arrow keys #
-      #--------------------------------------#
-      bind = $mainMod, H, movefocus, l
-      bind = $mainMod, L, movefocus, r
-      bind = $mainMod, K, movefocus, u
-      bind = $mainMod, J, movefocus, d
-
-      #----------------------------------------#
-      # Switch workspaces with mainMod + [0-9] #
-      #----------------------------------------#
-      bind = $mainMod, 1, workspace, 1
-      bind = $mainMod, 2, workspace, 2
-      bind = $mainMod, 3, workspace, 3
-      bind = $mainMod, 4, workspace, 4
-      bind = $mainMod, 5, workspace, 5
-      bind = $mainMod, 6, workspace, 6
-      bind = $mainMod, 7, workspace, 7
-      bind = $mainMod, 8, workspace, 8
-      bind = $mainMod, 9, workspace, 9
-      bind = $mainMod, 0, workspace, 10
-      bind = $mainMod, right, workspace, +1
-      bind = $mainMod, left, workspace, -1
-      bind = $mainMod, period, workspace, e+1
-      bind = $mainMod, comma, workspace,e-1
-      #bind = $mainMod, Q, workspace,QQ
-      #bind = $mainMod, T, workspace,TG
-      #bind = $mainMod, M, workspace,Music
-
-      #-------------------------------#
-      # special workspace(scratchpad) #
-      #-------------------------------# 
-      bind = $mainMod, minus, movetoworkspace,special
-      bind = $mainMod, equal, togglespecialworkspace
-
-      #----------------------------------#
-      # move window in current workspace #
-      #----------------------------------#
-      bind = $mainMod SHIFT,H ,movewindow, l
-      bind = $mainMod SHIFT,L ,movewindow, r
-      bind = $mainMod SHIFT,K ,movewindow, u
-      bind = $mainMod SHIFT,J ,movewindow, d
-
-      #---------------------------------------------------------------#
-      # Move active window to a workspace with mainMod + ctrl + [0-9] #
-      #---------------------------------------------------------------#
-      bind = $mainMod CTRL, 1, movetoworkspace, 1
-      bind = $mainMod CTRL, 2, movetoworkspace, 2
-      bind = $mainMod CTRL, 3, movetoworkspace, 3
-      bind = $mainM++od CTRL, 4, movetoworkspace, 4
-      bind = $mainMod CTRL, 5, movetoworkspace, 5
-      bind = $mainMod CTRL, 6, movetoworkspace, 6
-      bind = $mainMod CTRL, 7, movetoworkspace, 7
-      bind = $mainMod CTRL, 8, movetoworkspace, 8
-      bind = $mainMod CTRL, 9, movetoworkspace, 9
-      bind = $mainMod CTRL, 0, movetoworkspace, 10
-      bind = $mainMod CTRL, left, movetoworkspace, -1
-      bind = $mainMod CTRL, right, movetoworkspace, +1
-      # same as above, but doesnt switch to the workspace
-      bind = $mainMod SHIFT, 1, movetoworkspacesilent, 1
-      bind = $mainMod SHIFT, 2, movetoworkspacesilent, 2
-      bind = $mainMod SHIFT, 3, movetoworkspacesilent, 3
-      bind = $mainMod SHIFT, 4, movetoworkspacesilent, 4
-      bind = $mainMod SHIFT, 5, movetoworkspacesilent, 5
-      bind = $mainMod SHIFT, 6, movetoworkspacesilent, 6
-      bind = $mainMod SHIFT, 7, movetoworkspacesilent, 7
-      bind = $mainMod SHIFT, 8, movetoworkspacesilent, 8
-      bind = $mainMod SHIFT, 9, movetoworkspacesilent, 9
-      bind = $mainMod SHIFT, 0, movetoworkspacesilent, 10
-      # Scroll through existing workspaces with mainMod + scroll
-      bind = $mainMod, mouse_down, workspace, e+1
-      bind = $mainMod, mouse_up, workspace, e-1
-
-      #-------------------------------------------#
-      # switch between current and last workspace #
-      #-------------------------------------------#
-      binds {
-           workspace_back_and_forth = 1 
-           allow_workspace_cycles = 1
-      }
-      bind=$mainMod,slash,workspace,previous
-
-      #------------------------#
-      # quickly launch program #
-      #------------------------# 
-      bind=$mainMod,B,exec,nvidia-offload firefox
-      bind=$mainMod,M,exec,kitty --class="danmufloat" --hold sh -c "ncmpcpp" 
-      bind=$mainMod SHIFT,P,exec,kitty  --class="danmufloat" --hold sh -c "export TERM=xterm-256color && bili"
-      bind=$mainMod SHIFT,X,exec,myswaylock
-      bind=$mainMod,Q,exec,nvidia-offload icalingua-plus-plus --enable-features=UseOzonePlatform --ozone-platform=wayland
-      bind=$mainMod,bracketright,exec, grimblast --notify --cursor  copy area
-      bind=$mainMod,D,exec, pkill rofi || ~/.config/rofi/launcher.sh
-      bind=$mainMod SHIFT,D,exec, bash ~/.config/rofi/powermenu.sh
-
-      #-----------------------------------------#
-      # control volume,brightness,media players-#
-      #-----------------------------------------#
-      bind=,XF86AudioRaiseVolume,exec, pamixer -i 5
-      bind=,XF86AudioLowerVolume,exec, pamixer -d 5
-      bind=,XF86AudioMute,exec, pamixer -t
-      bind=,XF86AudioMicMute,exec, pamixer --default-source -t
-      bind=,XF86MonBrightnessUp,exec, light -A 5
-      bind=,XF86MonBrightnessDown, exec, light -U 5
-      bind=,XF86AudioPlay,exec, mpc -q toggle 
-      bind=,XF86AudioNext,exec, mpc -q next 
-      bind=,XF86AudioPrev,exec, mpc -q prev
-
-      #---------------#
-      # waybar toggle #
-      # --------------#
-      bind=$mainMod,O,exec,killall -SIGUSR1 .waybar-wrapped
-
-      #---------------#
-      # resize window #
-      #---------------#
-      bind=$mainMod,R,submap,resize
-      submap=resize
-      binde=,right,resizeactive,15 0
-      binde=,left,resizeactive,-15 0
-      binde=,up,resizeactive,0 -15
-      binde=,down,resizeactive,0 15
-      binde=,l,resizeactive,15 0
-      binde=,h,resizeactive,-15 0
-      binde=,k,resizeactive,0 -15
-      binde=,j,resizeactive,0 15
-      bind=,escape,submap,reset 
-      submap=reset
-
-      bind=CTRL SHIFT, left, resizeactive,-15 0
-      bind=CTRL SHIFT, right, resizeactive,15 0
-      bind=CTRL SHIFT, up, resizeactive,0 -15
-      bind=CTRL SHIFT, down, resizeactive,0 15
-      bind=CTRL SHIFT, l, resizeactive, 15 0
-      bind=CTRL SHIFT, h, resizeactive,-15 0
-      bind=CTRL SHIFT, k, resizeactive, 0 -15
-      bind=CTRL SHIFT, j, resizeactive, 0 15
-
-      bindm = $mainMod, mouse:272, movewindow
-      bindm = $mainMod, mouse:273, resizewindow
-
-      #-----------------------#
-      # wall(by swww service) #
-      #-----------------------#
-      # exec-once = default_wall 
-
-      #------------#
-      # auto start #
-      #------------#
-      exec-once = waybar &
-      exec-once = mako &
-      exec-once = nm-applet --indicator &
-
-      #---------------#
-      # windows rules #
-      #---------------#
-      #`hyprctl clients` get class、title...
-      windowrule=float,title:^(Picture-in-Picture)$
-      windowrule=size 960 540,title:^(Picture-in-Picture)$
-      windowrule=move 25%-,title:^(Picture-in-Picture)$
-      windowrule=float,imv
-      windowrule=move 25%-,imv
-      windowrule=size 960 540,imv
-      windowrule=float,mpv
-      windowrule=move 25%-,mpv
-      windowrule=size 960 540,mpv
-      windowrule=float,danmufloat
-      windowrule=move 25%-,danmufloat
-      windowrule=pin,danmufloat
-      windowrule=rounding 5,danmufloat
-      windowrule=size 960 540,danmufloat
-      windowrule=float,termfloat
-      windowrule=move 25%-,termfloat
-      windowrule=size 960 540,termfloat
-      windowrule=rounding 5,termfloat
-      windowrule=float,nemo
-      windowrule=move 25%-,nemo
-      windowrule=size 960 540,nemo
-      windowrule=opacity 0.95,title:Telegram
-      windowrule=opacity 0.95,title:QQ
-      windowrule=opacity 0.95,title:NetEase Cloud Music Gtk4
-      windowrule=animation slide right,kitty
-      windowrule=workspace name:QQ, title:Icalingua++
-      windowrule=workspace name:TG, title:Telegram
-      windowrule=workspace name:Music, title:NetEase Cloud Music Gtk4
-      windowrule=workspace name:Music, musicfox
-      windowrule=float,ncmpcpp
-      windowrule=move 25%-,ncmpcpp
-      windowrule=size 960 540,ncmpcpp
-      windowrule=noblur,^(firefox)$
-    '';
+        "opacity 0.0 override 0.0 override,class:^(xwaylandvideobridge)$"
+        "noanim,class:^(xwaylandvideobridge)$"
+        "nofocus,class:^(xwaylandvideobridge)$"
+        "noinitialfocus,class:^(xwaylandvideobridge)$"
+      ];
+    };
   };
 }

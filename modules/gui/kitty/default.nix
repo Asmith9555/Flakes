@@ -9,6 +9,7 @@
       enable = true;
       font.name = "Berkeley Mono";
       font.size = 14;
+      shellIntegration.enableFishIntegration = true;
       settings = {
         italic_font = "auto";
         window_padding_width = 4;
