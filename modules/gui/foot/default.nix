@@ -1,21 +1,20 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 {
   programs.foot = {
     enable = true;
+    server.enable = false;
     settings = {
-
       main = {
-        font = "Iosevka Nerd Font:size=10";
+        font = "Berkeley Mono:size=12";
         dpi-aware = "yes";
         line-height = 16;
         pad = "16x16";
-        vertical-letter-offset = "3px";
+        vertical-letter-offset = "4px";
+        shell = "fish";
       };
-
       mouse = {
-        hide-when-typing = "no";
+        hide-when-typing = "yes";
       };
-
       colors = {
         background="191724";
         foreground="e0def4"; 

@@ -83,10 +83,11 @@
         multisample_edges = true;
         blur = {
           enabled = true;
-          size = 4;
-          passes = 2;
+          size = 3;
+          passes = 1;
         };
-        drop_shadow = true;
+        blur_xray = true;
+        drop_shadow = false;
         shadow_range = 50;
         shadow_render_power = 3;
         "col.shadow" = "rgba(00000099)";

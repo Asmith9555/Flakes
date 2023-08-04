@@ -1,4 +1,5 @@
 [
+  ./eww
   ./imgview
   ./launcher
   ./notice

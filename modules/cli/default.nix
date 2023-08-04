@@ -1,4 +1,7 @@
 [
+  ./archive
+  ./sys-monitor
+  ./download
   ./fish
   ./style
   ./git
