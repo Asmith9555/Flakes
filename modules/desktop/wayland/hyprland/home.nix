@@ -18,10 +18,13 @@
   wayland.windowManager.hyprland = {
     enable = true;
     systemdIntegration = true;
-    nvidiaPatches = true;
+    enableNvidiaPatches = true;
     settings = {
       "$MOD" = "SUPER";
-      exec-one= [
+      "$NOTIFY" = "notify-send -h string:x-canonical-private-synchronouse:hypr-cfg -u low";
+      "$SCREENSHOT" = "~/.config/hypr/scripts/screensht";
+      "$COLORPICKER" = "~/.config/hypr/scripts/colorpicker";
+      exec-once= [
         "mako &"
         "nm-applet --indicator &"
       ];
@@ -30,19 +33,19 @@
         kb_options = "caps:escape";
 
         follow_mouse = 1; # 0|1|2|3
-        touchpad {
-          natural_scroll = yes;
+        touchpad = {
+          natural_scroll = true;
         };
         sensitivity = 0; # -1.0 - 1.0, 0 means no modification.
         force_no_accel = 1;
       };
       general = {
-        gaps_in = 3;
-        gaps_out = 5;
-        border_size = 1;
-        "col.active_border" = "eb6f92";
-        "col.inactive_border" = "#6e6a86";
-        layout = dwindle; # master|dwindle 
+        gaps_in = 5;
+        gaps_out = 7;
+        border_size = 2;
+        "col.active_border" = "0xffc4a7e7";
+        "col.inactive_border" = "0xff6e6a86";
+        layout = "dwindle"; # master|dwindle 
       };
       animation = {
         bezier = [
@@ -85,31 +88,9 @@
         shadow_render_power = 3;
         "col.shadow" = "rgba(00000099)";
       };
-      animation = {
-        bezier = [
-          "wind, 0.05, 0.9, 0.1, 1.05"
-          "winIn, 0.1, 1.1, 0.1, 1.1"
-          "winOut, 0.3, -0.3, 0, 1"
-          "liner, 1, 1, 1, 1"
-        ];
-        animation = [
-          "windows, 1, 6, wind, slide"
-          "windowsIn, 1, 6, winIn, slide"
-          "windowsOut, 1, 5, winOut, slide"
-          "windowsMove, 1, 5, wind, slide"
-          "border, 1, 1, liner"
-          "borderangle, 1, 30, liner, loop"
-          "fade, 1, 10, default"
-          "workspaces, 1, 5, wind"
-        ];
-      }; 
-      "$VIDEODIR" = "$HOME/Videos";
-      "$NOTIFY" = "notify-send -h string:x-canonical-private-synchronouse:hypr-cfg -u low";
-      "$SCREENSHOT" = "~/.config/hypr/scripts/screensht";
-      "$COLORPICKER" = "~/.config/hypr/scripts/colorpicker";
       bind = [
         "$MOD, Escape, exec, wlogout -p layer-shell"
-        "$MOD, V, exec, wf-recorder -f $VIDEODIR/$(date +%Y-%m-%d_%H-%M-%S).mp4"
+        "$MOD, V, exec, wf-recorder -f ~/Videos/$(date +%Y-%m-%d_%H-%M-%S).mp4"
         "$MOD, V, exec, $NOTIFY 'Recording started'"
         "$MODSHIFT, V, exec, killall -s SIGINT wf-recorder"
         "$MODSHIFT, V, exec, $NOTIFY 'Recording stopped'"

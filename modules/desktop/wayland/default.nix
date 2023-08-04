@@ -4,6 +4,5 @@
   ./notice
   ./mpv
   ./rofi
-  ./kooha
   ./swww
 ]

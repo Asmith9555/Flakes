@@ -21,17 +21,7 @@
     binsh = "${pkgs.dash}/bin/dash";
     shells = with pkgs; [ fish ];
     systemPackages = with pkgs; [
-      git
-      neovim
-      wget
-      neofetch
-      exa
-      ranger
-      killall
-      socat
       keepassxc
-      unzip
-      lxappearance
     ];
   };
   services.dbus.enable = true;

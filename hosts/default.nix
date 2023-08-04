@@ -31,7 +31,7 @@ in
               (import ./laptop/wayland/home.nix)
               #(import ./laptop/x11/home.nix)
             ] ++ [
-              inputs.hyprland.homeManagerModules.default
+              # inputs.hyprland.homeManagerModules.default
             ];
           };
         };

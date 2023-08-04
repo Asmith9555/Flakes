@@ -1,5 +1,6 @@
 [
   ./fish
+  ./style
   ./git
   ./bash
   ./gpg

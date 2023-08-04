@@ -1,6 +1,0 @@
-{
-  imports = [
-    ./git
-    ./yt-dlp
-  ];
-}

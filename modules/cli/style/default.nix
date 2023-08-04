@@ -1,8 +1,9 @@
+{ pkgs, ... }:
 {
-  home.packages = with pkgs [
-    exa
-  ];
   imports = [
     ./bat
+  ];
+  home.packages = with pkgs; [
+    exa
   ];
 }

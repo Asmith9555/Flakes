@@ -44,6 +44,7 @@
     };
     keymap = builtins.fromTOML (builtins.readFile ./config/keymap.toml);
     mimetype = builtins.fromTOML (builtins.readFile ./config/mimetype.toml);
+    theme = builtins.fromTOML (builtins.readFile ./config/theme.toml);
   };
   home = {
     packages = with pkgs; [
@@ -56,7 +57,7 @@
     ];
     file = {
       ".config/joshuto/on_preview_removed.sh".source = ./config/on_preview_removed.sh;
-      ".config/joshuto/on_preview_shown.sh".source = ./config/on_preview_shown.sh;
+      ".config/joshuto/on_preview_shown".source = ./config/on_preview_shown;
       ".config/joshuto/preview_file.sh".source = ./config/preview_file.sh;
     };
   };
