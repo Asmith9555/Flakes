@@ -39,6 +39,8 @@
       preview = {
         max_preview_size = 2097152; # 2MB
         preview_script = "~/.config/joshuto/preview_file.sh";
+        preview_shown_hook_script = "~/.config/joshuto/on_preview_shown.sh";
+        preview_removed_hook_script = "~/.config/joshuto/on_preview_removed.sh";
       };
       tab.home_page = "home";
     };
@@ -57,7 +59,7 @@
     ];
     file = {
       ".config/joshuto/on_preview_removed.sh".source = ./config/on_preview_removed.sh;
-      ".config/joshuto/on_preview_shown".source = ./config/on_preview_shown;
+      ".config/joshuto/on_preview_shown.sh".source = ./config/on_preview_shown.sh;
       ".config/joshuto/preview_file.sh".source = ./config/preview_file.sh;
     };
   };

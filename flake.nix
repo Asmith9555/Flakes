@@ -9,7 +9,6 @@
       flake-utils.url = "github:numtide/flake-utils";
       picom.url = "github:yaocccc/picom";
       joshuto.url = "github:kamiyaa/joshuto";
-      go-musicfox.url = "github:go-musicfox/go-musicfox";
       discord-overlay.url = "github:InternetUnexplorer/discord-overlay";
       hyprland = {
         url = "github:hyprwm/Hyprland";

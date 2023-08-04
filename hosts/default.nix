@@ -25,7 +25,7 @@ in
         home-manager = {
           useGlobalPkgs = true;
           useUserPackages = true;
-          extraSpecialArgs = { inherit user theme; };
+          extraSpecialArgs = { inherit inputs user theme; };
           users.${user} = {
             imports = [
               (import ./laptop/wayland/home.nix)

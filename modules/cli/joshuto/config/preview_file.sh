@@ -150,6 +150,7 @@ handle_mime() {
             pandoc -s -t markdown -- "${FILE_PATH}" | bat -l markdown \
                 --color=always --paging=never \
                 --style=plain \
+                --theme=rose-pine \
                 --terminal-width="${PREVIEW_WIDTH}" && exit 0
             exit 1 ;;
 
@@ -172,7 +173,7 @@ handle_mime() {
             bat --color=always --paging=never \
                 --style=plain \
                 --terminal-width="${PREVIEW_WIDTH}" \
-                # --theme="${BAT_THEME}" \
+                --theme=rose-pine \
                 "${FILE_PATH}" && exit 0
             cat "${FILE_PATH}" && exit 0
             exit 1 ;;

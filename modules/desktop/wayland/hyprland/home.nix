@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ inputs, config, lib, pkgs, ... }:
 
 {
   imports = [
@@ -17,6 +17,7 @@
   systemd.user.targets.hyprland-session.Unit.Wants = [ "xdg-desktop-autostart.target" ];
   wayland.windowManager.hyprland = {
     enable = true;
+    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
     systemdIntegration = true;
     enableNvidiaPatches = true;
     settings = {
@@ -24,6 +25,10 @@
       "$NOTIFY" = "notify-send -h string:x-canonical-private-synchronouse:hypr-cfg -u low";
       "$SCREENSHOT" = "~/.config/hypr/scripts/screensht";
       "$COLORPICKER" = "~/.config/hypr/scripts/colorpicker";
+      monitor = [
+        "DP-1-3, 1920x1080, 1920x0, 1"
+        "eDP-1, 1920x1080, 0x0, 1"
+      ];
       exec-once= [
         "mako &"
         "nm-applet --indicator &"
@@ -32,7 +37,7 @@
         kb_layout = "us";
         kb_options = "caps:escape";
 
-        follow_mouse = 1; # 0|1|2|3
+        follow_mouse = 2; # 0|1|2|3
         touchpad = {
           natural_scroll = true;
         };
@@ -42,7 +47,7 @@
       general = {
         gaps_in = 5;
         gaps_out = 7;
-        border_size = 2;
+        border_size = 1.5;
         "col.active_border" = "0xffc4a7e7";
         "col.inactive_border" = "0xff6e6a86";
         layout = "dwindle"; # master|dwindle 
@@ -74,16 +79,14 @@
         new_is_master = true;
       };
       decoration = {
-        rounding = 2;
+        rounding = 0;
         multisample_edges = true;
-        blur = true;
-        blur_size = 4;
-        blur_passes = 2;
-        blur_new_optimizations = true;
-        blur_ignore_opacity = true;
-        drop_shadow = false;
-        shadow_ignore_window = true;
-        shadow_offset = "0 5";
+        blur = {
+          enabled = true;
+          size = 4;
+          passes = 2;
+        };
+        drop_shadow = true;
         shadow_range = 50;
         shadow_render_power = 3;
         "col.shadow" = "rgba(00000099)";
