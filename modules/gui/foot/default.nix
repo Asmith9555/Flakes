@@ -9,7 +9,7 @@
         dpi-aware = "yes";
         line-height = 16;
         pad = "16x16";
-        vertical-letter-offset = "4px";
+        # vertical-letter-offset = "4px";
         shell = "fish";
       };
       mouse = {

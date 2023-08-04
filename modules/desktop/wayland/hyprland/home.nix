@@ -86,7 +86,7 @@
           size = 3;
           passes = 1;
         };
-        blur_xray = true;
+        # blur_xray = true;
         drop_shadow = false;
         shadow_range = 50;
         shadow_render_power = 3;
@@ -112,7 +112,7 @@
         "$MODSHIFT, L, exec, loginctl lock-session"
 
         "$MOD, Q, killactive"
-        "$MODSHIFT, Q, exit"
+        # "$MODSHIFT, Q, exit"
         "$MOD, F, fullscreen"
         "$MOD, Space, togglefloating"
         "$MOD, P, pseudo"

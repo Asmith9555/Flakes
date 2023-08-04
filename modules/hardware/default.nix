@@ -1,5 +1,5 @@
 [
   ./bluetooth.nix
   ./nvidia.nix
-  ./virt.nix
+  # ./virt.nix
 ]
