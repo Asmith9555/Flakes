@@ -15,4 +15,5 @@
   ./neofetch
   ./search
   ./yt-dlp
+  ./utils
 ]

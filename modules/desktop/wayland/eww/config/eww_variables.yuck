@@ -6,7 +6,7 @@
 (defpoll distro :interval "12h" "awk '/^ID=/' /etc/*-release | awk -F'=' '{ print tolower($2) }'")
 (defpoll wm :interval "12h" "echo $XDG_CURRENT_DESKTOP")
 (defpoll shell :interval "5m" "echo $SHELL | awk -F'/' '{print $NF}'")
-(defpoll uptime :interval "30s" "uptime | cut -c1-8")
+(defpoll uptime :interval "30s" "uptime | cut -c2-9")
 (defpoll packages :interval "12h" "nix-env -qa | wc -l")
 
 ;;;; NOTES, MUSIC, NETWORKING

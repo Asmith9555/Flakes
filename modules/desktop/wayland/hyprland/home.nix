@@ -31,6 +31,8 @@
       ];
       exec-once= [
         "mako &"
+        "eww daemon &"
+        "eww open-many quote smalldate &"
         "nm-applet --indicator &"
       ];
       input = {

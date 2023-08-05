@@ -105,10 +105,10 @@
 
   programs = {
     keychain.enableFishIntegration = true;
-    atuin = {
-      enable = true;
-      enableFishIntegration = true;
-    };
+    # atuin = {
+    #   enable = true;
+    #   enableFishIntegration = true;
+    # };
     starship = {
       enable = true;
       enableFishIntegration = true;
