@@ -24,4 +24,7 @@
       '';
     };
   };
+  imports = [
+    ./spicetify
+  ];
 }

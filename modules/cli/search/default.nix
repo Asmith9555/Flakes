@@ -3,6 +3,9 @@
     fd
     ripgrep
   ];
+  programs.fzf = {
+    enable = true;
+  };
   imports = [
     ./skim
   ];

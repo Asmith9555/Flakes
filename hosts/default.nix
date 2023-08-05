@@ -32,6 +32,7 @@ in
               #(import ./laptop/x11/home.nix)
             ] ++ [
               # inputs.hyprland.homeManagerModules.default
+              inputs.spicetify-nix.homeManagerModules.default
             ];
           };
         };

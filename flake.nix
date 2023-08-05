@@ -10,6 +10,7 @@
       picom.url = "github:yaocccc/picom";
       joshuto.url = "github:kamiyaa/joshuto";
       discord-overlay.url = "github:InternetUnexplorer/discord-overlay";
+      spicetify-nix.url = "github:the-argus/spicetify-nix";
       hyprland = {
         url = "github:hyprwm/Hyprland";
         inputs.nixpkgs.follows = "nixpkgs";

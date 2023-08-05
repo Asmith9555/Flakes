@@ -1,7 +1,8 @@
 { pkgs, ... }:
 {
-  programs.home = with pkgs; [
+  home.packages = with pkgs; [
     fortune
+    wirelesstools
   ];
   programs.eww = {
     enable = true;
