@@ -6,6 +6,7 @@
       EDITOR = "hx";
       BROWSER = "firefox";
       TERMINAL = "kitty";
+      SHELL = "fish";
       QT_QPA_PLATFORMTHEME = "gtk3";
       QT_SCALE_FACTOR = "1";
       MOZ_ENABLE_WAYLAND = "1";

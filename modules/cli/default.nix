@@ -2,6 +2,7 @@
   ./archive
   ./sys-monitor
   ./download
+  ./dev
   ./fish
   ./style
   ./git

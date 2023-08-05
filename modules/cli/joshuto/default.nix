@@ -391,7 +391,7 @@
       };
 
       directory = {
-        fg = "light_blue";
+        fg = "magenta";
         bold = true;
       };
 
@@ -421,23 +421,23 @@
         ppm.fg = "yellow";
         svg.fg = "yellow";
 
-        wav.fg = "magenta";
-        flac.fg = "magenta";
-        mp3.fg = "magenta";
-        amr.fg = "magenta";
+        wav.fg = "blue";
+        flac.fg = "blue";
+        mp3.fg = "blue";
+        amr.fg = "blue";
 
-        avi.fg = "magenta";
-        flv.fg = "magenta";
-        m3u.fg = "magenta";
-        m4a.fg = "magenta";
-        m4v.fg = "magenta";
-        mkv.fg = "magenta";
-        mov.fg = "magenta";
-        mp4.fg = "magenta";
-        mpg.fg = "magenta";
-        rmvb.fg = "magenta";
-        webm.fg = "magenta";
-        wmv.fg = "magenta";
+        avi.fg = "blue";
+        flv.fg = "blue";
+        m3u.fg = "blue";
+        m4a.fg = "blue";
+        m4v.fg = "blue";
+        mkv.fg = "blue";
+        mov.fg = "blue";
+        mp4.fg = "blue";
+        mpg.fg = "blue";
+        rmvb.fg = "blue";
+        webm.fg = "blue";
+        wmv.fg = "blue";
 
         "7z".fg = "red";
         bz2.fg = "red";

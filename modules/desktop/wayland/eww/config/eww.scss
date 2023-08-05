@@ -1,139 +1,128 @@
 * {
-    margin: 0;
-    padding: 0;
-    font-family: "JetBrains Mono Nerd Font";
-    font-weight: 700;
-    font-size: 14px;
-    color: #e0def4;
+  all: unset;
+  font-family: "JetBrains Mono";
+}
+// WINDOW RELATED CSS
+.bg {
+  background-color: #1E222A;
+  border: 2px solid #80A0C0;
 }
 
-/* --------------------------------------- Common Styles -------------------------------------- */
-
-/* Style for module */
-.module {
-    background: #232136; 
-    border-radius: 10px; 
-    border: 2px solid #eb6f92;
-    margin-right: 8px;
-    padding: 0 15px;
+.notes {
+  padding: 10px 20px 10px 5px;
 }
 
-/* Remove the `margin-right` for the last module */
-.last-widget {
-    margin-right: 0;
+window {
+  background: #2e3440;
+  color: #ebcb8b;
+  //border-radius: 2rem;
+  border: 3px solid #80A0C0;
 }
 
-/* Make the bar transparent */
-.bar {
-    background: transparent;
+// MISC EDITING
+.uinfo {
+  font-size: 1.25rem;
 }
-
-.date {
-    color: #eb6f92;
-}
-
-.updates {
-    color: #f6c177;
-}
-
-.workspace_btn {
-    background: transparent;
-    padding: 0 8px 0px 14px;
-    margin-top: 3px;
-    margin-bottom: 3px;
-    outline: 0px ;
-}
-
-.workspace_btn:hover {
-    box-shadow: inherit;
-    text-shadow: inherit;
-}
-
-.workspace_label {
-   color: #eb6f92; 
-   font-size: 16px;
-}
-
 .cpu {
-    color: #ebbcba;
+  padding: 19px;
 }
 
-.ram {
-    color: #31748f;
+// METRIC LOOKS
+.metric scale trough highlight {
+  all: unset;
+  color: #000000;
+  background: linear-gradient(90deg, #88c0d0 0%, #81a1c1  50%, #5E81ac 100%);
+  //border-radius: 10px;
+}
+.metric scale trough {
+  all: unset;
+  background-color: #545454;
+  //border-radius: 50px;
+  min-height: 10px;
+  min-width: 100px;
+  margin-left: 10px;
+  margin-right: 5px;
 }
 
-.time {
-    color: #c4a7e7;
+.metric .label {
+  color: #B48EAD;
+  font-size: 1.5rem;
 }
 
-.net_status {
-    color: #9ccfd8;
+// POWERMENU
+.bigpowermenu {
+  font-size: 3rem;
 }
 
-/* -------------------------------------- Desktop Widget -------------------------------------- */
-
-.desktop {
-    background-color: transparent;
+.quicksettings {
+  font-size: 1.75rem;
 }
 
-.desktop_clock {
-    padding: 40px 35px;
+// WIDGET MISC SETTINGS
+
+.quote-text {
+  padding: 5px;
+  font-size: 1rem;
+  font-style: italic;
+  font-weight: 600;
+  color: #BF616A;
 }
 
-.desktop_time {
-    font-size: 96px;
+.appbar{
+  font-size: 2rem;
 }
 
-.desktop_time_h, .desktop_time_m {
-    color: #eb6f92;
+.cal {
+  color: #8fbcbb;
+  padding: 5px;
+  padding-bottom: 1px;
 }
 
-.desktop_time_colon {
-    color: #e0def4;
+.favs {
+  color: #ECEFF4;
+  font-size: 2rem;
 }
 
-.desktop_time_p {
-    color: #eb6f92;
+.small-date {
+  font-weight: 700;
 }
 
-.desktop_date_date {
-    margin-left: 10px;
+// Search App CSS
+.searchapps-bar {
+  color: #88c0d0;
+  font-size: 1.5rem;
+  margin: -2px;
+  padding: 30px 90px 30px 90px;
+  background-color: #1E222A;
+  border: 6px solid #80A0C0;
+}
+.search-bar {
+  color: #88c0d0;
+}
+.search-label {
+  font-family: "Iosevka";
+  font-size: 2rem;
+  font-weight: 700;
+  padding-right: 20px;
+}
+.app-container {
+  margin: -2px;
+  font-size: 1.25rem;
+  padding: 30px;
+  color: #88c0d0;
+}
+.item {
+  padding: 10px;
+  background: rgba(10,10,10,0.4);
 }
 
-.desktop_date {
-    font-size: 32px;
-    color: #eb6f92;
+.label-control {
+  color: #81a1c1;
+  font-size: 1.5rem;
+  padding: 15px;
 }
 
-/* -------------------------------------Powermenu Widget---------------------------------------*/
-.powermenu {
-    border-radius: 10px;
-    border: 2px solid #eb6f92;
-}
-
-.powermenu_button {
-    background: transparent;
-    padding: 20px;
-}
-
-.powermenu_button:nth-child(1) {
-    border-radius: 10px 10px 0 0;
-}
-
-.powermenu_button:nth-child(2) {
-    border-radius: 0 0 10px 10px;
-}
-
-.powermenu_button:hover {
-    background: #2a283e;
-}
-
-.powermenu_label_restart {
-    color: #c4a7e7;
-    font-size: 32px;
-}
-
-.powermenu_label_poweroff {
-    color: #eb6f92;
-    font-size: 32px;
+.controls {
+  font-size: 2rem;
+  padding-bottom: 20px;
 }
