@@ -20,10 +20,10 @@
         info "GPU" gpu
         info "Memory" memory
 
-        # info "GPU Driver" gpu_driver  # Linux/macOS only
-        # info "Disk" disk
-        # info "Battery" battery
-        # info "Font" font
+        info "GPU Driver" gpu_driver  # Linux/macOS only
+        info "Disk" disk
+        info "Battery" battery
+        info "Font" font
 
         info cols
     }
@@ -694,7 +694,7 @@
     #           'viu'
 
     # Flag:     --backend
-    image_backend="kitty"
+    image_backend="catimg"
 
     # Image Source
     #
@@ -798,7 +798,6 @@
     #
     # Default: '~/.cache/thumbnails/neofetch'
     # Values:  'dir'
-    thumbnail_dir="${XDG_CACHE_HOME:-${HOME}/.cache}/thumbnails/neofetch"
 
     # Crop mode
     #

@@ -6,7 +6,7 @@
     settings = {
       main = {
         font = "Berkeley Mono:size=12";
-        dpi-aware = "yes";
+        # dpi-aware = "yes";
         line-height = 16;
         pad = "16x16";
         # vertical-letter-offset = "4px";

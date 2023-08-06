@@ -21,7 +21,7 @@
     systemdIntegration = true;
     enableNvidiaPatches = true;
     extraConfig = ''
-      bind = CONTROL, R, submap, resize
+      bind = $MOD, R, submap, resize
       submap = resize
       binde = , L, resizeactive, 10 0
       binde = , H, resizeactive, -10 0
@@ -108,7 +108,7 @@
         "$MODSHIFT, X, exec, hyprpicker"
         "$MOD, B, exec, firefox"
         "$MOD, M, exec, kitty --class='termfloat' --hold sh -c 'ncmpcpp'"
-        # "$MOD, I, exec, alacritty --class='fetchterm' --hold -e neofetch"
+        "$MOD, I, exec, alacritty --class='bgterm'"
         "$MOD, D, exec, pkill rofi || ~/.config/rofi/launcher.sh"
         "$MODSHIFT, D, exec, bash ~/.config/rofi/powermenu.sh"
 

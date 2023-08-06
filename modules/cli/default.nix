@@ -16,4 +16,5 @@
   ./search
   ./yt-dlp
   ./utils
+  ./web
 ]
