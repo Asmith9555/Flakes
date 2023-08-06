@@ -1,6 +1,7 @@
 [
   ./comms
   # ./utils
+  ./alacritty
   ./foot
   ./web
   ./editors

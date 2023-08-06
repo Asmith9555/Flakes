@@ -21,6 +21,7 @@
     systemdIntegration = true;
     enableNvidiaPatches = true;
     extraConfig = ''
+      bind = CONTROL, R, submap, resize
       submap = resize
       binde = , L, resizeactive, 10 0
       binde = , H, resizeactive, -10 0
@@ -37,7 +38,7 @@
       ];
       exec-once= [
         "mako &"
-        "eww open-many quote smalldate music &"
+        "eww open-many quote date music clock &"
         "nm-applet --indicator &"
       ];
       input = {
@@ -55,7 +56,7 @@
         gaps_in = 5;
         gaps_out = 7;
         border_size = 1.5;
-        "col.active_border" = "0xffc4a7e7";
+        "col.active_border" = "0xffe0def4";
         "col.inactive_border" = "0xff6e6a86";
         layout = "dwindle"; # master|dwindle 
       };
@@ -107,6 +108,7 @@
         "$MODSHIFT, X, exec, hyprpicker"
         "$MOD, B, exec, firefox"
         "$MOD, M, exec, kitty --class='termfloat' --hold sh -c 'ncmpcpp'"
+        # "$MOD, I, exec, alacritty --class='fetchterm' --hold -e neofetch"
         "$MOD, D, exec, pkill rofi || ~/.config/rofi/launcher.sh"
         "$MODSHIFT, D, exec, bash ~/.config/rofi/powermenu.sh"
 
@@ -203,7 +205,23 @@
         "move 25%-,class:^(termfloat)$"
         "size 960 540,class:^(termfloat)$"
         "rounding 5,class:^(termfloat)$"
+        "noblur,class:^(termfloat)$"
       
+        "float,class:^(bgterm)$"
+        "move 25%-,class:^(bgterm)$"
+        "size 250 250,class:^(bgterm)$"
+        "noborder,class:^(bgterm)$"
+        "noblur,class:^(bgterm)$"
+        # "nofocus,class:^(bgterm)$"
+        "noanim,class:^(bgterm)$"
+
+        "float,class:^(clockterm)$"
+        "move 25%-,class:^(clockterm)$"
+        "size 800 250,class:^(clockterm)$"
+        "noborder,class:^(clockterm)$"
+        "noblur,class:^(clockterm)$"
+        "nofocus,class:^(clockterm)$"
+        "noanim,class:^(clockterm)$"
       
         "rounding 0, xwayland:1, floating:1"
         "center, class:^(.*jetbrains.*)$, title:^(Confirm Exit|Open Project|win424|win201|splash)$"

@@ -7,5 +7,6 @@
     exa
     figlet
     zscroll
+    cbonsai
   ];
 }

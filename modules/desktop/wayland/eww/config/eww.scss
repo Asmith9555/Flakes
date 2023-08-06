@@ -1,26 +1,25 @@
-* {
+// General
+*{
   all: unset;
   font-family: "IAAB3\-Mono Stencil";
 }
-
 window {
   background: rgba(0, 0, 0, 0);
   color: #6e6a86;
 }
-
+// Music
 .cava-bars {
   font-size: 1.8rem;
 }
-
+// Quote
 .quote {
   font-size: 1.25rem;
 }
-
-
+// Date
 .date {
   font-weight: 700;
 }
-
+// Cock
 .clock .labelSml {
   font-size: 0.8rem;
 }
@@ -30,7 +29,12 @@ window {
 .clock .labelLrg {
   font-size: 1.4rem;
 }
-
-.clock .hand {
-  background-color: #6e6a86;
+.clock .labelLrg.label6 {
+  font-size: 2.1rem;
 }
+
+// .clock .hand {
+//   color: #191724;
+//   font-size: 2rem;
+// }
+

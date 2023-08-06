@@ -15,12 +15,14 @@
 ;;;; Random Quote Widget
 
 (defwidget music[]
-  (box :class "music" :orientation "v" :spacing 0.5 
+  (box :class "music" :orientation "v" :spacing 1 
     (label :class "cava-bars" :halign "start" :text "${cava_bars}")
     (label :class "music-title" :halign "start" :vexpand true :wrap true :text "${track_title}")))
 
 (defwidget clock[]
   (overlay :class "clock" :hexpand true :vexpand true 
+    ; (label :class "hand minute":xalign 1.0 :yalign 0.51 :text "--------")
+    ; (label :class "hand hour" :xalign 0.6 :text "===")
     (label :class "labelMed label1" :yalign 0.0 :text "-")
     ;;
     (label :class "labelMed label2" :yalign 0.1 :text "-")
@@ -28,29 +30,30 @@
     (label :class "labelMed label3" :yalign 0.2 :text "-")
     ;;
     (label :class "labelMed label4a" :yalign 0.3 :text ">")
-    (label :class "labelMed label4b" :justify "right" :yalign 0.3 :xalign 0.6
+    (label :class "labelMed label4b" :yalign 0.3 :xalign 0.8                   
            :text "WORLDWIDE")
     (label :class "labelMed label4c" :justify "left" :yalign 0.3 :xalign 0.4
-               :text "+5")
+           :text "+5")
     ;;
-    (label :class "labelLrg label5" :justify "right":yalign 0.4 :text "TIMEZONE")
+    (label :class "labelLrg label5" :yalign 0.4 :xalign 0.73 
+           :text "TIMEZONE")
     ;;
     (label :class "labelLrg label6" :yalign 0.5 :text "󰧞")
     ;;
-    (label :class "labelMed label7a" :justify "left" :yalign 0.6 :xalign 0.2 
+    (label :class "labelMed label7a" :justify "left" :yalign 0.6 :xalign 0.9 
            :text "[-]10")
-    (label :class "labelMed label7d" :justify "left" :yalign 0.6 :xalign 0.4
+    (label :class "labelMed label7d" :justify "left" :yalign 0.6 :xalign 0.68
            :text "")
     (label :class "labelMed label7c" :justify "left":yalign 0.6 :xalign 0.5 
            :text "CST")
-    (label :class "labelMed label7d" :justify "right" :yalign 0.6 :xalign 0.6
+    (label :class "labelMed label7d" :justify "left" :yalign 0.6 :xalign 0.3
            :text "[+]6")
-    (label :class "labelMed label7e" :justify "right" :yalign 0.6 :xalign 0.8
+    (label :class "labelMed label7e" :yalign 0.6 :xalign 0.1
            :text "[+]8")
     ;;    
     (label :class "labelSml label8" :yalign 0.7
            :text ">")
-    (label :class "labelSml label9" :justify "left" :yalign 0.7 :xalign 0.9
+    (label :class "labelSml label9" :justify "left" :yalign 0.7 :xalign 0.88
            :style "font-family: Noto Sans CJK JP" 
            :text "東京")
     ;;
@@ -61,7 +64,7 @@
     ;;
     (label :class "labelMed label11" :yalign 0.9 :text "-")
     ;;
-    (label :class "labelMed label11" :yalign 1.0 :text "<")
+    (label :class "labelSml label11" :yalign 1.0 :text "<")
     (label :class "labelSml label12" :justify "left" :yalign 1.0 :xalign 0.1 
            :style "font-family: Noto Sans" 
            :text "Ἑλλάς")))
