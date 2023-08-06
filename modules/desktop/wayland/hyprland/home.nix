@@ -20,19 +20,24 @@
     package = inputs.hyprland.packages.${pkgs.system}.hyprland;
     systemdIntegration = true;
     enableNvidiaPatches = true;
+    extraConfig = ''
+      submap = resize
+      binde = , L, resizeactive, 10 0
+      binde = , H, resizeactive, -10 0
+      binde = , K, resizeactive, 0 -10
+      binde = , J, resizeactive, 0 10
+      bind = , escape, submap, reset
+      submap = reset
+    '';
     settings = {
       "$MOD" = "SUPER";
-      "$NOTIFY" = "notify-send -h string:x-canonical-private-synchronouse:hypr-cfg -u low";
-      "$SCREENSHOT" = "~/.config/hypr/scripts/screensht";
-      "$COLORPICKER" = "~/.config/hypr/scripts/colorpicker";
       monitor = [
         "DP-1-3, 1920x1080, 1920x0, 1"
         "eDP-1, 1920x1080, 0x0, 1"
       ];
       exec-once= [
         "mako &"
-        "eww daemon &"
-        "eww open-many quote smalldate &"
+        "eww open-many quote smalldate music &"
         "nm-applet --indicator &"
       ];
       input = {
@@ -97,13 +102,9 @@
       bind = [
         "$MOD, Escape, exec, wlogout -p layer-shell"
         "$MOD, V, exec, wf-recorder -f ~/Videos/$(date +%Y-%m-%d_%H-%M-%S).mp4"
-        "$MOD, V, exec, $NOTIFY 'Recording started'"
         "$MODSHIFT, V, exec, killall -s SIGINT wf-recorder"
-        "$MODSHIFT, V, exec, $NOTIFY 'Recording stopped'"
 
-        ", Print, exec, $SCREENSHOT full"
-        "$MODSHIFT, S, exec, $SCREENSHOT area"
-        "$MODSHIFT, X, exec, $COLORPICKER"
+        "$MODSHIFT, X, exec, hyprpicker"
         "$MOD, B, exec, firefox"
         "$MOD, M, exec, kitty --class='termfloat' --hold sh -c 'ncmpcpp'"
         "$MOD, D, exec, pkill rofi || ~/.config/rofi/launcher.sh"
@@ -121,15 +122,15 @@
         "$MOD, S, togglesplit"
 
         "$MODSHIFT, Space, workspaceopt, allfloat"
-        "$MODSHIFT, Space, exec, $NOTIFY 'Toggled All floating'"
+        "$MODSHIFT, Space, exec, 'Toggled All floating'"
         "$MODSHIFT, P, workspaceopt, allpseudotile"
-        "$MODSHIFT, P, exec, $NOTIFY ' Toggled All pseudotile'"
+        "$MODSHIFT, P, exec, ' Toggled All pseudotile'"
 
         "$MOD, Tab, cyclenext"
         "$MOD, Tab, bringactivetotop"
 
         "$MOD, A, togglespecialworkspace"
-        "$MOD, A, exec, $NOTIFY 'Toggled special workspace'"
+        "$MOD, A, exec, 'Toggled special workspace'"
         "$MODSHIFT, A, movetoworkspace, special"
         "$MOD, C, exec, hyprctl dispatch centerwindow"
 

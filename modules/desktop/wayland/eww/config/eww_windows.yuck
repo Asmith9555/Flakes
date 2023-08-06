@@ -3,6 +3,35 @@
 ;;;; IMPORTS
 (include "eww_widgets.yuck")
 
+
+;;; Date Window
+
+(defwindow date
+ :wm-ignore: true
+ :monitor 1
+ :windowtype "desktop"
+ :stacking "bottom"
+ :geometry (geometry :x "40px"
+                     :y "50px"
+                     :width "100px"
+                     :height "30px"
+                     :anchor "top left")
+(date))
+
+;;; Music Widget
+
+(defwindow music
+ :wm-ignore: true
+ :monitor 1
+ :windowtype "desktop"
+ :stacking "bottom"
+ :geometry (geometry :x "40px"
+                     :y "400px"
+                     :width "300px"
+                     :height "100px"
+                     :anchor "top left")
+(music))
+
 ;;;; Random Quotes
 
 (defwindow quote
@@ -11,26 +40,22 @@
   :windowtype "desktop"
   :stacking "bottom"
   :geometry (geometry :x "50px"
-                      :y "50px"
-                      :width "400px"
-                      :height "200px"
+                      :y "40px"
+                      :width "450px"
+                      :height "100px"
                       :anchor "bottom left")
 (quote))
 
-;;; Small date Window
-
-(defwindow smalldate
- :wm-ignore: true
- :monitor 1
- :windowtype "desktop"
- :stacking "bottom"
- :geometry (geometry :x "75px"
-                     :y "100px"
-                     :width "100px"
-                     :height "40px"
-                     :anchor "top left")
-(smalldate))
-
+(defwindow clock
+  :wm-ignore true
+  :monitor 1
+  :windowtype "desktop"
+  :geometry (geometry :x "50px"
+                      :y "80px"
+                      :width "300px"
+                      :height "300px"
+                      :anchor "bottom right")
+(clock))
 ;;;; TODO Notes window
 ; (defwindow notes
 ;   :wm-ignore: true

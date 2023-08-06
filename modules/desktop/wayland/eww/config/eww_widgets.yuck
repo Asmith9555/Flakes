@@ -5,15 +5,37 @@
 
 ;;;; Small date in mm/dd/yy format
 
-(defwidget smalldate []
-  (label :class "small-date" :valign "center" :halign "center" :text TODAY))
-  
+(defwidget date []
+  (label :class "date" :halign "start" :text TODAY))
+
 ;;;; Random Quote Widget
 
 (defwidget quote[]
-  (box :class "quote" :orientation "v" :space-evenly false :halign "center" :valign "center"
-    (label :class "quote-text" :text "${quote_text}" :wrap true)))
+    (label :class "quote" :halign "start" :hexpand true :vexpand true :wrap true :text "${quote_text}"))
+;;;; Random Quote Widget
 
+(defwidget music[]
+  (box :class "music" :orientation "v" :spacing 0.5 
+    (label :class "cava-bars" :halign "start" :text "${cava_bars}")
+    (label :class "music-title" :halign "start" :vexpand true :wrap true :text "${track_title}")))
+
+(defwidget clock[]
+  (overlay :class "clock" :hexpand true :vexpand true 
+    (box :class "hand hour")
+    (box :class "hand minute")
+    (box :class "hand second")
+    (label :class "number number1" :text "1")
+    (label :class "number number2" :text "2")
+    (label :class "number number3" :text "3")
+    (label :class "number number4" :text "4")
+    (label :class "number number5" :text "5")
+    (label :class "number number6" :text "6")
+    (label :class "number number7" :text "7")
+    (label :class "number number8" :text "8")
+    (label :class "number number9" :text "9")
+    (label :class "number number10" :text "10")
+    (label :class "number number11" :text "11")
+    (label :class "number number12" :text "12")))
 ; ;;;; TODO Notes Displaying widget
 
 ; (defwidget notes []

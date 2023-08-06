@@ -5,7 +5,6 @@
   ./web
   ./editors
   ./obs-studio
-  ./discord
   ./zathura
   ./kitty
   ./gtk
