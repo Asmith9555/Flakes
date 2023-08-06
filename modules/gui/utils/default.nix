@@ -3,7 +3,7 @@
   # imports = [
     
   # ];
-  # home.packages = with pkgs; [
-  #   gpick
-  # ];
+  home.packages = with pkgs; [
+    gucharmap
+  ];
 }

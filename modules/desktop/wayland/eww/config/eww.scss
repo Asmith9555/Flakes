@@ -3,94 +3,34 @@
   font-family: "IAAB3\-Mono Stencil";
 }
 
-// .notes {
-//   padding: 10px 20px 10px 5px;
-// }
-
 window {
   background: rgba(0, 0, 0, 0);
   color: #6e6a86;
-  //border-radius: 2rem;
 }
 
-.quote-text {
+.cava-bars {
+  font-size: 1.8rem;
+}
+
+.quote {
   font-size: 1.25rem;
 }
 
 
-.small-date-text {
+.date {
   font-weight: 700;
 }
 
+.clock .labelSml {
+  font-size: 0.8rem;
+}
+.clock .labelMed {
+  font-size: 1.0rem;
+}
+.clock .labelLrg {
+  font-size: 1.4rem;
+}
 
-///Analog Clock
-// .clock {
-//     border-radius: 50%;
-//     border: #78766f solid 4px;
-// }
-
-// .clock .number {
-//     position: absolute;
-//     width: 100%;
-//     height: 100%;
-//     text-align: center;
-//     transform: rotate(var(--rotation));
-//     padding-top: 5px;
-//     font-size: 20px;
-// }
-
-// .clock .number1 { --rotation: 30deg; }
-// .clock .number2 { --rotation: 60deg; }
-// .clock .number3 { --rotation: 90deg; }
-// .clock .number4 { --rotation: 120deg; }
-// .clock .number5 { --rotation: 150deg; }
-// .clock .number6 { --rotation: 180deg; }
-// .clock .number7 { --rotation: 210deg; }
-// .clock .number8 { --rotation: 240deg; }
-// .clock .number9 { --rotation: 270deg; }
-// .clock .number10 { --rotation: 300deg; }
-// .clock .number11 { --rotation: 330deg; }
-// .clock .number12 { --rotation: 360deg; }
-
-// .clock .hand {
-//     z-index: 10;
-//     position: absolute;
-//     bottom: 50%;
-//     left: 50%;
-//     background-color: #78766f;
-//     transform-origin: bottom;
-//     /*setting the rotate to calc and multiplying it by one degree moves the hand in a clock-like rotation.*/
-//     /*we will modify the --rotation in JS*/
-//     transform: translateX(-50%) rotate(calc(var(--rotation) * 1deg));
-// }
-
-// .clock::after {
-//     content: "";
-//     position: absolute;
-//     background-color: #78766f;
-//     z-index: 11;
-//     width: 10px;
-//     height: 10px;
-//     border-radius: 50%;
-//     top: 50%;
-//     left: 50%;
-//     transform: translate(-50% , -50%);
-// }
-
-// .clock .hand.hour {
-//     width: 6px;
-//     height: 30%;
-// }
-
-// .clock .hand.minute{
-//     width: 6px;
-//     --rotation: 120deg;
-//     height: 40%;
-// }
-
-// .clock .hand.second {
-//     z-index: 9;
-//     --rotation: 180deg;
-//     width: 2px;
-//     height: 48%;
-// }
+.clock .hand {
+  background-color: #6e6a86;
+}

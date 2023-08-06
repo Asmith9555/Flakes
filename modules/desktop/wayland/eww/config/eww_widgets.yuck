@@ -21,26 +21,47 @@
 
 (defwidget clock[]
   (overlay :class "clock" :hexpand true :vexpand true 
-    (box :class "hand hour")
-    (box :class "hand minute")
-    (box :class "hand second")
-    (label :class "number number1" :text "1")
-    (label :class "number number2" :text "2")
-    (label :class "number number3" :text "3")
-    (label :class "number number4" :text "4")
-    (label :class "number number5" :text "5")
-    (label :class "number number6" :text "6")
-    (label :class "number number7" :text "7")
-    (label :class "number number8" :text "8")
-    (label :class "number number9" :text "9")
-    (label :class "number number10" :text "10")
-    (label :class "number number11" :text "11")
-    (label :class "number number12" :text "12")))
-; ;;;; TODO Notes Displaying widget
-
-; (defwidget notes []
-;   (box :spacing 5 :class "notes" :orientation "v" :space-evenly false :halign "center" :valign "center"
-;     (label :style "color: #5e81ac;" :text NOTES :halign "center" :valign "center" :wrap true :limit-width 150 :vexpand false :hexpand false)
-;     (box :orientation "h"
-;       (button :onclick "echo '' > ~/Documents/notes.txt" "[ Empty ]")
-;       (button :onclick "kitty hx ~/Documents/notes.txt" "[ Edit TODO ]"))))
+    (label :class "labelMed label1" :yalign 0.0 :text "-")
+    ;;
+    (label :class "labelMed label2" :yalign 0.1 :text "-")
+    ;;
+    (label :class "labelMed label3" :yalign 0.2 :text "-")
+    ;;
+    (label :class "labelMed label4a" :yalign 0.3 :text ">")
+    (label :class "labelMed label4b" :justify "right" :yalign 0.3 :xalign 0.6
+           :text "WORLDWIDE")
+    (label :class "labelMed label4c" :justify "left" :yalign 0.3 :xalign 0.4
+               :text "+5")
+    ;;
+    (label :class "labelLrg label5" :justify "right":yalign 0.4 :text "TIMEZONE")
+    ;;
+    (label :class "labelLrg label6" :yalign 0.5 :text "󰧞")
+    ;;
+    (label :class "labelMed label7a" :justify "left" :yalign 0.6 :xalign 0.2 
+           :text "[-]10")
+    (label :class "labelMed label7d" :justify "left" :yalign 0.6 :xalign 0.4
+           :text "")
+    (label :class "labelMed label7c" :justify "left":yalign 0.6 :xalign 0.5 
+           :text "CST")
+    (label :class "labelMed label7d" :justify "right" :yalign 0.6 :xalign 0.6
+           :text "[+]6")
+    (label :class "labelMed label7e" :justify "right" :yalign 0.6 :xalign 0.8
+           :text "[+]8")
+    ;;    
+    (label :class "labelSml label8" :yalign 0.7
+           :text ">")
+    (label :class "labelSml label9" :justify "left" :yalign 0.7 :xalign 0.9
+           :style "font-family: Noto Sans CJK JP" 
+           :text "東京")
+    ;;
+    (label :class "labelSml label10" :yalign 0.8
+           :text "<")
+    (label :class "labelSml label10" :justify "left" :yalign 0.8 :xalign 0.3
+               :text "London")
+    ;;
+    (label :class "labelMed label11" :yalign 0.9 :text "-")
+    ;;
+    (label :class "labelMed label11" :yalign 1.0 :text "<")
+    (label :class "labelSml label12" :justify "left" :yalign 1.0 :xalign 0.1 
+           :style "font-family: Noto Sans" 
+           :text "Ἑλλάς")))
