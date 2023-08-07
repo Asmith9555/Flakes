@@ -1,4 +1,4 @@
-{ config, pkgs, lib, inputs, ... }:
+{ pkgs, inputs, ... }:
 
 {
   nixpkgs.system = "x86_64-linux";
@@ -18,7 +18,7 @@
     };
   };
   environment = {
-    binsh = "${pkgs.dash}/bin/dash";
+    binsh = "${pkgs.bash}/bin/bash";
     shells = with pkgs; [ fish ];
     systemPackages = with pkgs; [
       keepassxc
@@ -27,13 +27,7 @@
   services.dbus.enable = true;
 
   nix = {
-    settings = {
-      # substituters = [
-      #   "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
-      #   "https://cache.nixos.org/"
-      # ];
-      auto-optimise-store = true; # Optimise syslinks
-    };
+    settings.auto-optimise-store = true;
     gc = {
       automatic = true;
       dates = "weekly";

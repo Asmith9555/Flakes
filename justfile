@@ -1,9 +1,9 @@
 
 deploy:
-	nixos-rebuild switch --flake .#laptop --use-remote-sudo
+	nixos-rebuild switch --flake .#thinkpad --use-remote-sudo
 
 debug:
-	nixos-rebuild switch --flake .#laptop --use-remote-sudo --show-trace --verbose
+	nixos-rebuild switch --flake .#thinkpad --use-remote-sudo --show-trace --verbose
 
 update:
 	nix flake update

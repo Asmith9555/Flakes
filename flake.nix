@@ -7,7 +7,6 @@
       hyprpicker.url = "github:hyprwm/hyprpicker";
       hypr-contrib.url = "github:hyprwm/contrib";
       flake-utils.url = "github:numtide/flake-utils";
-      picom.url = "github:yaocccc/picom";
       joshuto.url = "github:kamiyaa/joshuto";
       discord-overlay.url = "github:InternetUnexplorer/discord-overlay";
       spicetify-nix.url = "github:the-argus/spicetify-nix";
@@ -23,9 +22,7 @@
 
   outputs = inputs @ { self, nixpkgs, flake-utils, ... }:
     let
-      user = "wuger";
       selfPkgs = import ./pkgs;
-      theme = "rose-pine";
     in
     flake-utils.lib.eachSystem [ "x86_64-linux" ]
       (
@@ -51,8 +48,7 @@
         # NixOS configurations
         import ./hosts {
           # Imports ./hosts/default.nix
-          system = "x86_64-linux";
-          inherit nixpkgs self inputs user theme;
+          inherit nixpkgs self inputs;
         }
       );
     };

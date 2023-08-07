@@ -1,21 +1,15 @@
-{ system, self, nixpkgs, inputs, user, theme, ... }:
+{ self, nixpkgs, inputs, ... }:
 
 let
-  pkgs = import nixpkgs {
-    inherit system;
-    config.allowUnfree = true; # Allow proprietary software
-  };
-
   lib = nixpkgs.lib;
 in
 {
-  laptop = lib.nixosSystem {
+  thinkpad = lib.nixosSystem {
     # Laptop profile
-    inherit system;
-    specialArgs = { inherit inputs user theme; };
+    system = "x86_64-linux";
+    specialArgs = { inherit inputs ; };
     modules = [
-      ./laptop/wayland
-      #./laptop/x11
+      ./thinkpad
     ] ++ [
       ./system.nix
     ] ++ [
@@ -25,13 +19,11 @@ in
         home-manager = {
           useGlobalPkgs = true;
           useUserPackages = true;
-          extraSpecialArgs = { inherit inputs user theme; };
-          users.${user} = {
+          extraSpecialArgs = { inherit inputs; };
+          users.wuger = {
             imports = [
-              (import ./laptop/wayland/home.nix)
-              #(import ./laptop/x11/home.nix)
+              (import ./thinkpad/home.nix)
             ] ++ [
-              # inputs.hyprland.homeManagerModules.default
               inputs.spicetify-nix.homeManagerModules.default
             ];
           };
@@ -41,7 +33,6 @@ in
             (import ../overlays)
               ++ [
               self.overlays.default
-              inputs.picom.overlays.default
               inputs.discord-overlay.overlays.default
               inputs.joshuto.overlays.default
             ];

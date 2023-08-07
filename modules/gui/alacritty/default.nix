@@ -1,7 +1,9 @@
 {
+  home.file.".config/alacritty/themes".source = ./themes;
   programs.alacritty = {
     enable = true;
     settings = {
+      import = ["~/.config/alacritty/rose-pine.toml"];
       window = {
         # decorations_theme_variant = "None";
         decorations = "none";
