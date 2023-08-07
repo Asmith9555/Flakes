@@ -17,4 +17,5 @@
   ./yt-dlp
   ./utils
   ./web
+  ./nvim
 ]

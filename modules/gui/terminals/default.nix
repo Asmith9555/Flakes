@@ -3,5 +3,6 @@
     ./alacritty
     ./foot
     ./kitty
+    ./wezterm
   ];
 }

@@ -3,7 +3,7 @@
   programs.alacritty = {
     enable = true;
     settings = {
-      import = ["~/.config/alacritty/rose-pine.toml"];
+      colors = (builtins.fromTOML (builtins.readFile ./themes/rose-pine.toml));
       window = {
         # decorations_theme_variant = "None";
         decorations = "none";

@@ -49,7 +49,7 @@
 
 
       * {
-      font-family: JetBrainsMono Nerd Font Mono !important;
+      font-family: Berkeley Mono !important;
       font-size: 12pt !important;
       }
 
@@ -73,7 +73,7 @@
 
 
       * {
-      font-family: JetBrainsMono Nerd Font Mono;
+      font-family: Berkeley Mono;
       }
 
       @-moz-document url-prefix("about:") {

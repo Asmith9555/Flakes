@@ -57,7 +57,7 @@
         gaps_out = 7;
         border_size = 1.5;
         "col.active_border" = "0xffe0def4";
-        "col.inactive_border" = "0xff6e6a86";
+        "col.inactive_border" = "0x006e6a86";
         layout = "dwindle"; # master|dwindle 
       };
       animation = {
@@ -104,29 +104,20 @@
         "$MOD, Escape, exec, wlogout -p layer-shell"
         "$MOD, V, exec, wf-recorder -f ~/Videos/$(date +%Y-%m-%d_%H-%M-%S).mp4"
         "$MODSHIFT, V, exec, killall -s SIGINT wf-recorder"
-
-        "$MODSHIFT, X, exec, hyprpicker"
-        "$MOD, B, exec, firefox"
-        "$MOD, M, exec, kitty --class='termfloat' --hold sh -c 'ncmpcpp'"
-        "$MOD, I, exec, alacritty --class='bgterm'"
+        "$MODSHIFT, X, exec, alacritty --class='bgterm' -e hyprpicker"
         "$MOD, D, exec, pkill rofi || ~/.config/rofi/launcher.sh"
         "$MODSHIFT, D, exec, bash ~/.config/rofi/powermenu.sh"
 
         "$MOD, Return, exec, kitty fish"
         "$MODSHIFT, Return, exec, kitty --class='termfloat' fish"
-        "$MODSHIFT, L, exec, loginctl lock-session"
+        "$MOD, I, exec, alacritty --class='bgterm'"
+        "$MODSHIFT, L, exec, myswaylock"
 
         "$MOD, Q, killactive"
-        # "$MODSHIFT, Q, exit"
         "$MOD, F, fullscreen"
         "$MOD, Space, togglefloating"
         "$MOD, P, pseudo"
-        "$MOD, S, togglesplit"
-
-        "$MODSHIFT, Space, workspaceopt, allfloat"
-        "$MODSHIFT, Space, exec, 'Toggled All floating'"
-        "$MODSHIFT, P, workspaceopt, allpseudotile"
-        "$MODSHIFT, P, exec, ' Toggled All pseudotile'"
+        "$MOD, E, togglesplit"
 
         "$MOD, Tab, cyclenext"
         "$MOD, Tab, bringactivetotop"
@@ -161,24 +152,14 @@
         "opacity 0.80 0.80,class:^(steam)$"
         "opacity 0.80 0.80,class:^(steamwebhelper)$"
         "opacity 0.80 0.80,class:^(Spotify)$"
-        "opacity 0.80 0.80,class:^(file-roller)$"
-        "opacity 0.80 0.80,class:^(qt5ct)$"
         "opacity 0.80 0.80,class:^(discord)$"
-        "opacity 0.80 0.70,class:^(pavucontrol)$"
-        "opacity 0.80 0.70,class:^(org.kde.polkit-kde-authentication-agent-1)$"
-        "opacity 0.80 0.80,class:^(code-url-handler)$"
-        "float,class:^(nemo)$"
-        "move 25%-,class:^(nemo)$"
-        "size 960 540,class:^(nemo)$"
+
+        
+        "float,title:^(Nemo)$"
+        "move 25%-,title:^(Nemo)$"
+        "size 960 540,title:^(Nemo)$"
 
 
-        "float,class:^(org.kde.polkit-kde-authentication-agent-1)$"
-        "float,class:^(pavucontrol)$"
-        "float,title:^(Media viewer)$"
-        "float,title:^(Volume Control)$"
-        "float,title:^(Picture-in-Picture)$"
-        "float,class:^(Viewnior)$"
-        "float,title:^(DevTools)$"
         "float,class:^(file_progress)$"
         "float,class:^(confirm)$"
         "float,class:^(dialog)$"
@@ -188,49 +169,22 @@
         "float,class:^(confirmreset)$"
         "float,title:^(Open File)$"
         "float,title:^(branchdialog)$"
-        "float,title:^(Confirm to replace files)$"
         "float,title:^(File Operation Progress)$"
-
-        "noshadow, floating:0"
-
-        "tile, title:^(Spotify)$"
-        "workspace 9 silent, title:^(Spotify)$"
-        "workspace 3, title:^(.*(Disc|WebC)ord.*)$"
 
         "idleinhibit focus, class:^(mpv|.+exe)$"
         "idleinhibit focus, class:^(firefox)$, title:^(.*YouTube.*)$"
-        "idleinhibit fullscreen, class:^(firefox)$"
 
         "float,class:^(termfloat)$"
         "move 25%-,class:^(termfloat)$"
         "size 960 540,class:^(termfloat)$"
         "rounding 5,class:^(termfloat)$"
-        "noblur,class:^(termfloat)$"
       
         "float,class:^(bgterm)$"
-        "move 25%-,class:^(bgterm)$"
-        "size 250 250,class:^(bgterm)$"
+        "move 25%- 25%+,class:^(bgterm)$"
+        "size 350 350,class:^(bgterm)$"
         "noborder,class:^(bgterm)$"
         "noblur,class:^(bgterm)$"
-        # "nofocus,class:^(bgterm)$"
         "noanim,class:^(bgterm)$"
-
-        "float,class:^(clockterm)$"
-        "move 25%-,class:^(clockterm)$"
-        "size 800 250,class:^(clockterm)$"
-        "noborder,class:^(clockterm)$"
-        "noblur,class:^(clockterm)$"
-        "nofocus,class:^(clockterm)$"
-        "noanim,class:^(clockterm)$"
-      
-        "rounding 0, xwayland:1, floating:1"
-        "center, class:^(.*jetbrains.*)$, title:^(Confirm Exit|Open Project|win424|win201|splash)$"
-        "size 640 400, class:^(.*jetbrains.*)$, title:^(splash)$"
-
-        "opacity 0.0 override 0.0 override,class:^(xwaylandvideobridge)$"
-        "noanim,class:^(xwaylandvideobridge)$"
-        "nofocus,class:^(xwaylandvideobridge)$"
-        "noinitialfocus,class:^(xwaylandvideobridge)$"
       ];
     };
   };
