@@ -1,4 +1,3 @@
-{ config, pkgs, ... }:
 {
   services.mako = {
     font = "Berkeley Mono";

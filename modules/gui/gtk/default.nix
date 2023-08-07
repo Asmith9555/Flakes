@@ -1,15 +1,17 @@
-{ config, pkgs, lib, inputs, user, ... }:
+{ pkgs, inputs, ... }:
 
 {
-  home.sessionVariables = {
-    GTK_THEME = "rose-pine";
+  home = {
+    sessionVariables = {
+      GTK_THEME = "rose-pine";
+    };
+    pointerCursor = {
+      gtk.enable = true;
+      package = pkgs.catppuccin-cursors;
+      name = "Catppuccin-Frappe-Dark";
+      size = 16;
+    };
   };
-  home.pointerCursor = {
-    package = pkgs.catppuccin-cursors;
-    name = "Catppuccin-Frappe-Dark";
-    size = 16;
-  };
-  home.pointerCursor.gtk.enable = true;
   gtk = {
     enable = true;
     theme = {
@@ -23,7 +25,6 @@
       name = "rose-pine";
       package = pkgs.rose-pine-icon-theme;
     };
-
     font = {
       name = "Berkeley Mono";
       size = 12;

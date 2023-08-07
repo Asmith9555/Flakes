@@ -1,5 +1,3 @@
-{ config, pkgs, ... }:
-
 {
   home = {
     file.".config/bat/themes/rose-pine.tmTheme".source = ./rose-pine.tmTheme;

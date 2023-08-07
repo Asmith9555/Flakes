@@ -1,5 +1,3 @@
-{ lib, pkgs, user, ... }:
-
 {
   programs.zathura = {
     enable = true;
@@ -21,7 +19,7 @@
 
       # zathurarc-dark
 
-      set font "DaddyTimeMono Nerd Font 15"
+      set font "Berkeley Mono 15"
       set statusbar-h-padding		10
       set statusbar-v-padding		10
 

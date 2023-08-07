@@ -1,4 +1,3 @@
-{ config, pkgs, ... }:
 {
   programs.foot = {
     enable = true;
@@ -6,10 +5,8 @@
     settings = {
       main = {
         font = "Berkeley Mono:size=12";
-        # dpi-aware = "yes";
         line-height = 16;
         pad = "16x16";
-        # vertical-letter-offset = "4px";
         shell = "fish";
       };
       mouse = {
@@ -36,7 +33,6 @@
         bright6="ebbcba";   # bright cyan (Rose)
         bright7="e0def4";   # bright white (Text)
       };
-
     };
   };
 }

@@ -1,5 +1,3 @@
-{ config, pkgs, theme, ... }:
-
 {
   home.file = {
     ".config/kitty/themes".source = ./themes;
@@ -21,7 +19,7 @@
         #Close the terminal =  without confirmation;
         confirm_os_window_close = 0;
         background_opacity = "0.80";
-        include = "themes/${theme}.conf";
+        include = "themes/rose-pine.conf";
       };
       environment = { };
       keybindings = { };

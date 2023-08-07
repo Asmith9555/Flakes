@@ -1,6 +1,5 @@
-{ config, lib, pkgs, inputs, ... }:
+{ pkgs, inputs,... }:
 {
-  imports = [ ../waybar/waybar.nix ];
   programs = {
     dconf.enable = true;
     light.enable = true;
