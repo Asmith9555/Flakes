@@ -1,13 +1,8 @@
 [
   ./comms
-  # ./utils
-  ./alacritty
-  ./foot
   ./web
   ./editors
-  ./obs-studio
   ./zathura
-  ./kitty
+  ./terminals
   ./gtk
-  ./cava
 ]

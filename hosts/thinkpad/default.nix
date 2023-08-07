@@ -1,4 +1,4 @@
-{ config, pkgs, user, inputs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   imports =
@@ -84,7 +84,7 @@
   security.sudo = {
     enable = true;
     extraConfig = ''
-      ${user} ALL=(ALL) NOPASSWD:ALL
+      wuger ALL=(ALL) NOPASSWD:ALL
     '';
   };
   security.doas = {

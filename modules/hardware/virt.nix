@@ -1,4 +1,4 @@
-{ config, pkgs, user, ... }:
+{ config, pkgs, ... }:
 
 {
   virtualisation = {
@@ -10,11 +10,9 @@
     };
   };
   users = {
-    users.${user} = {
+    users.wuger = {
       extraGroups = [ "lxd" ];
     };
-    groups.docker.members = [ "${user}" ];
-    groups.libvirtd.members = [ "${user}" ];
   };
   networking.firewall.trustedInterfaces = [ "virbr0" ];
   programs.dconf.enable = true;

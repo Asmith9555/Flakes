@@ -1,9 +1,8 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   home = {
     packages = with pkgs; [
-      cava
       mpc-cli
     ];
   };
@@ -26,5 +25,6 @@
   };
   imports = [
     ./spicetify
+    ./cava
   ];
 }

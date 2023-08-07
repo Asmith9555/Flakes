@@ -42,7 +42,7 @@ entry {
 inputbar {
   children:                       [ prompt, entry ];
   background-color:               @ac;
-  text-color:                     @bg;
+  text-color:                     @fg;
   expand:                         false;
   border:                         0% 0% 0% 0%;
   border-radius:                  0px;

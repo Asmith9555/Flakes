@@ -27,7 +27,7 @@ prompt {
   padding:                    0.30% 1% 0% -0.5%;
   background-color:           @al;
   text-color:                 @bg;
-  font:                       "FantasqueSansMono Nerd Font 16";
+  font:                       "IAAB3\-Mono Stencil 16";
 }
 
 entry {
@@ -44,7 +44,7 @@ entry {
 inputbar {
   children:                   [ prompt, entry ];
   background-color:           @ac;
-  text-color:                 @bg;
+  text-color:                 @fg;
   expand:                     false;
   border:                     0% 0% 0% 0%;
   border-radius:              0px;
