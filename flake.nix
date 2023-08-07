@@ -10,6 +10,10 @@
       joshuto.url = "github:kamiyaa/joshuto";
       discord-overlay.url = "github:InternetUnexplorer/discord-overlay";
       spicetify-nix.url = "github:the-argus/spicetify-nix";
+      firefox-addons = {
+        url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+        inputs.nixpkgs.follows = "nixpkgs";
+      };
       hyprland = {
         url = "github:hyprwm/Hyprland";
         inputs.nixpkgs.follows = "nixpkgs";
