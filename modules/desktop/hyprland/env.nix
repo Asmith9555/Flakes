@@ -4,12 +4,10 @@
   home = {
     sessionVariables = {
       EDITOR = "hx";
-      BROWSER = "firefox";
       TERMINAL = "kitty";
       SHELL = "fish";
       QT_QPA_PLATFORMTHEME = "gtk3";
       QT_SCALE_FACTOR = "1";
-      MOZ_ENABLE_WAYLAND = "1";
       SDL_VIDEODRIVER = "wayland";
       _JAVA_AWT_WM_NONREPARENTING = "1";
       QT_QPA_PLATFORM = "wayland";

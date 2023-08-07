@@ -3,7 +3,6 @@
   inputs,
   ...
 }: let
-  inherit (inputs.firefox-addons.lib.${pkgs.system}) buildFirefoxXpiAddon;
   addons = inputs.firefox-addons.packages.${pkgs.system};
 in {
   # NOTE: Most extensions are currently being configured imperatively.
