@@ -160,8 +160,8 @@
             in
               builtins.toString (x + 1 - (c * 10));
           in ''
-            $MOD, ${ws},exec, hyprsome workspace, ${toString (x + 1)}
-            $MODSHIFT, ${ws}, exec, hyprsome move, ${toString (x + 1)}
+            bind=$MOD, ${ws}, exec, hyprsome workspace ${toString (x + 1)}
+            bind=$MODSHIFT, ${ws}, exec, hyprsome move ${toString (x + 1)}
           ''
         )
         6)}"
