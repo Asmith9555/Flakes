@@ -18,6 +18,13 @@
         url = "github:hyprwm/Hyprland";
         inputs.nixpkgs.follows = "nixpkgs";
       };
+      hyprsome = {
+        url = "github:sopa0/hyprsome";
+        inputs = {
+            nixpkgs.follows = "nixpkgs";
+            flake-utils.follows = "flake-utils";
+        };
+      };
       home-manager = {
         url = "github:nix-community/home-manager";
         inputs.nixpkgs.follows = "nixpkgs";

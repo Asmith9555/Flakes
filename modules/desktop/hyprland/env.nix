@@ -1,6 +1,23 @@
 { config, pkgs, ... }:
 
 {
+  xdg = {
+    enable = true;
+    cacheHome = /home/wuger/.cache;
+    configHome =/home/wuger/.config;
+    dataHome =/home/wuger/.local/share;
+    mime.enable = true;
+    mimeApps.enable = true;
+    userDirs = {
+      enable = true;
+      createDirectories = true;
+      documents = /home/wuger/Documents;
+      download = /home/wuger/Downloads;
+      music = /home/wuger/Music;
+      videos = /home/wuger/Videos;
+      pictures = /home/wuger/Pictures;
+    };
+  };
   home = {
     sessionVariables = {
       EDITOR = "hx";
@@ -17,14 +34,6 @@
       XDG_CURRENT_DESKTOP = "Hyprland";
       XDG_SESSION_DESKTOP = "Hyprland";
       WLR_NO_HARDWARE_CURSORS = "1";
-      XDG_CACHE_HOME = "\${HOME}/.cache";
-      XDG_CONFIG_HOME = "\${HOME}/.config";
-      XDG_BIN_HOME = "\${HOME}/.local/bin";
-      XDG_DATA_HOME = "\${HOME}/.local/share";
     };
-    sessionPath = [
-      "$HOME/.local/bin"
-      "$HOME/.npm-global/bin"
-    ];
   };
 }

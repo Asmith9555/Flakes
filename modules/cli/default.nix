@@ -1,4 +1,5 @@
 [
+  ./crypto
   ./archive
   ./sys-monitor
   ./download

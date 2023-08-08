@@ -8,7 +8,7 @@
     pointerCursor = {
       gtk.enable = true;
       package = pkgs.catppuccin-cursors;
-      name = "Catppuccin-Frappe-Dark";
+      name = "Catppuccin-Frappe-Rosewater";
       size = 16;
     };
   };
@@ -19,7 +19,7 @@
       package = pkgs.rose-pine-gtk-theme;
     };
     cursorTheme = {
-      name = "Catppuccin-Frappe-Dark";
+      name = "Catppuccin-Frappe-Rosewater";
     };
     iconTheme = {
       name = "rose-pine";

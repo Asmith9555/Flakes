@@ -1,21 +1,17 @@
 { lib, stdenv, fetchzip, ... }:
 stdenv.mkDerivation rec {
   pname = "cattpuccin-cursors";
-  version = "9999";
+  version = "1";
   src = fetchzip {
-    url =
-      "https://github.com/Ruixi-rebirth/Catppuccin-cursor/archive/refs/tags/1.0.zip";
-    sha256 = "sha256-RCEVxeo3oBNqHogxWM/YqfPoQotirSQTMw15zCahWto=";
+    url ="https://github.com/catppuccin/cursors/releases/download/v0.2.0/Catppuccin-Frappe-Flamingo-Cursors.zip";
+    sha256 = 
+    "sha256-Lzf5RsITdxDfUBoSBDvZjY7elIslgaLHz07CnEllc3Y=";
   };
   installPhase = ''
-    mkdir -p $out/share/icons/Catppuccin-Frappe-Dark
-    cp -va index.theme cursors $out/share/icons/Catppuccin-Frappe-Dark
+    mkdir -p $out/share/icons/Catppuccin-Frappe-Flamingo
+    cp -va index.theme cursors $out/share/icons/Catppuccin-Frappe-Flamingo
   '';
   meta = {
     description = "Soothing pastel mouse cursors";
-    homepage = "https://github.com/Ruixi-rebirth/Catppuccin-cursor";
-    license = lib.licenses.gpl3;
-    platforms = lib.platforms.unix;
-    maintainers = [ lib.maintainers.Ruixi-rebirth ];
   };
 }

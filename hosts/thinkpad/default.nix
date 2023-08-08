@@ -47,7 +47,7 @@
   environment = {
     systemPackages = with pkgs; [
       cinnamon.nemo
-      networkmanagerapplet
+
       libnotify
       wl-clipboard
       wlr-randr
@@ -60,10 +60,6 @@
       pulsemixer
 
       imagemagick
-
-      pkgs.sway-contrib.grimshot
-      flameshot
-      grim
     ];
   };
 

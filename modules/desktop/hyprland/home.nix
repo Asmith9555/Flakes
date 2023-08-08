@@ -34,18 +34,35 @@
       "$MOD" = "SUPER";
       monitor = [
         "DP-1-3, 1920x1080, 1920x0, 1"
+        "DP-1-2, 1920x1080, 1920x0, 1"
         "eDP-1, 1920x1080, 0x0, 1"
       ];
+      workspace = [
+        "eDP-1,1"
+        "eDP-1,2"
+        "eDP-1,3"
+        "eDP-1,4"
+        "eDP-1,5"
+        "DP-1-2,1"
+        "DP-1-2,2"
+        "DP-1-2,3"
+        "DP-1-2,4"
+        "DP-1-2,5"
+        "DP-1-3,1"
+        "DP-1-3,2"
+        "DP-1-3,3"
+        "DP-1-3,4"
+        "DP-1-3,5"
+      ];
       exec-once= [
-        "mako &"
         "eww open-many quote date music clock &"
-        "nm-applet --indicator &"
+        "dunst"
       ];
       input = {
         kb_layout = "us";
         kb_options = "caps:escape";
 
-        follow_mouse = 2; # 0|1|2|3
+        follow_mouse = 1; # 0|1|2|3
         touchpad = {
           natural_scroll = true;
         };
@@ -88,22 +105,18 @@
       };
       decoration = {
         rounding = 0;
-        multisample_edges = true;
         blur = {
           enabled = true;
           size = 3;
           passes = 1;
         };
-        # blur_xray = true;
         drop_shadow = false;
         shadow_range = 50;
         shadow_render_power = 3;
         "col.shadow" = "rgba(00000099)";
       };
       bind = [
-        "$MOD, Escape, exec, wlogout -p layer-shell"
-        "$MOD, V, exec, wf-recorder -f ~/Videos/$(date +%Y-%m-%d_%H-%M-%S).mp4"
-        "$MODSHIFT, V, exec, killall -s SIGINT wf-recorder"
+        "CTRLSUPERALT,Q,exit,"
         "$MODSHIFT, X, exec, alacritty --class='bgterm' -e hyprpicker"
         "$MOD, D, exec, pkill rofi || ~/.config/rofi/launcher.sh"
         "$MODSHIFT, D, exec, bash ~/.config/rofi/powermenu.sh"
@@ -118,15 +131,28 @@
         "$MOD, Space, togglefloating"
         "$MOD, P, pseudo"
         "$MOD, E, togglesplit"
-
+        "$MOD, h, movefocus, l"
+        "$MOD, j, movefocus, d"
+        "$MOD, k, movefocus, u"
+        "$MOD, l, movefocus, r"
+        "$MOD, h, swapwindow, l"
+        "$MOD, j, swapwindow, d"
+        "$MOD, k, swapwindow, u"
+        "$MOD, l, swapwindow, r"
+        
         "$MOD, Tab, cyclenext"
         "$MOD, Tab, bringactivetotop"
 
-        "$MOD, A, togglespecialworkspace"
-        "$MOD, A, exec, 'Toggled special workspace'"
-        "$MODSHIFT, A, movetoworkspace, special"
-        "$MOD, C, exec, hyprctl dispatch centerwindow"
+        "$MOD, V, togglespecialworkspace"
+        # "$MOD, V, exec, 'Toggled special workspace'"
+        "$MODSHIFT, V, movetoworkspace, special"
 
+        "$MOD, bracketleft, focusmonitor, -1"
+        "$MOD, bracketright, focusmonitor, 1"
+        "$MODSHIFT, bracketleft, movewindow, mon:-1"
+        "$MODSHIFT, bracketright, movewindow, mon:1"
+        "$MOD, Backspace, swapactiveworkspaces, current +1"
+        
         "${builtins.concatStringsSep "\n" (builtins.genList (
           x: let
             ws = let
@@ -134,11 +160,11 @@
             in
               builtins.toString (x + 1 - (c * 10));
           in ''
-            bind = $MOD, ${ws}, workspace, ${toString (x + 1)}
-            bind = $MODSHIFT, ${ws}, movetoworkspace, ${toString (x + 1)}
+            $MOD, ${ws},exec, hyprsome workspace, ${toString (x + 1)}
+            $MODSHIFT, ${ws}, exec, hyprsome move, ${toString (x + 1)}
           ''
         )
-        10)}"
+        6)}"
 
         "$MOD, mouse_down, workspace, e-1"
         "$MOD, mouse_up, workspace, e+1"
@@ -155,9 +181,9 @@
         "opacity 0.80 0.80,class:^(discord)$"
 
         
-        "float,title:^(Nemo)$"
-        "move 25%-,title:^(Nemo)$"
-        "size 960 540,title:^(Nemo)$"
+        "float,title:^(nemo)$"
+        "move 25%-,title:^(nemo)$"
+        "size 960 540,title:^(nemo)$"
 
 
         "float,class:^(file_progress)$"
