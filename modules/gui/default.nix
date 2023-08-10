@@ -1,5 +1,6 @@
 [
   ./comms
+  ./games
   ./crypto
   ./web
   ./editors
