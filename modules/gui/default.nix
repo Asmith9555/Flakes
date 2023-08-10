@@ -1,5 +1,6 @@
 [
   ./comms
+  ./crypto
   ./web
   ./editors
   ./zathura
