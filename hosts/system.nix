@@ -22,6 +22,7 @@
     shells = with pkgs; [ fish ];
     systemPackages = with pkgs; [
       keepassxc
+      sutils
     ];
   };
   services.dbus.enable = true;

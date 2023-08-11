@@ -1,6 +1,7 @@
 [
   ./crypto
   ./archive
+  ./chat
   ./sys-monitor
   ./download
   ./dev

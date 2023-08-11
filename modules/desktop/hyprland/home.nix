@@ -175,13 +175,13 @@
       ];
       binde = [
         # volume controls
-        ",XF86AudioRaiseVolume, exec, volume -i 5"
-        ",XF86AudioLowerVolume, exec, volume -d 5"
-        ",XF86AudioMute, exec, volume -t"
-
+        ",XF86AudioRaiseVolume, exec, pamixer -i 5"
+        ",XF86AudioLowerVolume, exec, pamixer -d 5"
+        ",XF86AudioMute, exec, pamixer -t"
+        ",XF86AudioMicMute,exec, pamixer --default-source -t"
         # brightness controls
-        ",XF86MonBrightnessUp,exec,brightness set +5%"
-        ",XF86MonBrightnessDown,exec,brightness set 5%-"
+        ",XF86MonBrightnessUp,exec,light -A 5"
+        ",XF86MonBrightnessDown,exec,light -U 5"
       ];
       windowrulev2 = [
         "opacity 0.80 0.80,class:^(Steam)$"
@@ -190,12 +190,16 @@
         "opacity 0.80 0.80,class:^(Spotify)$"
         "opacity 0.80 0.80,class:^(discord)$"
 
+        "float,class:^(keepassxc)$"
+        "move 25%-,class:^(keepassxc)$"
+        "size 960 540,class:^(keepassxc)$"
         
-        "float,title:^(nemo)$"
-        "move 25%-,title:^(nemo)$"
-        "size 960 540,title:^(nemo)$"
+        "float,class:^(Nemo)$"
+        "move 25%-,class:^(Nemo)$"
+        "size 960 540,class:^(Nemo)$"
 
-
+        "float,class:^(file_progress)$"
+        "float,class:^(imv)$"
         "float,class:^(file_progress)$"
         "float,class:^(confirm)$"
         "float,class:^(dialog)$"

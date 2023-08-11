@@ -11,6 +11,7 @@
     cliphist
     slurp
     swaylock-effects
+    pamixer
   ];
   security.pam.services.swaylock = { };
   xdg.portal = {
