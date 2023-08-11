@@ -23,6 +23,7 @@
     systemPackages = with pkgs; [
       keepassxc
       sutils
+      gcc
     ];
   };
   services.dbus.enable = true;

@@ -3,5 +3,6 @@
     ./discord
     ./zoom
     ./teams
+    ./gajim
   ];
 }
