@@ -1,6 +1,6 @@
 [
   ./comms
-  # ./games
+  ./games
   ./crypto
   ./web
   ./editors

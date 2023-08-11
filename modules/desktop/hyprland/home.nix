@@ -173,6 +173,16 @@
         "$MOD, mouse:272, movewindow"
         "$MOD, mouse:273, resizewindow"
       ];
+      binde = [
+        # volume controls
+        ",XF86AudioRaiseVolume, exec, volume -i 5"
+        ",XF86AudioLowerVolume, exec, volume -d 5"
+        ",XF86AudioMute, exec, volume -t"
+
+        # brightness controls
+        ",XF86MonBrightnessUp,exec,brightness set +5%"
+        ",XF86MonBrightnessDown,exec,brightness set 5%-"
+      ];
       windowrulev2 = [
         "opacity 0.80 0.80,class:^(Steam)$"
         "opacity 0.80 0.80,class:^(steam)$"

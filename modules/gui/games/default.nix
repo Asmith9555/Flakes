@@ -1,5 +1,6 @@
+{ pkgs, ... }:
 {
-#  imports = [
-  #  ./steam
- # ];
+ home.packages = [
+   pkgs.lutris
+ ];
 }
