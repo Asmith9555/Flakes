@@ -1,6 +1,7 @@
 { pkgs, ... }:
 {
-  home.packages = [
-    pkgs.profanity
+  home.packages = with pkgs; [
+    profanity
+    libsignal-protocol-c
   ];
 }
