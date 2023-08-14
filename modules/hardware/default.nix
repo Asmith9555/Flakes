@@ -3,5 +3,5 @@
   ./openvpn.nix
   ./nvidia.nix
   ./steam.nix
-  # ./virt.nix
+  ./virt.nix
 ]
