@@ -43,20 +43,19 @@
         "eDP-1,3"
         "eDP-1,4"
         "eDP-1,5"
-        "DP-1-2,1"
-        "DP-1-2,2"
-        "DP-1-2,3"
-        "DP-1-2,4"
-        "DP-1-2,5"
-        "DP-1-3,1"
-        "DP-1-3,2"
-        "DP-1-3,3"
-        "DP-1-3,4"
-        "DP-1-3,5"
+        "DP-1-2,11"
+        "DP-1-2,12"
+        "DP-1-2,13"
+        "DP-1-2,14"
+        "DP-1-2,15"
+        "DP-1-3,11"
+        "DP-1-3,12"
+        "DP-1-3,13"
+        "DP-1-3,14"
+        "DP-1-3,15"
       ];
       exec-once= [
         "eww open-many quote date music clock &"
-        "dunst"
       ];
       input = {
         kb_layout = "us";
@@ -164,7 +163,7 @@
             bind=$MODSHIFT, ${ws}, exec, hyprsome move ${toString (x + 1)}
           ''
         )
-        6)}"
+        5)}"
 
         "$MOD, mouse_down, workspace, e-1"
         "$MOD, mouse_up, workspace, e+1"
@@ -190,13 +189,13 @@
         "opacity 0.80 0.80,class:^(Spotify)$"
         "opacity 0.80 0.80,class:^(discord)$"
 
-        "float,class:^(keepassxc)$"
-        "move 25%-,class:^(keepassxc)$"
-        "size 960 540,class:^(keepassxc)$"
+        "float,class:^(org.keepassxc.KeePassXC)$"
+        "move 25%-,class:^(org.keepassxc.KeePassXC)$"
+        "size 960 540,class:^(org.keepassxc.KeePassXC)$"
         
-        "float,class:^(Nemo)$"
-        "move 25%-,class:^(Nemo)$"
-        "size 960 540,class:^(Nemo)$"
+        "float,class:^(nemo)$"
+        "move 25%-,class:^(nemo)$"
+        "size 960 540,class:^(nemo)$"
 
         "float,class:^(file_progress)$"
         "float,class:^(imv)$"
@@ -210,7 +209,8 @@
         "float,title:^(Open File)$"
         "float,title:^(branchdialog)$"
         "float,title:^(File Operation Progress)$"
-
+        "float,title:^(Virtual Machine Manager)$"
+        "float,title:^(QEMU/KVM - Connection Details)%"
         "idleinhibit focus, class:^(mpv|.+exe)$"
         "idleinhibit focus, class:^(firefox)$, title:^(.*YouTube.*)$"
 

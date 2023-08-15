@@ -1,4 +1,5 @@
 [
+  ./mako
   ./eww
   ./imgview
   ./launcher
