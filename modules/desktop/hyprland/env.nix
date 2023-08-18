@@ -30,6 +30,8 @@
       QT_QPA_PLATFORM = "wayland";
       QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
       QT_AUTO_SCREEN_SCALE_FACTOR = "1";
+      #Disable spice picking up COMMAND input
+      SPICE_NOGRAB = "1";
       CLUTTER_BACKEND = "wayland";
       XDG_CURRENT_DESKTOP = "Hyprland";
       XDG_SESSION_DESKTOP = "Hyprland";

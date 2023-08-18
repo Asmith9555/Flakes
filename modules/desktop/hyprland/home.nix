@@ -190,12 +190,14 @@
         "opacity 0.80 0.80,class:^(discord)$"
 
         "float,class:^(org.keepassxc.KeePassXC)$"
-        "move 25%-,class:^(org.keepassxc.KeePassXC)$"
         "size 960 540,class:^(org.keepassxc.KeePassXC)$"
         
         "float,class:^(nemo)$"
-        "move 25%-,class:^(nemo)$"
         "size 960 540,class:^(nemo)$"
+
+        "float,title:^(Virtual Machine Manager)$"
+        "float,title:^(QEMU/KVM - Connection Details)$"
+        "size 600 540,title:^(Virtual Machine Manager)$"
 
         "float,class:^(file_progress)$"
         "float,class:^(imv)$"
@@ -209,8 +211,6 @@
         "float,title:^(Open File)$"
         "float,title:^(branchdialog)$"
         "float,title:^(File Operation Progress)$"
-        "float,title:^(Virtual Machine Manager)$"
-        "float,title:^(QEMU/KVM - Connection Details)%"
         "idleinhibit focus, class:^(mpv|.+exe)$"
         "idleinhibit focus, class:^(firefox)$, title:^(.*YouTube.*)$"
 
@@ -220,7 +220,6 @@
         "rounding 5,class:^(termfloat)$"
       
         "float,class:^(bgterm)$"
-        "move 25%- 25%+,class:^(bgterm)$"
         "size 350 350,class:^(bgterm)$"
         "noborder,class:^(bgterm)$"
         "noblur,class:^(bgterm)$"
