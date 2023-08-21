@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
-  programs.mako = {
+  services.mako = {
     enable = true;
     extraConfig = ''
       background-color=#191724
