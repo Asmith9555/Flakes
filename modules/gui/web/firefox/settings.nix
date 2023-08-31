@@ -28,7 +28,6 @@
         "seen": [
           "save-to-pocket-button",
           "developer-button",
-          "ublock0_raymondhill_net-browser-action",
           "_testpilot-containers-browser-action"
         ],
         "dirtyAreaCache": [
@@ -46,7 +45,7 @@
     "dom.security.https_only_mode" = true;
     "identity.fxaccounts.enabled" = true;
     "privacy.trackingprotection.enabled" = true;
-    "signon.rememberSignons" = true;
+    "signon.rememberSignons" = false;
     "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
   };
 }
