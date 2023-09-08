@@ -87,7 +87,7 @@
 
         body {
             background-color: #000000 !important;
-            background: url("${./bg.png}") no-repeat fixed !important;
+            background: url("${./amadeus.jpg}") no-repeat fixed !important;
             background-size: cover !important;
             --newtab-background-color: #000000 !important;
             --newtab-background-color-secondary: #101010 !important;
