@@ -29,7 +29,10 @@
   services.dbus.enable = true;
 
   nix = {
-    settings.auto-optimise-store = true;
+    settings = {
+      auto-optimise-store = true;
+      trusted-users = ["@wheel"];
+    };
     gc = {
       automatic = true;
       dates = "weekly";

@@ -1,5 +1,6 @@
 [
   ./crypto
+  ./visidata
   ./archive
   ./chat
   ./sys-monitor
@@ -20,4 +21,5 @@
   ./utils
   ./web
   ./nvim
+  ./typing
 ]

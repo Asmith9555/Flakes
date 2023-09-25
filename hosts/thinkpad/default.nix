@@ -60,6 +60,13 @@
       pulsemixer
 
       imagemagick
+
+      gnupg
+      ssh-to-pgp
+      ssh-to-age
+      sops
+      age
+      pinentry
     ];
   };
 

@@ -1,6 +1,5 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
-    just
-    gnumake
+    toipe
   ];
 }
