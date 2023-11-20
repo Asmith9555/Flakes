@@ -5,6 +5,7 @@
   ./web
   ./editors
   ./zathura
+  ./remmina
   ./terminals
   ./gtk
 ]

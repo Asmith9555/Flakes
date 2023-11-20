@@ -2,8 +2,8 @@
   programs = {
     git = {
       enable = true;
-      userName = "Austin Smith";
-      userEmail = "personal@austintrentsmith.com";
+      userName = "Wuger";
+      userEmail = "accounts+github@wuger.works";
 
       delta = {
         enable = true;
