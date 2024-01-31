@@ -46,6 +46,8 @@
                       :anchor "bottom left")
 (quote))
 
+;;;; Clock
+
 (defwindow clock
   :wm-ignore true
   :monitor 1
@@ -53,10 +55,25 @@
   :stacking "bottom"
   :geometry (geometry :x "75px"
                       :y "120px"
-                      :width "300px"
-                      :height "300px"
+                      :width "350px"
+                      :height "350px"
                       :anchor "bottom right")
 (clock))
+
+;;;; Test
+(defwindow test
+           :monitor 0
+           :geometry (geometry :x "100px"
+                               :y "100px"
+                               :width "200px"
+                               :height "480px"
+                               :anchor "top left")
+           :stacking "fg"
+           :wm-ignore false
+(test))
+
+
+
 ;;;; TODO Notes window
 ; (defwindow notes
 ;   :wm-ignore: true

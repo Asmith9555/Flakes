@@ -5,7 +5,7 @@
 }
 window {
   background: rgba(0, 0, 0, 0);
-  color: #6e6a86;
+  color: #e0def4;
 }
 // Music
 .cava-bars {
@@ -33,8 +33,13 @@ window {
   font-size: 2.1rem;
 }
 
-// .clock .hand {
-//   color: #191724;
-//   font-size: 2rem;
-// }
-
+// Test
+.hour_hand {
+	color: #31748f;
+}
+.minute_hand {
+	color: #c4a7e7;
+}
+.second_hand {
+  color: #eb6f92;
+}

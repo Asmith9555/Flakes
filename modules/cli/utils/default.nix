@@ -2,6 +2,7 @@
 {
   home.packages = with pkgs; [
     pastel    
+    libguestfs
     imagemagick
     catimg
   ];

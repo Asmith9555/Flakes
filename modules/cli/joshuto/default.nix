@@ -49,7 +49,7 @@
         ];
 
         text_default = [
-          { command = "nvim"; }
+          { command = "hx"; }
         ];
 
         reader_default = [
@@ -124,6 +124,7 @@
         md."inherit" = "text_default";
         micro."inherit" = "text_default";
         ninja."inherit" = "text_default";
+        nix."inherit" = "text_default";
         py."inherit" = "text_default";
         rkt."inherit" = "text_default";
         rs."inherit" = "text_default";
@@ -270,9 +271,9 @@
           { keys = [ "p" "l" ]; command = "symlink_files --relative=false"; }
           { keys = [ "p" "L" ]; command = "symlink_files --relative=true"; }
 
-          { keys = [ "delete" ]; command = "delete_files"; }
-          { keys = [ "d" "D" ]; command = "delete_files"; }
-          { keys = [ "D" ]; command = "delete_files"; }
+          { keys = [ "delete" ]; command = "delete_files --permanently"; }
+          { keys = [ "d" "D" ]; command = "delete_files --permanently"; }
+          { keys = [ "D" ]; command = "delete_files --permanently"; }
 
           { keys = [ "p" "p" ]; command = "paste_files"; }
           { keys = [ "p" "o" ]; command = "paste_files --overwrite=true"; }

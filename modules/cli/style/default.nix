@@ -4,7 +4,7 @@
     ./bat
   ];
   home.packages = with pkgs; [
-    exa
+    eza
     figlet
     zscroll
     cbonsai

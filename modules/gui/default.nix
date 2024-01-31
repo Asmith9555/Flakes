@@ -3,6 +3,7 @@
   ./games
   ./crypto
   ./web
+  ./utils
   ./editors
   ./zathura
   ./remmina

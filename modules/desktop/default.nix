@@ -4,5 +4,5 @@
   ./imgview
   ./launcher
   ./rofi
-  ./swww
+  ./waypaper
 ]

@@ -8,7 +8,7 @@
   home = {
     username = "wuger";
     homeDirectory = "/home/wuger";
-    stateVersion = "23.05";
+    stateVersion = "23.11";
   };
   programs = {
     home-manager.enable = true;

@@ -6,7 +6,7 @@ let
   '';
   wallpaper_random = pkgs.writeShellScriptBin "wallpaper_random" ''
     killall dynamic_wallpaper
-    swww img $(find ~/Pictures/wallpaper/. -name "*.png" | shuf -n1) --transition-type random
+    swaybg -i $(find ~/Pictures/wallpaper/. -name "*.png" | shuf -n1) -m fit
   '';
   myswaylock = pkgs.writeShellScriptBin "myswaylock" ''
     swaylock  \
@@ -28,11 +28,11 @@ let
   # myi3lock = pkgs.writeShellScriptBin "myi3lock" ''
   # '';
   dynamic_wallpaper = pkgs.writeShellScriptBin "dynamic_wallpaper" ''
-    swww img $(find ~/Pictures/wallpaper/. -name "*.png" | shuf -n1) --transition-type random
+    swaybg -i $(find ~/Pictures/wallpaper/. -name "*.png" | shuf -n1) -m fit
     OLD_PID=$!
     while true; do
         sleep 120
-    swww img $(find ~/Pictures/wallpaper/. -name "*.png" | shuf -n1) --transition-type random
+    swaybh -i $(find ~/Pictures/wallpaper/. -name "*.png" | shuf -n1) -m fit
         NEXT_PID=$!
         sleep 5
         kill $OLD_PID
@@ -41,8 +41,21 @@ let
   '';
   default_wall = pkgs.writeShellScriptBin "default_wall" ''
     killall dynamic_wallpaper
-    swww img "${../../wallpaper/default.png}" --transition-type random
+    swaybg -i "${../../wallpaper/default.png}" -m fit
   '';
+  read_hour = pkgs.writeShellScriptBin "read_hour" ''
+    HOUR=$(date +%I)
+    awk "BEGIN { x=$HOUR; z = x * 100 / 24; print z }"
+  '';
+  read_minute = pkgs.writeShellScriptBin "read_minute" ''
+    MINUTE=$(date +%M)
+    awk "BEGIN { x=$MINUTE; z = x * 100 / 60; print z }"
+  '';
+  read_second = pkgs.writeShellScriptBin "read_second" ''
+    SECOND=$(date +%S)
+    awk "BEGIN { x=$SECOND; z = x * 100 / 60; print z }"
+  '';
+
 in
 {
   home.packages = with pkgs; [
@@ -51,5 +64,8 @@ in
     myswaylock
     dynamic_wallpaper
     default_wall
+    read_hour
+    read_minute
+    read_second
   ];
 }

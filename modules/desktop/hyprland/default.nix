@@ -16,6 +16,7 @@
   security.pam.services.swaylock = { };
   xdg.portal = {
     enable = true;
+    config.common.default = "*";
     wlr.enable = true;
   };
 }

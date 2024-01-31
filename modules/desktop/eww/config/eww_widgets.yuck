@@ -19,10 +19,20 @@
     (label :class "cava-bars" :halign "start" :text "${cava_bars}")
     (label :class "music-title" :halign "start" :vexpand true :wrap true :text "${track_title}")))
 
+; (defwidget test[]
+;   (box :class "testbox"
+; 			(centerbox :orientation "h"
+; 				(box :class "test_box" :orientation "v" :valign "center" :halign "center" :spacing 15 :space-evenly "false"
+; 					(box :class "test_circle" :orientation "v" :valign "center" :halign "center"
+; 						(circular-progress :class "test_time" :value TIME :thickness 5
+; 							(label :class "test_circle_small" :text "TIME")))))))
 (defwidget clock[]
-  (overlay :class "clock" :hexpand true :vexpand true 
-    ; (label :class "hand minute":xalign 1.0 :yalign 0.51 :text "--------")
-    ; (label :class "hand hour" :xalign 0.6 :text "===")
+  (overlay :class "clock" :hexpand true :vexpand true
+		;; clock hands 
+	  (circular-progress :class "hour_hand" :value HOUR :start-at 75 :thickness 7)
+    (circular-progress :class "minute_hand" :value MINUTE :start-at 75 :thickness 6)
+	  (circular-progress :class "second_hand" :value SECOND :start-at 75 :thickness 5)
+		;;
     (label :class "labelMed label1" :yalign 0.0 :text "-")
     ;;
     (label :class "labelMed label2" :yalign 0.1 :text "-")

@@ -9,12 +9,10 @@ in {
   programs.firefox.profiles.default.extensions = with addons; [
     octotree
     adnauseam
-    keepassxc-browser
+    bitwarden
     simplelogin
+    tree-style-tab
     firefox-color
-    sidebery
     to-deepl
-    wappalyzer
-    return-youtube-dislikes
   ];
 }

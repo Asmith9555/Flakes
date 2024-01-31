@@ -3,6 +3,9 @@
 ;;;; FETCH AND DATE
 
 (defpoll TODAY :interval "1s" `date +%m/%d/%y`)
+(defpoll SECOND :interval "1s" `read_second`)
+(defpoll HOUR :interval "60s" `read_hour`)
+(defpoll MINUTE :interval "10s" `read_minute`)
 (defpoll NOTES :interval "1s" "bat -s ~/Documents/notes.txt")
 (defpoll track_title :interval "1s" "mpc current")
 (deflisten cava_bars "cava-internal")
