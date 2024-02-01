@@ -12,9 +12,13 @@
     # Terraform
     terraform-ls
     #Docker
-    docker-compose-language-service
+    dockerfile-language-server-nodejs
     # C/C#
-    clangd
+    netcoredbg
+    omnisharp-roslyn
+    clang
+    clang-tools
+    # clangd
     # Cmake
     cmake-language-server
     # Cue
@@ -22,11 +26,12 @@
     # Clojure
     clojure-lsp
     # Python
-    pylsp
+    # pylsp
     # Vala
     vala-language-server
     # OCaml
-    ocamllsp
+    ocamlPackages.lsp
+    # ocamllsp
     # Go
     gopls
     delve
@@ -44,6 +49,8 @@
     rust-analyzer
     # Rust Libraries
     slint-lsp
+    # Zig
+    zls
   ];
 
   programs.helix = {
